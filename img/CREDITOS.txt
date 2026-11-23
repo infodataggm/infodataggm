@@ -189,3 +189,11 @@ tityus-cba.jpg
 chart-alacranes-cordoba.jpg
   Gráfico: Equipo GGM Data, con datos del Ministerio de Salud de la Nación (BIV 2015-2016; BEN N°745 y N°792)
   Origen: Gráfico propio
+
+acueducto-canos-coronda.jpg
+  Foto: Prensa Gobierno de Santa Fe, 27/06/2026
+  Origen: comunicado oficial del Gobierno de Santa Fe sobre el Acueducto Biprovincial (archivo 2026-06-27NID_286466O_1.jpeg)
+
+chart-acueducto-parana.jpg
+  Gráfico: Equipo GGM Data, con anuncios oficiales de las provincias de Santa Fe y Córdoba (Unidad Ejecutora Biprovincial)
+  Origen: Gráfico propio
