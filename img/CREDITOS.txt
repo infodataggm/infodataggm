@@ -180,3 +180,12 @@ chart-confianza-nov.jpg
 chart-dolar-23.jpg
   Gráfico: Equipo GGM Data, con datos de Banco Nación, Ámbito y Becerra Bursátil
   Origen: Gráfico propio
+
+tityus-cba.jpg
+  Foto: J3D3 / Wikimedia Commons (CC BY-SA 4.0), 16/11/2015, tomada en el Hospital de Niños de Córdoba
+  Origen: File:Tityus CBA.jpg
+  https://commons.wikimedia.org/wiki/File:Tityus_CBA.jpg
+
+chart-alacranes-cordoba.jpg
+  Gráfico: Equipo GGM Data, con datos del Ministerio de Salud de la Nación (BIV 2015-2016; BEN N°745 y N°792)
+  Origen: Gráfico propio
