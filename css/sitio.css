@@ -1516,3 +1516,10 @@
     .ticker a.tick:hover strong { color: #fff; }
     .dato-copy h3 a { color: inherit; text-decoration: none; }
     .dato-copy h3 a:hover { color: #00b89c; }
+
+    /* Subtítulos y recuadros dentro de notas */
+    .nota-body h2 { font-family: inherit; font-size: 21px; line-height: 1.25; color: var(--navy, #0b2545); margin: 28px 0 10px; }
+    .nota-recuadro { border-left: 4px solid #00b89c; background: #f3f7f8; padding: 16px 20px; margin: 26px 0; }
+    .nota-recuadro h2 { margin: 0 0 10px; font-size: 18px; }
+    .nota-recuadro ul, .nota-recuadro ol { margin: 0; padding-left: 20px; }
+    .nota-recuadro li { font-size: 15.5px; line-height: 1.55; margin: 0 0 8px; color: var(--body, #222); }

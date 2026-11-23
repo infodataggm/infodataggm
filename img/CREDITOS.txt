@@ -1,4 +1,4 @@
-Créditos de imágenes — edición de prueba InfoDataGGM
+Créditos de imágenes — InfoDataGGM
 
 Las fotos periodísticas de agencias o medios no se utilizan. Las imágenes de Wikimedia Commons se descargaron desde los archivos citados, se recortan solo por el encuadre de la portada (object-fit) y se comprimen. Los gráficos son de elaboración propia con datos de fuentes citadas.
 
@@ -148,3 +148,8 @@ proximamente.jpg (21 KB)
 video-espacio.jpg (7 KB)
   InfoDataGGM
   Origen: Imagen propia de InfoDataGGM
+
+palacio-municipal-cordoba.jpg (254 KB)
+  Foto: Belgrano / Wikimedia Commons (dominio público)
+  Origen: File:Palacio Municipal de Cordoba.JPG
+  https://commons.wikimedia.org/wiki/File:Palacio_Municipal_de_Cordoba.JPG
