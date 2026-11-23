@@ -2,6 +2,8 @@ Créditos de imágenes — edición de prueba InfoDataGGM
 
 Las fotos periodísticas de agencias o medios no se utilizan. Las imágenes de Wikimedia Commons se descargaron desde los archivos citados, se recortan solo por el encuadre de la portada (object-fit) y se comprimen. Los gráficos son de elaboración propia con datos de fuentes citadas.
 
+En la portada, el crédito visible va en el epígrafe bajo la foto, en estilo de agencia (por ejemplo, «(CASA ROSADA)» o «(Gabriel79/Wikimedia Commons)»). La licencia completa queda en este archivo y en el atributo title de cada imagen. Las miniaturas de «otras tapas» solo llevan el crédito en el tooltip, para no romper el recuadro.
+
 milei-bullrich.jpg (220 KB)
   Foto: Casa Rosada (CC BY 2.5 AR)
   Origen: File:MileiBullrich.jpg

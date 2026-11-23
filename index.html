@@ -593,21 +593,33 @@
       .secondary .card {
         display: grid;
         grid-template-columns: 120px 1fr;
-        gap: 12px;
+        grid-template-areas:
+          "ph body"
+          "cap cap";
+        gap: 8px 12px;
         padding-bottom: 14px;
         margin-bottom: 14px;
         border-bottom: 1px solid var(--line);
+        align-items: start;
       }
       .secondary .card:last-child { border-bottom: 0; margin: 0; padding-bottom: 0; }
-      .secondary .ph { margin-bottom: 0; aspect-ratio: 4 / 3; }
+      .secondary .ph { grid-area: ph; margin-bottom: 0; aspect-ratio: 4 / 3; }
+      .secondary .epigrafe { grid-area: cap; margin: 0; font-size: 11px; }
+      .secondary .card-body { grid-area: body; }
       .mid-grid { grid-template-columns: 1fr; gap: 20px; }
       .section-grid { grid-template-columns: 1fr; }
       .card-sm {
         display: grid;
         grid-template-columns: 120px 1fr;
-        gap: 12px;
+        grid-template-areas:
+          "ph body"
+          "cap cap";
+        gap: 8px 12px;
+        align-items: start;
       }
-      .card-sm .ph { margin-bottom: 0; aspect-ratio: 4 / 3; }
+      .card-sm .ph { grid-area: ph; margin-bottom: 0; aspect-ratio: 4 / 3; }
+      .card-sm .epigrafe { grid-area: cap; margin: 0; font-size: 11px; }
+      .card-sm .card-body { grid-area: body; }
       .footer-grid { grid-template-columns: 1fr; gap: 28px; }
       .lead h3 { font-size: 1.7rem; }
     }
@@ -1041,7 +1053,17 @@
     }
     @media (max-width: 640px) {
       .video-grid { grid-template-columns: 1fr; }
-      .prof-more .card { grid-template-columns: 120px 1fr; }
+      .prof-more .card {
+        grid-template-columns: 120px 1fr;
+        grid-template-areas:
+          "ph body"
+          "cap cap";
+        gap: 8px 12px;
+        align-items: start;
+      }
+      .prof-more .card .ph { grid-area: ph; margin-bottom: 0; }
+      .prof-more .card .epigrafe { grid-area: cap; margin: 0; font-size: 11px; }
+      .prof-more .card .card-body { grid-area: body; }
       .lead .ph { aspect-ratio: 16 / 9; }
       .cover { max-width: 100%; }
     }
@@ -1234,54 +1256,118 @@
       inset: 0;
       display: block;
     }
-    .photo-credit {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 2;
-      margin: 0;
-      padding: 16px 8px 5px;
-      background: linear-gradient(to top, rgba(5,20,33,.86) 0%, rgba(5,20,33,.0) 100%);
-      color: #eef6f8;
-      font-size: 9px;
-      line-height: 1.3;
-      letter-spacing: .02em;
+    .ph.has-photo { margin-bottom: 0; }
+    .epigrafe {
+      margin: 6px 0 10px;
+      padding: 0;
+      font-family: var(--sans);
+      font-size: 11.5px;
+      line-height: 1.35;
+      color: var(--muted);
+      font-weight: 400;
+      letter-spacing: 0;
       text-transform: none;
-      font-weight: 500;
-      text-align: left;
-      top: auto !important;
-      opacity: 1 !important;
     }
+    .lead .epigrafe { font-size: 12.5px; margin: 8px 0 0; }
+    .card-main .epigrafe,
+    .prof-main .epigrafe { font-size: 12px; }
     .mini-cover { position: relative; overflow: hidden; }
-    .mini-cover .photo-credit {
-      font-size: 6px;
-      line-height: 1.2;
-      padding: 8px 4px 2px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .cover-band .epigrafe {
+      color: #9abac6;
+      font-size: 11px;
+      margin: 8px 0 0;
     }
-    .card-sm .photo-credit {
-      font-size: 8px;
-      line-height: 1.25;
-      padding: 12px 6px 4px;
-      max-height: 2.8em;
-      overflow: hidden;
+  
+    /* ——— Interacción: cursor y hover de notas ——— */
+    .nav a,
+    .tema,
+    .tick,
+    .tick a,
+    .ticker-flag,
+    .ad-cta,
+    button,
+    .share-btn,
+    article.card:not(.is-placeholder),
+    article.card:not(.is-placeholder) h3,
+    article.card:not(.is-placeholder) h3 a,
+    article.card:not(.is-placeholder) .ph,
+    article.card:not(.is-placeholder) .ph img,
+    article.prof-main,
+    article.prof-main h3 a,
+    article.op-item:not(.is-placeholder),
+    article.expl,
+    .cover,
+    .cover img,
+    .mini,
+    .mini-cover,
+    .most-read li a,
+    .breaking-item,
+    .dato-copy h3 a,
+    .dato-related a,
+    .section-head .more {
+      cursor: pointer;
     }
-    .video .photo-credit { display: none; }
-    @media (max-width: 640px) {
-      .secondary .card .photo-credit,
-      .card-sm .photo-credit {
-        font-size: 7px;
-        line-height: 1.2;
-        padding: 8px 4px 2px;
-        max-height: none;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+    article.card.is-placeholder,
+    article.card.is-placeholder h3,
+    article.card.is-placeholder .ph,
+    article.card.is-placeholder .ph img,
+    article.op-item.is-placeholder,
+    article.video.is-placeholder,
+    article.video.is-placeholder a,
+    article.is-placeholder {
+      cursor: default;
     }
+    article.card:not(.is-placeholder),
+    article.prof-main {
+      position: relative;
+    }
+    article.card:not(.is-placeholder) h3 a[href]::after,
+    article.prof-main h3 a[href]::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+    article.card .by,
+    article.prof-main .by {
+      position: relative;
+      z-index: 2;
+    }
+    article.card:not(.is-placeholder):hover h3,
+    article.card:not(.is-placeholder):hover h3 a,
+    article.prof-main:hover h3,
+    article.prof-main:hover h3 a,
+    article.op-item:not(.is-placeholder):hover h3,
+    article.expl:hover h3,
+    .most-read li a:hover .t,
+    .dato-copy h3 a:hover,
+    .dato-related a:hover,
+    .breaking-item:hover span,
+    .tick a:hover {
+      color: #00b89c;
+    }
+    .ph.has-photo img,
+    .cover-ph.has-photo img,
+    .mini-cover.has-photo img {
+      transition: transform .45s ease, filter .45s ease;
+    }
+    article.card:not(.is-placeholder):hover .ph.has-photo img,
+    article.prof-main:hover .ph.has-photo img,
+    .cover:hover .cover-ph.has-photo img,
+    .mini:hover .mini-cover.has-photo img {
+      transform: scale(1.045);
+      filter: brightness(1.05);
+    }
+
+  
+    .ticker a.tick {
+      color: #b8d1da;
+      text-decoration: none;
+    }
+    .ticker a.tick:hover { color: #5fdfc7; }
+    .ticker a.tick:hover strong { color: #fff; }
+    .dato-copy h3 a { color: inherit; text-decoration: none; }
+    .dato-copy h3 a:hover { color: #00b89c; }
   </style>
 </head>
 <body>
@@ -1292,10 +1378,10 @@
       <div class="topbar-date">Domingo 22 de noviembre de 2026 · Córdoba, Argentina</div>
       <div class="ticker" aria-label="Indicadores con fuente">
         <span class="ticker-flag">Indicadores</span>
-        <span class="tick">Dólar oficial venta <strong>$1.600</strong></span>
-        <span class="tick">Dólar blue venta <strong>$1.675</strong></span>
-        <span class="tick">Riesgo país <strong>1.070</strong></span>
-        <span class="tick">Inflación oct. <strong>2,2%</strong></span>
+        <a class="tick" href="notas/dolar-22-noviembre.html">Dólar oficial venta <strong>$1.600</strong></a>
+        <a class="tick" href="notas/dolar-22-noviembre.html">Dólar blue venta <strong>$1.675</strong></a>
+        <a class="tick" href="notas/riesgo-pais-1070.html">Riesgo país <strong>1.070</strong></a>
+        <a class="tick" href="notas/ipc-octubre-2026.html">Inflación oct. <strong>2,2%</strong></a>
       </div>
     </div>
   </div>
@@ -1338,14 +1424,14 @@
     <div class="wrap">
       <span class="temas-label">Temas del día</span>
       <div class="temas-track">
-        <a class="tema" href="#politica">Suspensión de las PASO</a>
-        <a class="tema" href="#mercados">Riesgo país en 1.070</a>
-        <a class="tema" href="#deportes">Boca, campeón</a>
-        <a class="tema" href="#provincias">Granizo en Traslasierra</a>
-        <a class="tema" href="#mundo">Cancillería y Grossi</a>
-        <a class="tema" href="#mundo">Sea Lion en Malvinas</a>
-        <a class="tema" href="#economia">Consumo de octubre</a>
-        <a class="tema" href="#tecnologia">Tesla en la Argentina</a>
+        <a class="tema" href="notas/tregua-paso-congreso.html">Suspensión de las PASO</a>
+        <a class="tema" href="notas/riesgo-pais-1070.html">Riesgo país en 1.070</a>
+        <a class="tema" href="notas/boca-campeon-sudamericana.html">Boca, campeón</a>
+        <a class="tema" href="notas/granizo-traslasierra.html">Granizo en Traslasierra</a>
+        <a class="tema" href="notas/cancilleria-amenazas-grossi.html">Cancillería y Grossi</a>
+        <a class="tema" href="notas/quirno-sea-lion-malvinas.html">Sea Lion en Malvinas</a>
+        <a class="tema" href="notas/consumo-masivo-octubre.html">Consumo de octubre</a>
+        <a class="tema" href="notas/tesla-venta-online.html">Tesla en la Argentina</a>
       </div>
     </div>
   </section>
@@ -1354,14 +1440,14 @@
     <div class="wrap">
       <span class="breaking-kicker">Últimos titulares</span>
       <div class="breaking-track">
-        <a class="breaking-item" href="https://www.infobae.com/salud/ciencia/2026/11/22/detectan-una-nueva-variante-de-covid-19-en-argentina-cuales-son-los-sintomas-y-por-que-es-clave-la-vacunacion/" rel="noopener noreferrer"><time datetime="2026-11-22T18:45:00-03:00">18:45</time> <span>La UNLP detectó el linaje PJ.2.1 de COVID-19 en tres muestras bonaerenses</span></a>
-        <a class="breaking-item" href="https://tn.com.ar/politica/2026/11/22/tras-el-respaldo-de-milei-a-bullrich-el-gobierno-baja-las-tensiones-y-concentra-sus-esfuerzos-en-suspender-las-paso/" rel="noopener noreferrer"><time datetime="2026-11-22T16:48:00-03:00">16:48</time> <span>El Gobierno concentra la semana en la suspensión de las PASO</span></a>
-        <a class="breaking-item" href="https://www.infobae.com/politica/2026/11/22/el-gobierno-argentino-condeno-las-amenazas-de-iran-contra-rafael-grossi-director-del-oiea/" rel="noopener noreferrer"><time datetime="2026-11-22T13:50:00-03:00">13:50</time> <span>La Cancillería condenó amenazas de Irán contra Rafael Grossi</span></a>
-        <a class="breaking-item" href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer"><time datetime="2026-11-22T12:10:00-03:00">12:10</time> <span>El Financial Times señaló el alza del riesgo país a 10,7 puntos</span></a>
-        <a class="breaking-item" href="https://www.infobae.com/deportes/2026/11/22/argentina-perdio-ante-japon-en-la-billie-jean-king-cup-y-no-pudo-ascender-a-los-qualifiers-jugara-la-zona-americas-i-en-2027/" rel="noopener noreferrer"><time datetime="2026-11-22T11:37:00-03:00">11:37</time> <span>Argentina cayó 4-0 ante Japón en la Billie Jean King Cup</span></a>
-        <a class="breaking-item" href="https://cordoba.mitelefe.com/cordoba/una-fuerte-tormenta-con-granizo-provoco-destrozos-y-anegamientos-en-villa-dolores-y-traslasierra-pid2572837" rel="noopener noreferrer"><time datetime="2026-11-22T11:01:00-03:00">11:01</time> <span>Granizo y anegamientos en Villa Dolores y el Valle de Traslasierra</span></a>
-        <a class="breaking-item" href="https://tn.com.ar/deportes/formula-1/2026/11/21/franco-colapinto-corre-el-gp-de-las-vegas-con-la-mision-de-volver-a-sumar-puntos-en-la-f1-partira-noveno/" rel="noopener noreferrer"><time datetime="2026-11-22T03:09:00-03:00">03:09</time> <span>Colapinto terminó sexto en Las Vegas y sumó puntos</span></a>
-        <a class="breaking-item" href="https://www.infobae.com/politica/2026/11/22/a-una-semana-del-fallo-del-tribunal-del-mar-quirno-volvio-a-reclamar-que-se-frene-el-proyecto-sea-lion-en-malvinas/" rel="noopener noreferrer"><time datetime="2026-11-22T01:02:00-03:00">01:02</time> <span>Quirno reiteró el pedido para frenar el proyecto Sea Lion</span></a>
+        <a class="breaking-item" href="notas/unlp-linaje-covid.html"><time datetime="2026-11-22T18:45:00-03:00">18:45</time> <span>La UNLP detectó el linaje PJ.2.1 de COVID-19 en tres muestras bonaerenses</span></a>
+        <a class="breaking-item" href="notas/tregua-paso-congreso.html"><time datetime="2026-11-22T16:48:00-03:00">16:48</time> <span>El Gobierno concentra la semana en la suspensión de las PASO</span></a>
+        <a class="breaking-item" href="notas/cancilleria-amenazas-grossi.html"><time datetime="2026-11-22T13:50:00-03:00">13:50</time> <span>La Cancillería condenó amenazas de Irán contra Rafael Grossi</span></a>
+        <a class="breaking-item" href="notas/financial-times-riesgo-pais.html"><time datetime="2026-11-22T12:10:00-03:00">12:10</time> <span>El Financial Times señaló el alza del riesgo país a 10,7 puntos</span></a>
+        <a class="breaking-item" href="notas/billie-jean-king-cup-japon.html"><time datetime="2026-11-22T11:37:00-03:00">11:37</time> <span>Argentina cayó 4-0 ante Japón en la Billie Jean King Cup</span></a>
+        <a class="breaking-item" href="notas/granizo-traslasierra.html"><time datetime="2026-11-22T11:01:00-03:00">11:01</time> <span>Granizo y anegamientos en Villa Dolores y el Valle de Traslasierra</span></a>
+        <a class="breaking-item" href="notas/colapinto-las-vegas.html"><time datetime="2026-11-22T03:09:00-03:00">03:09</time> <span>Colapinto terminó sexto en Las Vegas y sumó puntos</span></a>
+        <a class="breaking-item" href="notas/quirno-sea-lion-malvinas.html"><time datetime="2026-11-22T01:02:00-03:00">01:02</time> <span>Quirno reiteró el pedido para frenar el proyecto Sea Lion</span></a>
       </div>
     </div>
   </div>
@@ -1370,65 +1456,65 @@
     <div class="wrap">
       <section class="hero" aria-label="Nota principal, secundarias y opinión">
         <article class="card lead">
-          <div class="ph has-photo"><img src="img/milei-bullrich.jpg" alt="Javier Milei y Patricia Bullrich en un acto en la Casa Rosada"><p class="photo-credit">Foto: Casa Rosada (CC BY 2.5 AR)</p></div>
+          <div class="ph has-photo"><img src="img/milei-bullrich.jpg" alt="Javier Milei y Patricia Bullrich en un acto en la Casa Rosada" title="Imagen de archivo de Javier Milei y Patricia Bullrich, en Casa Rosada. (CASA ROSADA) Foto: Casa Rosada (CC BY 2.5 AR)"></div>
+          <p class="epigrafe">Imagen de archivo de Javier Milei y Patricia Bullrich, en Casa Rosada. (CASA ROSADA)</p>
           <div class="card-body">
             <p class="kicker">Política</p>
-            <h3><a href="https://tn.com.ar/politica/2026/11/22/tras-el-respaldo-de-milei-a-bullrich-el-gobierno-baja-las-tensiones-y-concentra-sus-esfuerzos-en-suspender-las-paso/" rel="noopener noreferrer">El Gobierno concentra la última semana de sesiones en la suspensión de las PASO</a></h3>
-            <p class="dek">Tras el respaldo público de Javier Milei a Patricia Bullrich, a quien definió como su “socia política”, el oficialismo busca bajar las tensiones internas y asegurar en el Congreso el debate de la reforma electoral y del Presupuesto 2027.</p>
-            <p class="by"><a href="https://tn.com.ar/politica/2026/11/22/tras-el-respaldo-de-milei-a-bullrich-el-gobierno-baja-las-tensiones-y-concentra-sus-esfuerzos-en-suspender-las-paso/" rel="noopener noreferrer">Fuente: TN</a> · 22 nov 2026, 16:48</p>
+            <h3><a href="notas/tregua-paso-congreso.html">El Gobierno concentra la última semana de sesiones en la suspensión de las PASO</a></h3>
+            <p class="dek">Tras el respaldo público de Javier Milei a Patricia Bullrich, a quien definió como su “socia política”, el oficialismo busca bajar las tensiones internas y asegurar en el Congreso el debate de la reforma electoral y del Presupuesto 2027, según informó TN.</p>
+            <p class="by"><a href="https://tn.com.ar/politica/2026/11/22/tras-el-respaldo-de-milei-a-bullrich-el-gobierno-baja-las-tensiones-y-concentra-sus-esfuerzos-en-suspender-las-paso/" rel="noopener noreferrer" target="_blank">Fuente: TN</a> · 22 nov 2026, 16:48</p>
           </div>
         </article>
         <div class="secondary">
           <article class="card">
-            <div class="ph has-photo"><img src="img/bombonera.jpg" alt="Estadio Alberto J. Armando, La Bombonera, en Buenos Aires"><p class="photo-credit">Foto: Matibro / Wikimedia Commons (CC BY-SA 4.0)</p></div>
+            <div class="ph has-photo"><img src="img/bombonera.jpg" alt="Estadio Alberto J. Armando, La Bombonera, en Buenos Aires" title="Imagen de archivo de La Bombonera, en Buenos Aires. (Matibro/Wikimedia Commons) Foto: Matibro / Wikimedia Commons (CC BY-SA 4.0)"></div>
+          <p class="epigrafe">Imagen de archivo de La Bombonera, en Buenos Aires. (Matibro/Wikimedia Commons)</p>
             <div class="card-body">
               <p class="kicker">Deportes</p>
-              <h3><a href="https://gol.conmebol.com/sudamericana/es/news/boca-juniors-le-gano-mineiro-y-se-consagro-campeon-de-la-conmebol-sudamericana" rel="noopener noreferrer">Boca Juniors se consagró campeón de la Copa Sudamericana</a></h3>
-              <p class="by"><a href="https://gol.conmebol.com/sudamericana/es/news/boca-juniors-le-gano-mineiro-y-se-consagro-campeon-de-la-conmebol-sudamericana" rel="noopener noreferrer">Fuente: CONMEBOL</a> · 21 nov 2026</p>
+              <h3><a href="notas/boca-campeon-sudamericana.html">Boca Juniors se consagró campeón de la Copa Sudamericana</a></h3>
+              <p class="by"><a href="https://gol.conmebol.com/sudamericana/es/news/boca-juniors-le-gano-mineiro-y-se-consagro-campeon-de-la-conmebol-sudamericana" rel="noopener noreferrer" target="_blank">Fuente: CONMEBOL</a> · 21 nov 2026</p>
             </div>
           </article>
           <article class="card">
-            <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos"><p class="photo-credit">Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)</p></div>
+            <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos" title="El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA) Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)"></div>
+          <p class="epigrafe">El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA)</p>
             <div class="card-body">
               <p class="kicker">Economía</p>
-              <h3><a href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer">El Financial Times señaló el alza del riesgo país y el desafío financiero de cara a 2027</a></h3>
-              <p class="by"><a href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer">Fuente: Infobae, cita al Financial Times</a> · 22 nov 2026</p>
+              <h3><a href="notas/financial-times-riesgo-pais.html">El Financial Times señaló el alza del riesgo país y el desafío financiero de cara a 2027</a></h3>
+              <p class="by"><a href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer" target="_blank">Fuente: Infobae, cita al Financial Times</a> · 22 nov 2026</p>
             </div>
           </article>
         </div>
         <aside class="opinion" aria-labelledby="h-opinion">
           <h2 id="h-opinion">Opinión</h2>
           <article class="op-item">
-            <a href="#dato-destacado">
+            <a href="notas/que-muestran-datos-ipc.html">
               <p class="kicker">Análisis</p>
               <h3>Qué muestran, y qué no, los últimos datos del IPC</h3>
               <p class="by">Equipo GGM Data</p>
               <p class="readtime">Con datos del INDEC, octubre de 2026</p>
             </a>
           </article>
-          <article class="op-item">
-            <a href="#h-opinion">
-              <p class="kicker">Opinión</p>
+          <article class="op-item is-placeholder">
+            <p class="kicker">Opinión</p>
               <h3>Espacio de opinión – próximamente</h3>
               <p class="by">Sin columnista asignado</p>
               <p class="readtime">Edición de prueba</p>
-            </a>
+            
           </article>
-          <article class="op-item">
-            <a href="#h-opinion">
-              <p class="kicker">Opinión</p>
+          <article class="op-item is-placeholder">
+            <p class="kicker">Opinión</p>
               <h3>Espacio de opinión – próximamente</h3>
               <p class="by">Sin columnista asignado</p>
               <p class="readtime">Edición de prueba</p>
-            </a>
+            
           </article>
-          <article class="op-item">
-            <a href="#h-opinion">
-              <p class="kicker">Opinión</p>
+          <article class="op-item is-placeholder">
+            <p class="kicker">Opinión</p>
               <h3>Espacio de opinión – próximamente</h3>
               <p class="by">Sin columnista asignado</p>
               <p class="readtime">Edición de prueba</p>
-            </a>
+            
           </article>
         </aside>
       </section>
@@ -1436,35 +1522,39 @@
       <section class="mid" aria-label="Más notas de portada">
         <div class="mid-grid">
           <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/villa-dolores.jpg" alt="Vista de Villa Dolores, en el Valle de Traslasierra, Córdoba"><p class="photo-credit">Foto: Gabriel79 / Wikimedia Commons (CC BY-SA 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/villa-dolores.jpg" alt="Vista de Villa Dolores, en el Valle de Traslasierra, Córdoba" title="Vista de Villa Dolores, en Traslasierra. (Gabriel79/Wikimedia Commons) Foto: Gabriel79 / Wikimedia Commons (CC BY-SA 4.0)"></div>
+          <p class="epigrafe">Vista de Villa Dolores, en Traslasierra. (Gabriel79/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Provincias</p>
-          <h3><a href="https://cordoba.mitelefe.com/cordoba/una-fuerte-tormenta-con-granizo-provoco-destrozos-y-anegamientos-en-villa-dolores-y-traslasierra-pid2572837" rel="noopener noreferrer">Una tormenta con granizo provocó destrozos y anegamientos en Villa Dolores y Traslasierra</a></h3>
-          <p class="by"><a href="https://cordoba.mitelefe.com/cordoba/una-fuerte-tormenta-con-granizo-provoco-destrozos-y-anegamientos-en-villa-dolores-y-traslasierra-pid2572837" rel="noopener noreferrer">Fuente: Telefe Córdoba</a> · 22 nov 2026, 11:01</p>
+          <h3><a href="notas/granizo-traslasierra.html">Una tormenta con granizo provocó destrozos y anegamientos en Villa Dolores y Traslasierra</a></h3>
+          <p class="by"><a href="https://cordoba.mitelefe.com/cordoba/una-fuerte-tormenta-con-granizo-provoco-destrozos-y-anegamientos-en-villa-dolores-y-traslasierra-pid2572837" rel="noopener noreferrer" target="_blank">Fuente: Telefe Córdoba</a> · 22 nov 2026, 11:01</p>
         </div>
       </article>
           <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/chart-consumo.jpg" alt="Gráfico del consumo masivo en octubre de 2026"><p class="photo-credit">Gráfico: Equipo GGM Data, con datos de Scentia citados por Infobae</p></div>
+        <div class="ph has-photo"><img src="img/chart-consumo.jpg" alt="Gráfico del consumo masivo en octubre de 2026" title="Consumo masivo en octubre de 2026. (GRÁFICO GGM DATA/SCENTIA) Gráfico: Equipo GGM Data, con datos de Scentia citados por Infobae"></div>
+          <p class="epigrafe">Consumo masivo en octubre de 2026. (GRÁFICO GGM DATA/SCENTIA)</p>
         <div class="card-body">
           <p class="kicker">Economía</p>
-          <h3><a href="https://www.infobae.com/economia/2026/11/21/el-consumo-masivo-repunto-fuerte-en-octubre-pero-acumula-una-caida-de-23-en-el-ano/" rel="noopener noreferrer">El consumo masivo creció 0,9% interanual en octubre, la primera suba de 2026</a></h3>
-          <p class="by"><a href="https://www.infobae.com/economia/2026/11/21/el-consumo-masivo-repunto-fuerte-en-octubre-pero-acumula-una-caida-de-23-en-el-ano/" rel="noopener noreferrer">Fuente: Infobae, con datos de Scentia</a> · 21 nov 2026</p>
+          <h3><a href="notas/consumo-masivo-octubre.html">El consumo masivo creció 0,9% interanual en octubre, la primera suba de 2026</a></h3>
+          <p class="by"><a href="https://www.infobae.com/economia/2026/11/21/el-consumo-masivo-repunto-fuerte-en-octubre-pero-acumula-una-caida-de-23-en-el-ano/" rel="noopener noreferrer" target="_blank">Fuente: Infobae, con datos de Scentia</a> · 21 nov 2026</p>
         </div>
       </article>
           <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/quirno.jpg" alt="El canciller Pablo Quirno"><p class="photo-credit">Foto: Cancillería Argentina (CC BY 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/quirno.jpg" alt="El canciller Pablo Quirno" title="Imagen de archivo del canciller Pablo Quirno. (CANCILLERÍA ARGENTINA) Foto: Cancillería Argentina (CC BY 4.0)"></div>
+          <p class="epigrafe">Imagen de archivo del canciller Pablo Quirno. (CANCILLERÍA ARGENTINA)</p>
         <div class="card-body">
           <p class="kicker">Mundo</p>
-          <h3><a href="https://www.infobae.com/politica/2026/11/22/a-una-semana-del-fallo-del-tribunal-del-mar-quirno-volvio-a-reclamar-que-se-frene-el-proyecto-sea-lion-en-malvinas/" rel="noopener noreferrer">Quirno reiteró el pedido para frenar el proyecto petrolero Sea Lion en Malvinas</a></h3>
-          <p class="by"><a href="https://www.infobae.com/politica/2026/11/22/a-una-semana-del-fallo-del-tribunal-del-mar-quirno-volvio-a-reclamar-que-se-frene-el-proyecto-sea-lion-en-malvinas/" rel="noopener noreferrer">Fuente: Infobae</a> · 22 nov 2026</p>
+          <h3><a href="notas/quirno-sea-lion-malvinas.html">Quirno reiteró el pedido para frenar el proyecto petrolero Sea Lion en Malvinas</a></h3>
+          <p class="by"><a href="https://www.infobae.com/politica/2026/11/22/a-una-semana-del-fallo-del-tribunal-del-mar-quirno-volvio-a-reclamar-que-se-frene-el-proyecto-sea-lion-en-malvinas/" rel="noopener noreferrer" target="_blank">Fuente: Infobae</a> · 22 nov 2026</p>
         </div>
       </article>
           <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/colapinto.jpg" alt="Franco Colapinto al volante del Alpine en el Gran Premio de China 2026"><p class="photo-credit">Foto: Liauzh / Wikimedia Commons (CC BY 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/colapinto.jpg" alt="Franco Colapinto al volante del Alpine en el Gran Premio de China 2026" title="Imagen de archivo de Franco Colapinto en el Gran Premio de China 2026. (Liauzh/Wikimedia Commons) Foto: Liauzh / Wikimedia Commons (CC BY 4.0)"></div>
+          <p class="epigrafe">Imagen de archivo de Franco Colapinto en el Gran Premio de China 2026. (Liauzh/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Deportes</p>
-          <h3><a href="https://tn.com.ar/deportes/formula-1/2026/11/21/franco-colapinto-corre-el-gp-de-las-vegas-con-la-mision-de-volver-a-sumar-puntos-en-la-f1-partira-noveno/" rel="noopener noreferrer">Franco Colapinto terminó sexto en Las Vegas y volvió a sumar puntos</a></h3>
-          <p class="by"><a href="https://tn.com.ar/deportes/formula-1/2026/11/21/franco-colapinto-corre-el-gp-de-las-vegas-con-la-mision-de-volver-a-sumar-puntos-en-la-f1-partira-noveno/" rel="noopener noreferrer">Fuente: TN</a> · 22 nov 2026, 03:09</p>
+          <h3><a href="notas/colapinto-las-vegas.html">Franco Colapinto terminó sexto en Las Vegas y volvió a sumar puntos</a></h3>
+          <p class="by"><a href="https://tn.com.ar/deportes/formula-1/2026/11/21/franco-colapinto-corre-el-gp-de-las-vegas-con-la-mision-de-volver-a-sumar-puntos-en-la-f1-partira-noveno/" rel="noopener noreferrer" target="_blank">Fuente: TN</a> · 22 nov 2026, 03:09</p>
         </div>
       </article>
         </div>
@@ -1511,11 +1601,11 @@
           </div>
           <div class="dato-copy">
             <p class="kicker">Datos</p>
-            <h3>El IPC nacional subió 2,2% en octubre y acumula 33,1% en doce meses</h3>
+            <h3><a href="notas/ipc-octubre-2026.html">El IPC nacional subió 2,2% en octubre y acumula 33,1% en doce meses</a></h3>
             <p class="dek">El Instituto Nacional de Estadística y Censos midió una variación mensual de 2,2% en octubre, 26,3% en lo que va de 2026 y 33,1% interanual. En los cinco meses que muestra el gráfico, el registro más bajo fue 1,7% en septiembre y el más alto, 2,2% en octubre.</p>
             <ul class="dato-related">
-              <li><a href="https://www.indec.gob.ar/uploads/informesdeprensa/ipc_11_269335F5BA6B.pdf" rel="noopener noreferrer">Informe técnico del INDEC (PDF)</a></li>
-              <li><a href="#economia">La nota de Economía sobre este dato</a></li>
+              <li><a href="https://www.indec.gob.ar/uploads/informesdeprensa/ipc_11_269335F5BA6B.pdf" rel="noopener noreferrer" target="_blank">Informe técnico del INDEC (PDF)</a></li>
+              <li><a href="notas/ipc-octubre-2026.html">La nota de Economía sobre este dato</a></li>
             </ul>
             <p class="module-note">Cifras oficiales del INDEC. El gráfico no interpola ni estima meses faltantes.</p>
           </div>
@@ -1532,44 +1622,49 @@
       </div>
       <div class="section-grid">
         <article class="card card-main">
-        <div class="ph has-photo"><img src="img/traslasierra.jpg" alt="Valle de Traslasierra, provincia de Córdoba"><p class="photo-credit">Foto: nestorgalina / Wikimedia Commons (CC BY 2.0)</p></div>
+        <div class="ph has-photo"><img src="img/traslasierra.jpg" alt="Valle de Traslasierra, provincia de Córdoba" title="Valle de Traslasierra, en Córdoba. (nestorgalina/Wikimedia Commons) Foto: nestorgalina / Wikimedia Commons (CC BY 2.0)"></div>
+          <p class="epigrafe">Valle de Traslasierra, en Córdoba. (nestorgalina/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Córdoba</p>
-          <h3><a href="https://cordoba.mitelefe.com/cordoba/una-fuerte-tormenta-con-granizo-provoco-destrozos-y-anegamientos-en-villa-dolores-y-traslasierra-pid2572837" rel="noopener noreferrer">Una tormenta con granizo provocó destrozos y anegamientos en Villa Dolores y Traslasierra</a></h3>
+          <h3><a href="notas/granizo-traslasierra.html">Una tormenta con granizo provocó destrozos y anegamientos en Villa Dolores y Traslasierra</a></h3>
           <p class="dek">El temporal de la madrugada del domingo dejó calles inundadas y daños en viviendas, árboles y espacios verdes. Hasta el reporte de Telefe Córdoba no se habían informado personas heridas y todavía no había un relevamiento completo de pérdidas.</p>
-          <p class="by"><a href="https://cordoba.mitelefe.com/cordoba/una-fuerte-tormenta-con-granizo-provoco-destrozos-y-anegamientos-en-villa-dolores-y-traslasierra-pid2572837" rel="noopener noreferrer">Fuente: Telefe Córdoba</a> · 22 nov 2026</p>
+          <p class="by"><a href="https://cordoba.mitelefe.com/cordoba/una-fuerte-tormenta-con-granizo-provoco-destrozos-y-anegamientos-en-villa-dolores-y-traslasierra-pid2572837" rel="noopener noreferrer" target="_blank">Fuente: Telefe Córdoba</a> · 22 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/pacto-mayo.jpg" alt="El presidente Javier Milei junto a gobernadores en el Pacto de Mayo"><p class="photo-credit">Foto: Casa Rosada (CC BY 2.5 AR)</p></div>
+        <div class="ph has-photo"><img src="img/pacto-mayo.jpg" alt="El presidente Javier Milei junto a gobernadores en el Pacto de Mayo" title="Imagen de archivo del Pacto de Mayo, en Casa Rosada. (CASA ROSADA) Foto: Casa Rosada (CC BY 2.5 AR)"></div>
+          <p class="epigrafe">Imagen de archivo del Pacto de Mayo, en Casa Rosada. (CASA ROSADA)</p>
         <div class="card-body">
           <p class="kicker">Córdoba</p>
-          <h3><a href="https://lavozlitoral.com/2026/11/22/gobierno-negocia-suspension-paso-gobernadores-santa-fe-cordoba-condicionan-apoyo/" rel="noopener noreferrer">Llaryora y Pullaro condicionan el apoyo al Presupuesto y a la suspensión de las PASO</a></h3>
-          <p class="by"><a href="https://lavozlitoral.com/2026/11/22/gobierno-negocia-suspension-paso-gobernadores-santa-fe-cordoba-condicionan-apoyo/" rel="noopener noreferrer">Fuente: La Voz Litoral</a> · 22 nov 2026</p>
+          <h3><a href="notas/llaryora-pullaro-presupuesto.html">Llaryora y Pullaro condicionan el apoyo al Presupuesto y a la suspensión de las PASO</a></h3>
+          <p class="by"><a href="https://lavozlitoral.com/2026/11/22/gobierno-negocia-suspension-paso-gobernadores-santa-fe-cordoba-condicionan-apoyo/" rel="noopener noreferrer" target="_blank">Fuente: La Voz Litoral</a> · 22 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/villaguay.jpg" alt="Edificio municipal de Villaguay, Entre Ríos"><p class="photo-credit">Foto: Consejo General de Educación de Entre Ríos (CC BY-SA 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/villaguay.jpg" alt="Edificio municipal de Villaguay, Entre Ríos" title="Municipalidad de Villaguay, en Entre Ríos. (CGE ENTRE RÍOS) Foto: Consejo General de Educación de Entre Ríos (CC BY-SA 4.0)"></div>
+          <p class="epigrafe">Municipalidad de Villaguay, en Entre Ríos. (CGE ENTRE RÍOS)</p>
         <div class="card-body">
           <p class="kicker">Entre Ríos</p>
-          <h3><a href="https://www.elonce.com/policiales/volco-un-camion-con-fertilizantes-en-la-ruta-provincial-6-y-el-transito-estuvo-cortado-mas-de-cuatro-horas.htm" rel="noopener noreferrer">Un camión con fertilizantes volcó en la Ruta 6, en jurisdicción de Villaguay, y cortó el tránsito más de cuatro horas</a></h3>
-          <p class="by"><a href="https://www.elonce.com/policiales/volco-un-camion-con-fertilizantes-en-la-ruta-provincial-6-y-el-transito-estuvo-cortado-mas-de-cuatro-horas.htm" rel="noopener noreferrer">Fuente: Elonce</a> · 22 nov 2026</p>
+          <h3><a href="notas/camion-villaguay.html">Un camión con fertilizantes volcó en la Ruta 6, en jurisdicción de Villaguay, y cortó el tránsito más de cuatro horas</a></h3>
+          <p class="by"><a href="https://www.elonce.com/policiales/volco-un-camion-con-fertilizantes-en-la-ruta-provincial-6-y-el-transito-estuvo-cortado-mas-de-cuatro-horas.htm" rel="noopener noreferrer" target="_blank">Fuente: Elonce</a> · 22 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/anelo.jpg" alt="Vista de Añelo, en la provincia del Neuquén"><p class="photo-credit">Foto: Horacio_Fernandez / Wikimedia Commons (CC BY 3.0)</p></div>
+        <div class="ph has-photo"><img src="img/anelo.jpg" alt="Vista de Añelo, en la provincia del Neuquén" title="Vista de Añelo, en Neuquén. (Horacio_Fernandez/Wikimedia Commons) Foto: Horacio_Fernandez / Wikimedia Commons (CC BY 3.0)"></div>
+          <p class="epigrafe">Vista de Añelo, en Neuquén. (Horacio_Fernandez/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Neuquén</p>
-          <h3><a href="https://diarioneuquino.com.ar/vaca-muerta-pymes-de-anelo-denuncian-rebajas-de-contratos-y-demoras-en-los-pagos/" rel="noopener noreferrer">Pymes de Añelo advierten rebajas de contratos y demoras de pago en Vaca Muerta</a></h3>
-          <p class="by"><a href="https://diarioneuquino.com.ar/vaca-muerta-pymes-de-anelo-denuncian-rebajas-de-contratos-y-demoras-en-los-pagos/" rel="noopener noreferrer">Fuente: Diario Neuquino</a> · 21 nov 2026</p>
+          <h3><a href="notas/pymes-anelo-vaca-muerta.html">Pymes de Añelo advierten rebajas de contratos y demoras de pago en Vaca Muerta</a></h3>
+          <p class="by"><a href="https://diarioneuquino.com.ar/vaca-muerta-pymes-de-anelo-denuncian-rebajas-de-contratos-y-demoras-en-los-pagos/" rel="noopener noreferrer" target="_blank">Fuente: Diario Neuquino</a> · 21 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/anelo.jpg" alt="Vista de Añelo, en la provincia del Neuquén"><p class="photo-credit">Foto: Horacio_Fernandez / Wikimedia Commons (CC BY 3.0)</p></div>
+        <div class="ph has-photo"><img src="img/anelo.jpg" alt="Vista de Añelo, en la provincia del Neuquén" title="Vista de Añelo, en Neuquén. (Horacio_Fernandez/Wikimedia Commons) Foto: Horacio_Fernandez / Wikimedia Commons (CC BY 3.0)"></div>
+          <p class="epigrafe">Vista de Añelo, en Neuquén. (Horacio_Fernandez/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Neuquén</p>
-          <h3><a href="https://diarioneuquino.com.ar/pluspetrol-aportara-us490-000-para-ampliar-la-atencion-de-salud-en-anelo-y-rincon-de-los-sauces/" rel="noopener noreferrer">Pluspetrol destinará hasta USD 490.000 a obras de salud en Añelo y Rincón de los Sauces</a></h3>
-          <p class="by"><a href="https://diarioneuquino.com.ar/pluspetrol-aportara-us490-000-para-ampliar-la-atencion-de-salud-en-anelo-y-rincon-de-los-sauces/" rel="noopener noreferrer">Fuente: Diario Neuquino</a> · 19 nov 2026</p>
+          <h3><a href="notas/pluspetrol-salud-anelo.html">Pluspetrol destinará hasta USD 490.000 a obras de salud en Añelo y Rincón de los Sauces</a></h3>
+          <p class="by"><a href="https://diarioneuquino.com.ar/pluspetrol-aportara-us490-000-para-ampliar-la-atencion-de-salud-en-anelo-y-rincon-de-los-sauces/" rel="noopener noreferrer" target="_blank">Fuente: Diario Neuquino</a> · 19 nov 2026</p>
         </div>
       </article>
       </div>
@@ -1582,40 +1677,45 @@
       </div>
       <div class="section-grid">
         <article class="card card-main">
-        <div class="ph has-photo"><img src="img/grossi.jpg" alt="Rafael Grossi, director general del OIEA"><p class="photo-credit">Foto: IAEA Imagebank / Wikimedia Commons (CC BY 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/grossi.jpg" alt="Rafael Grossi, director general del OIEA" title="Imagen de archivo de Rafael Grossi, director general del OIEA. (IAEA) Foto: IAEA Imagebank / Wikimedia Commons (CC BY 4.0)"></div>
+          <p class="epigrafe">Imagen de archivo de Rafael Grossi, director general del OIEA. (IAEA)</p>
         <div class="card-body">
           <p class="kicker">Mundo</p>
-          <h3><a href="https://www.infobae.com/politica/2026/11/22/el-gobierno-argentino-condeno-las-amenazas-de-iran-contra-rafael-grossi-director-del-oiea/" rel="noopener noreferrer">La Cancillería condenó las amenazas de Irán contra Rafael Grossi, director del OIEA</a></h3>
+          <h3><a href="notas/cancilleria-amenazas-grossi.html">La Cancillería condenó las amenazas de Irán contra Rafael Grossi, director del OIEA</a></h3>
           <p class="dek">Según informó Infobae, el Ministerio de Relaciones Exteriores publicó este domingo un comunicado en el que exhorta a las autoridades iraníes a cesar intimidaciones contra el diplomático argentino y el personal del organismo, “en el ejercicio de sus responsabilidades”.</p>
-          <p class="by"><a href="https://www.infobae.com/politica/2026/11/22/el-gobierno-argentino-condeno-las-amenazas-de-iran-contra-rafael-grossi-director-del-oiea/" rel="noopener noreferrer">Fuente: Infobae, cita un comunicado de Cancillería</a> · 22 nov 2026</p>
+          <p class="by"><a href="https://www.infobae.com/politica/2026/11/22/el-gobierno-argentino-condeno-las-amenazas-de-iran-contra-rafael-grossi-director-del-oiea/" rel="noopener noreferrer" target="_blank">Fuente: Infobae, cita un comunicado de Cancillería</a> · 22 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/malvinas-monumento.jpg" alt="Monumento a los caídos en Malvinas, en Buenos Aires"><p class="photo-credit">Foto: Eugenio Hansen, OFS / Wikimedia Commons (CC BY-SA 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/malvinas-monumento.jpg" alt="Monumento a los caídos en Malvinas, en Buenos Aires" title="Monumento a los caídos en Malvinas, en Buenos Aires. (Eugenio Hansen/Wikimedia Commons) Foto: Eugenio Hansen, OFS / Wikimedia Commons (CC BY-SA 4.0)"></div>
+          <p class="epigrafe">Monumento a los caídos en Malvinas, en Buenos Aires. (Eugenio Hansen/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Malvinas</p>
-          <h3><a href="https://www.infobae.com/politica/2026/11/22/a-una-semana-del-fallo-del-tribunal-del-mar-quirno-volvio-a-reclamar-que-se-frene-el-proyecto-sea-lion-en-malvinas/" rel="noopener noreferrer">Quirno dijo que el Tribunal del Mar tiene previsto resolver el 28 de noviembre las medidas pedidas por la Argentina</a></h3>
-          <p class="by"><a href="https://www.infobae.com/politica/2026/11/22/a-una-semana-del-fallo-del-tribunal-del-mar-quirno-volvio-a-reclamar-que-se-frene-el-proyecto-sea-lion-en-malvinas/" rel="noopener noreferrer">Fuente: Infobae</a> · 22 nov 2026</p>
+          <h3><a href="notas/quirno-sea-lion-malvinas.html">Quirno dijo que el Tribunal del Mar tiene previsto resolver el 28 de noviembre las medidas pedidas por la Argentina</a></h3>
+          <p class="by"><a href="https://www.infobae.com/politica/2026/11/22/a-una-semana-del-fallo-del-tribunal-del-mar-quirno-volvio-a-reclamar-que-se-frene-el-proyecto-sea-lion-en-malvinas/" rel="noopener noreferrer" target="_blank">Fuente: Infobae</a> · 22 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/palacio-san-martin.jpg" alt="Palacio San Martín, sede de la Cancillería argentina"><p class="photo-credit">Foto: Cacen Gymraeg / Wikimedia Commons (CC BY-SA 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/palacio-san-martin.jpg" alt="Palacio San Martín, sede de la Cancillería argentina" title="Palacio San Martín, sede de la Cancillería. (Cacen Gymraeg/Wikimedia Commons) Foto: Cacen Gymraeg / Wikimedia Commons (CC BY-SA 4.0)"></div>
+          <p class="epigrafe">Palacio San Martín, sede de la Cancillería. (Cacen Gymraeg/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Malvinas</p>
-          <h3><a href="https://www.infobae.com/politica/2026/11/22/a-una-semana-del-fallo-del-tribunal-del-mar-quirno-volvio-a-reclamar-que-se-frene-el-proyecto-sea-lion-en-malvinas/" rel="noopener noreferrer">Rockhopper informó que dos contratistas del proyecto Sea Lion desistieron de participar</a></h3>
-          <p class="by"><a href="https://www.infobae.com/politica/2026/11/22/a-una-semana-del-fallo-del-tribunal-del-mar-quirno-volvio-a-reclamar-que-se-frene-el-proyecto-sea-lion-en-malvinas/" rel="noopener noreferrer">Fuente: Infobae, cita a Rockhopper Exploration</a> · 22 nov 2026</p>
+          <h3><a href="notas/rockhopper-contratistas-sea-lion.html">Rockhopper informó que dos contratistas del proyecto Sea Lion desistieron de participar</a></h3>
+          <p class="by"><a href="https://www.infobae.com/politica/2026/11/22/a-una-semana-del-fallo-del-tribunal-del-mar-quirno-volvio-a-reclamar-que-se-frene-el-proyecto-sea-lion-en-malvinas/" rel="noopener noreferrer" target="_blank">Fuente: Infobae, cita a Rockhopper Exploration</a> · 22 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos"><p class="photo-credit">Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)</p></div>
+        <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos" title="El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA) Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)"></div>
+          <p class="epigrafe">El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA)</p>
         <div class="card-body">
           <p class="kicker">Economía global</p>
-          <h3><a href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer">El Financial Times describió el encarecimiento del financiamiento argentino y la incertidumbre electoral de 2027</a></h3>
-          <p class="by"><a href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer">Fuente: Infobae, cita al Financial Times</a> · 22 nov 2026</p>
+          <h3><a href="notas/financial-times-riesgo-pais.html">El Financial Times describió el encarecimiento del financiamiento argentino y la incertidumbre electoral de 2027</a></h3>
+          <p class="by"><a href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer" target="_blank">Fuente: Infobae, cita al Financial Times</a> · 22 nov 2026</p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Mundo</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -1640,14 +1740,14 @@
             <h2 id="h-leidos">Lo más leído</h2>
             <p class="note">Selección editorial de esta edición de prueba. El sitio todavía no tiene métricas propias de lectura.</p>
             <ol>
-              <li><a href="#politica"><span class="n">1</span><span class="t">El Gobierno concentra la semana en la suspensión de las PASO</span></a></li>
-              <li><a href="#deportes"><span class="n">2</span><span class="t">Boca Juniors se consagró campeón de la Copa Sudamericana</span></a></li>
-              <li><a href="#mercados"><span class="n">3</span><span class="t">El riesgo país cerró el viernes en 1.070 puntos básicos</span></a></li>
-              <li><a href="#mundo"><span class="n">4</span><span class="t">La Cancillería condenó amenazas de Irán contra Grossi</span></a></li>
-              <li><a href="#provincias"><span class="n">5</span><span class="t">Granizo y anegamientos en Villa Dolores y Traslasierra</span></a></li>
-              <li><a href="#economia"><span class="n">6</span><span class="t">El consumo masivo creció 0,9% interanual en octubre</span></a></li>
-              <li><a href="#salud"><span class="n">7</span><span class="t">La UNLP detectó el linaje PJ.2.1 de COVID-19</span></a></li>
-              <li><a href="#tecnologia"><span class="n">8</span><span class="t">Tesla habilitó la venta online en la Argentina</span></a></li>
+              <li><a href="notas/tregua-paso-congreso.html"><span class="n">1</span><span class="t">El Gobierno concentra la semana en la suspensión de las PASO</span></a></li>
+              <li><a href="notas/boca-campeon-sudamericana.html"><span class="n">2</span><span class="t">Boca Juniors se consagró campeón de la Copa Sudamericana</span></a></li>
+              <li><a href="notas/riesgo-pais-1070.html"><span class="n">3</span><span class="t">El riesgo país cerró el viernes en 1.070 puntos básicos</span></a></li>
+              <li><a href="notas/cancilleria-amenazas-grossi.html"><span class="n">4</span><span class="t">La Cancillería condenó amenazas de Irán contra Grossi</span></a></li>
+              <li><a href="notas/granizo-traslasierra.html"><span class="n">5</span><span class="t">Granizo y anegamientos en Villa Dolores y Traslasierra</span></a></li>
+              <li><a href="notas/consumo-masivo-octubre.html"><span class="n">6</span><span class="t">El consumo masivo creció 0,9% interanual en octubre</span></a></li>
+              <li><a href="notas/unlp-linaje-covid.html"><span class="n">7</span><span class="t">La UNLP detectó el linaje PJ.2.1 de COVID-19</span></a></li>
+              <li><a href="notas/tesla-venta-online.html"><span class="n">8</span><span class="t">Tesla habilitó la venta online en la Argentina</span></a></li>
             </ol>
           </aside>
         </div>
@@ -1662,7 +1762,7 @@
         </div>
         <div class="expl-grid">
           <article class="expl">
-            <a href="https://www.indec.gob.ar/uploads/informesdeprensa/ipc_11_269335F5BA6B.pdf" rel="noopener noreferrer">
+            <a href="notas/ipc-octubre-2026.html">
               <span class="expl-badge">Explicador</span>
               <h3>Cómo se lee el IPC del INDEC</h3>
               <p class="dek">El índice mide la variación de una canasta de bienes y servicios de los hogares. La cifra mensual se compara con el mes anterior; la interanual, con el mismo mes del año previo; la acumulada, con diciembre anterior. El dato de octubre es 2,2%, 33,1% y 26,3%, respectivamente.</p>
@@ -1670,7 +1770,7 @@
             </a>
           </article>
           <article class="expl">
-            <a href="https://noticiasargentinas.com/economia/el-riesgo-pais-de-la-argentina-cerro-en-1-070-puntos-basicos-_a6b00c1a3f48d6d3ab4813085" rel="noopener noreferrer">
+            <a href="notas/riesgo-pais-1070.html">
               <span class="expl-badge">Explicador</span>
               <h3>Qué es el riesgo país</h3>
               <p class="dek">Es el diferencial de rendimiento que el índice EMBI de J.P. Morgan asigna a los bonos soberanos argentinos en dólares frente a los del Tesoro de Estados Unidos, medido en puntos básicos. Mil puntos equivalen a 10 puntos porcentuales. El viernes 20 cerró en 1.070.</p>
@@ -1678,7 +1778,7 @@
             </a>
           </article>
           <article class="expl">
-            <a href="https://tn.com.ar/politica/2026/11/22/tras-el-respaldo-de-milei-a-bullrich-el-gobierno-baja-las-tensiones-y-concentra-sus-esfuerzos-en-suspender-las-paso/" rel="noopener noreferrer">
+            <a href="notas/tregua-paso-congreso.html">
               <span class="expl-badge">Explicador</span>
               <h3>Qué son las PASO y qué implica suspenderlas</h3>
               <p class="dek">Las PASO son las primarias abiertas, simultáneas y obligatorias que, en el régimen vigente, se usan para definir candidaturas antes de la elección general. Suspenderlas es una decisión del Congreso: cambia el calendario y las reglas de competencia, pero no reemplaza por sí sola a la elección general.</p>
@@ -1698,40 +1798,45 @@
       </div>
       <div class="section-grid">
         <article class="card card-main">
-        <div class="ph has-photo"><img src="img/tesla.jpg" alt="Un Tesla Model 3"><p class="photo-credit">Foto: Alexander-93 / Wikimedia Commons (CC BY-SA 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/tesla.jpg" alt="Un Tesla Model 3" title="Imagen de archivo de un Tesla Model 3. (Alexander-93/Wikimedia Commons) Foto: Alexander-93 / Wikimedia Commons (CC BY-SA 4.0)"></div>
+          <p class="epigrafe">Imagen de archivo de un Tesla Model 3. (Alexander-93/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Negocios</p>
-          <h3><a href="https://www.infobae.com/economia/2026/11/20/abrio-tesla-argentina-y-ya-se-pueden-comprar-sus-autos-online-como-acceder-y-cuanto-cuesta-cada-modelo/" rel="noopener noreferrer">Tesla habilitó la venta online de los Model 3 y Model Y en la Argentina</a></h3>
+          <h3><a href="notas/tesla-venta-online.html">Tesla habilitó la venta online de los Model 3 y Model Y en la Argentina</a></h3>
           <p class="dek">Según Infobae, los precios publicados van de USD 41.590 a USD 54.590 e incluyen un cargo de destino y una reserva no reembolsable. La marca comercializa por su web oficial, sin concesionarios, y los vehículos se importan desde Shanghái.</p>
-          <p class="by"><a href="https://www.infobae.com/economia/2026/11/20/abrio-tesla-argentina-y-ya-se-pueden-comprar-sus-autos-online-como-acceder-y-cuanto-cuesta-cada-modelo/" rel="noopener noreferrer">Fuente: Infobae</a> · 20 nov 2026</p>
+          <p class="by"><a href="https://www.infobae.com/economia/2026/11/20/abrio-tesla-argentina-y-ya-se-pueden-comprar-sus-autos-online-como-acceder-y-cuanto-cuesta-cada-modelo/" rel="noopener noreferrer" target="_blank">Fuente: Infobae</a> · 20 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/supermercado.jpg" alt="Fachada de un supermercado en la Argentina"><p class="photo-credit">Foto: MewMeowth / Wikimedia Commons (CC0)</p></div>
+        <div class="ph has-photo"><img src="img/supermercado.jpg" alt="Fachada de un supermercado en la Argentina" title="Fachada de un supermercado en la Argentina. (MewMeowth/Wikimedia Commons) Foto: MewMeowth / Wikimedia Commons (CC0)"></div>
+          <p class="epigrafe">Fachada de un supermercado en la Argentina. (MewMeowth/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Consumo</p>
-          <h3><a href="https://www.infobae.com/economia/2026/11/21/el-consumo-masivo-repunto-fuerte-en-octubre-pero-acumula-una-caida-de-23-en-el-ano/" rel="noopener noreferrer">Farmacias y comercio electrónico fueron los únicos canales de Scentia con subas en las tres comparaciones</a></h3>
-          <p class="by"><a href="https://www.infobae.com/economia/2026/11/21/el-consumo-masivo-repunto-fuerte-en-octubre-pero-acumula-una-caida-de-23-en-el-ano/" rel="noopener noreferrer">Fuente: Infobae, con datos de Scentia</a> · 21 nov 2026</p>
+          <h3><a href="notas/consumo-masivo-octubre.html">Farmacias y comercio electrónico fueron los únicos canales de Scentia con subas en las tres comparaciones</a></h3>
+          <p class="by"><a href="https://www.infobae.com/economia/2026/11/21/el-consumo-masivo-repunto-fuerte-en-octubre-pero-acumula-una-caida-de-23-en-el-ano/" rel="noopener noreferrer" target="_blank">Fuente: Infobae, con datos de Scentia</a> · 21 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/anelo.jpg" alt="Vista de Añelo, en la provincia del Neuquén"><p class="photo-credit">Foto: Horacio_Fernandez / Wikimedia Commons (CC BY 3.0)</p></div>
+        <div class="ph has-photo"><img src="img/anelo.jpg" alt="Vista de Añelo, en la provincia del Neuquén" title="Vista de Añelo, en Neuquén. (Horacio_Fernandez/Wikimedia Commons) Foto: Horacio_Fernandez / Wikimedia Commons (CC BY 3.0)"></div>
+          <p class="epigrafe">Vista de Añelo, en Neuquén. (Horacio_Fernandez/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Energía</p>
-          <h3><a href="https://miradorneuquino.com.ar/halliburton-busca-recortar-hasta-un-23-los-contratos-en-vaca-muerta-y-genera-rechazo-entre-las-pymes/" rel="noopener noreferrer">Halliburton había pedido recortes de hasta 23% en contratos de Vaca Muerta; las pymes reclaman negociar</a></h3>
-          <p class="by"><a href="https://miradorneuquino.com.ar/halliburton-busca-recortar-hasta-un-23-los-contratos-en-vaca-muerta-y-genera-rechazo-entre-las-pymes/" rel="noopener noreferrer">Fuente: Mirador Neuquino</a> · 22 nov 2026</p>
+          <h3><a href="notas/halliburton-vaca-muerta.html">Halliburton había pedido recortes de hasta 23% en contratos de Vaca Muerta; las pymes reclaman negociar</a></h3>
+          <p class="by"><a href="https://miradorneuquino.com.ar/halliburton-busca-recortar-hasta-un-23-los-contratos-en-vaca-muerta-y-genera-rechazo-entre-las-pymes/" rel="noopener noreferrer" target="_blank">Fuente: Mirador Neuquino</a> · 22 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/supermercado.jpg" alt="Fachada de un supermercado en la Argentina"><p class="photo-credit">Foto: MewMeowth / Wikimedia Commons (CC0)</p></div>
+        <div class="ph has-photo"><img src="img/supermercado.jpg" alt="Fachada de un supermercado en la Argentina" title="Fachada de un supermercado en la Argentina. (MewMeowth/Wikimedia Commons) Foto: MewMeowth / Wikimedia Commons (CC0)"></div>
+          <p class="epigrafe">Fachada de un supermercado en la Argentina. (MewMeowth/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Comercio</p>
-          <h3><a href="https://www.infobae.com/economia/2026/11/21/el-consumo-masivo-repunto-fuerte-en-octubre-pero-acumula-una-caida-de-23-en-el-ano/" rel="noopener noreferrer">CAME midió una caída real de 1,6% interanual en las ventas minoristas pyme de octubre</a></h3>
-          <p class="by"><a href="https://www.infobae.com/economia/2026/11/21/el-consumo-masivo-repunto-fuerte-en-octubre-pero-acumula-una-caida-de-23-en-el-ano/" rel="noopener noreferrer">Fuente: Infobae, con datos de CAME</a> · 21 nov 2026</p>
+          <h3><a href="notas/came-ventas-minoristas.html">CAME midió una caída real de 1,6% interanual en las ventas minoristas pyme de octubre</a></h3>
+          <p class="by"><a href="https://www.infobae.com/economia/2026/11/21/el-consumo-masivo-repunto-fuerte-en-octubre-pero-acumula-una-caida-de-23-en-el-ano/" rel="noopener noreferrer" target="_blank">Fuente: Infobae, con datos de CAME</a> · 21 nov 2026</p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Negocios</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -1749,40 +1854,45 @@
       </div>
       <div class="section-grid">
         <article class="card card-main">
-        <div class="ph has-photo"><img src="img/congreso.jpg" alt="Palacio del Congreso de la Nación, en Buenos Aires"><p class="photo-credit">Foto: Ezarate / Wikimedia Commons (CC BY-SA 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/congreso.jpg" alt="Palacio del Congreso de la Nación, en Buenos Aires" title="Palacio del Congreso de la Nación, en Buenos Aires. (Ezarate/Wikimedia Commons) Foto: Ezarate / Wikimedia Commons (CC BY-SA 4.0)"></div>
+          <p class="epigrafe">Palacio del Congreso de la Nación, en Buenos Aires. (Ezarate/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Política</p>
-          <h3><a href="https://tn.com.ar/politica/2026/11/22/tras-el-respaldo-de-milei-a-bullrich-el-gobierno-baja-las-tensiones-y-concentra-sus-esfuerzos-en-suspender-las-paso/" rel="noopener noreferrer">El oficialismo busca una tregua interna para avanzar con las PASO y el Presupuesto</a></h3>
+          <h3><a href="notas/tregua-paso-congreso.html">El oficialismo busca una tregua interna para avanzar con las PASO y el Presupuesto</a></h3>
           <p class="dek">TN informó que, después del gesto de Milei hacia Bullrich, la mesa política prepara la última semana de sesiones ordinarias. El Gobierno apunta a obtener este jueves media sanción en el Senado de la reforma electoral y, el mismo día, avanzar con el Presupuesto 2027 en Diputados.</p>
-          <p class="by"><a href="https://tn.com.ar/politica/2026/11/22/tras-el-respaldo-de-milei-a-bullrich-el-gobierno-baja-las-tensiones-y-concentra-sus-esfuerzos-en-suspender-las-paso/" rel="noopener noreferrer">Fuente: TN</a> · 22 nov 2026</p>
+          <p class="by"><a href="https://tn.com.ar/politica/2026/11/22/tras-el-respaldo-de-milei-a-bullrich-el-gobierno-baja-las-tensiones-y-concentra-sus-esfuerzos-en-suspender-las-paso/" rel="noopener noreferrer" target="_blank">Fuente: TN</a> · 22 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/senado.jpg" alt="Recinto del Senado de la Nación Argentina"><p class="photo-credit">Foto: Cacen Gymraeg / Wikimedia Commons (CC BY-SA 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/senado.jpg" alt="Recinto del Senado de la Nación Argentina" title="Imagen de archivo del recinto del Senado de la Nación. (Cacen Gymraeg/Wikimedia Commons) Foto: Cacen Gymraeg / Wikimedia Commons (CC BY-SA 4.0)"></div>
+          <p class="epigrafe">Imagen de archivo del recinto del Senado de la Nación. (Cacen Gymraeg/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Congreso</p>
-          <h3><a href="https://www.eldiarioar.com/politica/senado-convirtio-ley-regimen-permanente-discapacidad-apoyo-bloques_1_13679027.html" rel="noopener noreferrer">El Senado convirtió en ley un régimen permanente de discapacidad, con 71 votos a favor</a></h3>
-          <p class="by"><a href="https://www.eldiarioar.com/politica/senado-convirtio-ley-regimen-permanente-discapacidad-apoyo-bloques_1_13679027.html" rel="noopener noreferrer">Fuente: elDiarioAR</a> · 19 nov 2026</p>
+          <h3><a href="notas/senado-ley-discapacidad.html">El Senado convirtió en ley un régimen permanente de discapacidad, con 71 votos a favor</a></h3>
+          <p class="by"><a href="https://www.eldiarioar.com/politica/senado-convirtio-ley-regimen-permanente-discapacidad-apoyo-bloques_1_13679027.html" rel="noopener noreferrer" target="_blank">Fuente: elDiarioAR</a> · 19 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/pullaro.jpg" alt="Maximiliano Pullaro, gobernador de Santa Fe"><p class="photo-credit">Foto: Gobierno de la Provincia de Santa Fe (CC BY-SA 2.5 AR)</p></div>
+        <div class="ph has-photo"><img src="img/pullaro.jpg" alt="Maximiliano Pullaro, gobernador de Santa Fe" title="Imagen de archivo del gobernador de Santa Fe, Maximiliano Pullaro. (GOBIERNO DE SANTA FE) Foto: Gobierno de la Provincia de Santa Fe (CC BY-SA 2.5 AR)"></div>
+          <p class="epigrafe">Imagen de archivo del gobernador de Santa Fe, Maximiliano Pullaro. (GOBIERNO DE SANTA FE)</p>
         <div class="card-body">
           <p class="kicker">Provincias Unidas</p>
-          <h3><a href="https://lavozlitoral.com/2026/11/22/gobierno-negocia-suspension-paso-gobernadores-santa-fe-cordoba-condicionan-apoyo/" rel="noopener noreferrer">Córdoba y Santa Fe atan su acompañamiento a demandas de fondos universitarios y de cajas previsionales</a></h3>
-          <p class="by"><a href="https://lavozlitoral.com/2026/11/22/gobierno-negocia-suspension-paso-gobernadores-santa-fe-cordoba-condicionan-apoyo/" rel="noopener noreferrer">Fuente: La Voz Litoral</a> · 22 nov 2026</p>
+          <h3><a href="notas/llaryora-pullaro-presupuesto.html">Córdoba y Santa Fe atan su acompañamiento a demandas de fondos universitarios y de cajas previsionales</a></h3>
+          <p class="by"><a href="https://lavozlitoral.com/2026/11/22/gobierno-negocia-suspension-paso-gobernadores-santa-fe-cordoba-condicionan-apoyo/" rel="noopener noreferrer" target="_blank">Fuente: La Voz Litoral</a> · 22 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/quirno.jpg" alt="El canciller Pablo Quirno"><p class="photo-credit">Foto: Cancillería Argentina (CC BY 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/quirno.jpg" alt="El canciller Pablo Quirno" title="Imagen de archivo del canciller Pablo Quirno. (CANCILLERÍA ARGENTINA) Foto: Cancillería Argentina (CC BY 4.0)"></div>
+          <p class="epigrafe">Imagen de archivo del canciller Pablo Quirno. (CANCILLERÍA ARGENTINA)</p>
         <div class="card-body">
           <p class="kicker">Cancillería</p>
-          <h3><a href="https://www.infobae.com/politica/2026/11/22/a-una-semana-del-fallo-del-tribunal-del-mar-quirno-volvio-a-reclamar-que-se-frene-el-proyecto-sea-lion-en-malvinas/" rel="noopener noreferrer">Quirno ratificó el reclamo ante el Tribunal del Mar por la explotación petrolera en Malvinas</a></h3>
-          <p class="by"><a href="https://www.infobae.com/politica/2026/11/22/a-una-semana-del-fallo-del-tribunal-del-mar-quirno-volvio-a-reclamar-que-se-frene-el-proyecto-sea-lion-en-malvinas/" rel="noopener noreferrer">Fuente: Infobae</a> · 22 nov 2026</p>
+          <h3><a href="notas/quirno-sea-lion-malvinas.html">Quirno ratificó el reclamo ante el Tribunal del Mar por la explotación petrolera en Malvinas</a></h3>
+          <p class="by"><a href="https://www.infobae.com/politica/2026/11/22/a-una-semana-del-fallo-del-tribunal-del-mar-quirno-volvio-a-reclamar-que-se-frene-el-proyecto-sea-lion-en-malvinas/" rel="noopener noreferrer" target="_blank">Fuente: Infobae</a> · 22 nov 2026</p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Política</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -1801,28 +1911,29 @@
           <span class="src">Tratamiento tipo revista · edición de prueba</span>
         </div>
         <div class="tapa-grid">
-          <a class="cover" href="https://gol.conmebol.com/sudamericana/es/news/boca-juniors-le-gano-mineiro-y-se-consagro-campeon-de-la-conmebol-sudamericana" rel="noopener noreferrer">
-            <div class="cover-ph has-photo"><img src="img/bombonera.jpg" alt="Estadio Alberto J. Armando, La Bombonera, en Buenos Aires"><p class="photo-credit">Foto: Matibro / Wikimedia Commons (CC BY-SA 4.0)</p></div>
+          <a class="cover" href="notas/boca-campeon-sudamericana.html">
+            <div class="cover-ph has-photo"><img src="img/bombonera.jpg" alt="Estadio Alberto J. Armando, La Bombonera, en Buenos Aires" title="Imagen de archivo de La Bombonera, en Buenos Aires. (Matibro/Wikimedia Commons) Foto: Matibro / Wikimedia Commons (CC BY-SA 4.0)"></div>
             <div class="cover-band">
               <p class="kicker">Deportes</p>
               <h3>Boca se quedó con su tercera Copa Sudamericana</h3>
+              <p class="epigrafe">Imagen de archivo de La Bombonera, en Buenos Aires. (Matibro/Wikimedia Commons)</p>
             </div>
           </a>
           <div class="tapa-copy">
             <p class="dek">En Barranquilla, el equipo de Rodolfo Arruabarrena derrotó 2-0 a Atlético Mineiro con goles de Santiago Ascacíbar y Miguel Merentiel. La CONMEBOL lo consagró tricampeón del certamen (2004, 2005 y 2026) y lo ubicó como el club con más títulos en la competición.</p>
-            <p class="by"><a href="https://gol.conmebol.com/sudamericana/es/news/boca-juniors-le-gano-mineiro-y-se-consagro-campeon-de-la-conmebol-sudamericana" rel="noopener noreferrer">Fuente: CONMEBOL</a> · 21 nov 2026</p>
+            <p class="by"><a href="https://gol.conmebol.com/sudamericana/es/news/boca-juniors-le-gano-mineiro-y-se-consagro-campeon-de-la-conmebol-sudamericana" rel="noopener noreferrer" target="_blank">Fuente: CONMEBOL</a> · 21 nov 2026</p>
             <p class="readtime" style="color:#9abac6">Final disputada el sábado en el Estadio Metropolitano Roberto Meléndez</p>
             <div class="otras-tapas" aria-label="Otras tapas de la semana">
-          <a class="mini" href="#politica">
-            <div class="mini-cover has-photo"><img src="img/congreso.jpg" alt="Palacio del Congreso de la Nación, en Buenos Aires"><p class="photo-credit">Foto: Ezarate / Wikimedia Commons (CC BY-SA 4.0)</p></div>
+          <a class="mini" href="notas/tregua-paso-congreso.html">
+            <div class="mini-cover has-photo"><img src="img/congreso.jpg" alt="Palacio del Congreso de la Nación, en Buenos Aires" title="Palacio del Congreso de la Nación, en Buenos Aires. (Ezarate/Wikimedia Commons) Foto: Ezarate / Wikimedia Commons (CC BY-SA 4.0)"></div>
             <h4>La semana clave en el Congreso: PASO y Presupuesto</h4>
           </a>
-          <a class="mini" href="#dato-destacado">
-            <div class="mini-cover has-photo"><img src="img/chart-ipc.jpg" alt="Gráfico de la variación mensual del IPC nacional"><p class="photo-credit">Gráfico: Equipo GGM Data, con datos del INDEC</p></div>
+          <a class="mini" href="notas/ipc-octubre-2026.html">
+            <div class="mini-cover has-photo"><img src="img/chart-ipc.jpg" alt="Gráfico de la variación mensual del IPC nacional" title="Evolución mensual del IPC. (GRÁFICO GGM DATA/INDEC) Gráfico: Equipo GGM Data, con datos del INDEC"></div>
             <h4>El IPC de octubre y el salto del riesgo país</h4>
           </a>
-          <a class="mini" href="#mundo">
-            <div class="mini-cover has-photo"><img src="img/grossi.jpg" alt="Rafael Grossi, director general del OIEA"><p class="photo-credit">Foto: IAEA Imagebank / Wikimedia Commons (CC BY 4.0)</p></div>
+          <a class="mini" href="notas/cancilleria-amenazas-grossi.html">
+            <div class="mini-cover has-photo"><img src="img/grossi.jpg" alt="Rafael Grossi, director general del OIEA" title="Imagen de archivo de Rafael Grossi, director general del OIEA. (IAEA) Foto: IAEA Imagebank / Wikimedia Commons (CC BY 4.0)"></div>
             <h4>Grossi, Irán y el reclamo por Sea Lion</h4>
           </a>
             </div>
@@ -1840,44 +1951,49 @@
       </div>
       <div class="section-grid">
         <article class="card card-main">
-        <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos"><p class="photo-credit">Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)</p></div>
+        <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos" title="El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA) Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)"></div>
+          <p class="epigrafe">El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA)</p>
         <div class="card-body">
           <p class="kicker">Economía</p>
-          <h3><a href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer">El Financial Times apuntó al alza del riesgo país y a las dudas sobre el programa financiero</a></h3>
+          <h3><a href="notas/financial-times-riesgo-pais.html">El Financial Times apuntó al alza del riesgo país y a las dudas sobre el programa financiero</a></h3>
           <p class="dek">El diario británico, citado por Infobae, indicó que el diferencial de los bonos argentinos pasó de poco más de 4 puntos a principios de agosto a 10,7 el viernes. También reprodujo la visión de analistas de que el país habría entrado en recesión técnica en el tercer trimestre; esa afirmación no es un dato oficial del INDEC en esta edición.</p>
-          <p class="by"><a href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer">Fuente: Infobae, cita al Financial Times</a> · 22 nov 2026</p>
+          <p class="by"><a href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer" target="_blank">Fuente: Infobae, cita al Financial Times</a> · 22 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/chart-ipc.jpg" alt="Gráfico de la variación mensual del IPC nacional entre junio y octubre de 2026"><p class="photo-credit">Gráfico: Equipo GGM Data, con datos del INDEC</p></div>
+        <div class="ph has-photo"><img src="img/chart-ipc.jpg" alt="Gráfico de la variación mensual del IPC nacional entre junio y octubre de 2026" title="Evolución mensual del IPC. (GRÁFICO GGM DATA/INDEC) Gráfico: Equipo GGM Data, con datos del INDEC"></div>
+          <p class="epigrafe">Evolución mensual del IPC. (GRÁFICO GGM DATA/INDEC)</p>
         <div class="card-body">
           <p class="kicker">Precios</p>
-          <h3><a href="https://www.indec.gob.ar/uploads/informesdeprensa/ipc_11_269335F5BA6B.pdf" rel="noopener noreferrer">La inflación de octubre fue de 2,2% y acumuló 33,1% en doce meses</a></h3>
-          <p class="by"><a href="https://www.indec.gob.ar/uploads/informesdeprensa/ipc_11_269335F5BA6B.pdf" rel="noopener noreferrer">Fuente: INDEC</a> · informe de octubre de 2026</p>
+          <h3><a href="notas/ipc-octubre-2026.html">La inflación de octubre fue de 2,2% y acumuló 33,1% en doce meses</a></h3>
+          <p class="by"><a href="https://www.indec.gob.ar/uploads/informesdeprensa/ipc_11_269335F5BA6B.pdf" rel="noopener noreferrer" target="_blank">Fuente: INDEC</a> · informe de octubre de 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/chart-consumo.jpg" alt="Gráfico del consumo masivo en octubre de 2026"><p class="photo-credit">Gráfico: Equipo GGM Data, con datos de Scentia citados por Infobae</p></div>
+        <div class="ph has-photo"><img src="img/chart-consumo.jpg" alt="Gráfico del consumo masivo en octubre de 2026" title="Consumo masivo en octubre de 2026. (GRÁFICO GGM DATA/SCENTIA) Gráfico: Equipo GGM Data, con datos de Scentia citados por Infobae"></div>
+          <p class="epigrafe">Consumo masivo en octubre de 2026. (GRÁFICO GGM DATA/SCENTIA)</p>
         <div class="card-body">
           <p class="kicker">Consumo</p>
-          <h3><a href="https://www.infobae.com/economia/2026/11/21/el-consumo-masivo-repunto-fuerte-en-octubre-pero-acumula-una-caida-de-23-en-el-ano/" rel="noopener noreferrer">El consumo masivo creció 0,9% interanual en octubre, pero acumula una baja de 2,3% en el año</a></h3>
-          <p class="by"><a href="https://www.infobae.com/economia/2026/11/21/el-consumo-masivo-repunto-fuerte-en-octubre-pero-acumula-una-caida-de-23-en-el-ano/" rel="noopener noreferrer">Fuente: Infobae, con datos de Scentia</a> · 21 nov 2026</p>
+          <h3><a href="notas/consumo-masivo-octubre.html">El consumo masivo creció 0,9% interanual en octubre, pero acumula una baja de 2,3% en el año</a></h3>
+          <p class="by"><a href="https://www.infobae.com/economia/2026/11/21/el-consumo-masivo-repunto-fuerte-en-octubre-pero-acumula-una-caida-de-23-en-el-ano/" rel="noopener noreferrer" target="_blank">Fuente: Infobae, con datos de Scentia</a> · 21 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/chart-dolar.jpg" alt="Gráfico del dólar oficial y del dólar blue al 22 de noviembre de 2026"><p class="photo-credit">Gráfico: Equipo GGM Data, con cotizaciones de Clarín y El Cronista</p></div>
+        <div class="ph has-photo"><img src="img/chart-dolar.jpg" alt="Gráfico del dólar oficial y del dólar blue al 22 de noviembre de 2026" title="Dólar oficial y dólar blue al 22 de noviembre. (GRÁFICO GGM DATA/CLARÍN Y EL CRONISTA) Gráfico: Equipo GGM Data, con cotizaciones de Clarín y El Cronista"></div>
+          <p class="epigrafe">Dólar oficial y dólar blue al 22 de noviembre. (GRÁFICO GGM DATA/CLARÍN Y EL CRONISTA)</p>
         <div class="card-body">
           <p class="kicker">Cambio</p>
-          <h3><a href="https://www.clarin.com/economia/dolar-blue-hoy-cotiza-domingo-22-noviembre_0_ROQ6hA8wdH.html" rel="noopener noreferrer">El dólar blue se ofreció a $1.675 y el oficial, a $1.600, según las cotizaciones de este domingo</a></h3>
-          <p class="by"><a href="https://www.clarin.com/economia/dolar-blue-hoy-cotiza-domingo-22-noviembre_0_ROQ6hA8wdH.html" rel="noopener noreferrer">Fuente: Clarín</a>, también <a href="https://www.cronista.com/finanzas-mercados/dolar-blue-hoy-a-cuanto-cotiza-este-domingo-22-de-noviembre-con-el-mep-y-el-ccl/" rel="noopener noreferrer">El Cronista</a> · 22 nov 2026</p>
+          <h3><a href="notas/dolar-22-noviembre.html">El dólar blue se ofreció a $1.675 y el oficial, a $1.600, según las cotizaciones de este domingo</a></h3>
+          <p class="by"><a href="https://www.clarin.com/economia/dolar-blue-hoy-cotiza-domingo-22-noviembre_0_ROQ6hA8wdH.html" rel="noopener noreferrer" target="_blank">Fuente: Clarín</a>, también <a href="https://www.cronista.com/finanzas-mercados/dolar-blue-hoy-a-cuanto-cotiza-este-domingo-22-de-noviembre-con-el-mep-y-el-ccl/" rel="noopener noreferrer" target="_blank">El Cronista</a> · 22 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos"><p class="photo-credit">Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)</p></div>
+        <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos" title="El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA) Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)"></div>
+          <p class="epigrafe">El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA)</p>
         <div class="card-body">
           <p class="kicker">Deuda</p>
-          <h3><a href="https://noticiasargentinas.com/economia/el-riesgo-pais-de-la-argentina-cerro-en-1-070-puntos-basicos-_a6b00c1a3f48d6d3ab4813085" rel="noopener noreferrer">El riesgo país cerró el viernes en 1.070 puntos básicos, con un salto del 15%</a></h3>
-          <p class="by"><a href="https://noticiasargentinas.com/economia/el-riesgo-pais-de-la-argentina-cerro-en-1-070-puntos-basicos-_a6b00c1a3f48d6d3ab4813085" rel="noopener noreferrer">Fuente: agencia NA</a> · 20 nov 2026</p>
+          <h3><a href="notas/riesgo-pais-1070.html">El riesgo país cerró el viernes en 1.070 puntos básicos, con un salto del 15%</a></h3>
+          <p class="by"><a href="https://noticiasargentinas.com/economia/el-riesgo-pais-de-la-argentina-cerro-en-1-070-puntos-basicos-_a6b00c1a3f48d6d3ab4813085" rel="noopener noreferrer" target="_blank">Fuente: agencia NA</a> · 20 nov 2026</p>
         </div>
       </article>
       </div>
@@ -1890,24 +2006,27 @@
       </div>
       <div class="section-grid">
         <article class="card card-main">
-        <div class="ph has-photo"><img src="img/tesla.jpg" alt="Un Tesla Model 3"><p class="photo-credit">Foto: Alexander-93 / Wikimedia Commons (CC BY-SA 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/tesla.jpg" alt="Un Tesla Model 3" title="Imagen de archivo de un Tesla Model 3. (Alexander-93/Wikimedia Commons) Foto: Alexander-93 / Wikimedia Commons (CC BY-SA 4.0)"></div>
+          <p class="epigrafe">Imagen de archivo de un Tesla Model 3. (Alexander-93/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Tecnología</p>
-          <h3><a href="https://www.infobae.com/economia/2026/11/20/abrio-tesla-argentina-y-ya-se-pueden-comprar-sus-autos-online-como-acceder-y-cuanto-cuesta-cada-modelo/" rel="noopener noreferrer">Tesla empezó a vender en la Argentina por internet, sin red de concesionarios</a></h3>
+          <h3><a href="notas/tesla-venta-online.html">Tesla empezó a vender en la Argentina por internet, sin red de concesionarios</a></h3>
           <p class="dek">La marca habilitó su sitio local con el sedán Model 3 y el SUV Model Y. Infobae precisó que al precio base se suman USD 350 de destino y documentación y USD 250 de reserva no reembolsable, y que el paquete FSD se ofrece por suscripción, aunque en el país todavía no admite conducción semiautónoma.</p>
-          <p class="by"><a href="https://www.infobae.com/economia/2026/11/20/abrio-tesla-argentina-y-ya-se-pueden-comprar-sus-autos-online-como-acceder-y-cuanto-cuesta-cada-modelo/" rel="noopener noreferrer">Fuente: Infobae</a> · 20 nov 2026</p>
+          <p class="by"><a href="https://www.infobae.com/economia/2026/11/20/abrio-tesla-argentina-y-ya-se-pueden-comprar-sus-autos-online-como-acceder-y-cuanto-cuesta-cada-modelo/" rel="noopener noreferrer" target="_blank">Fuente: Infobae</a> · 20 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/tesla.jpg" alt="Un Tesla Model 3"><p class="photo-credit">Foto: Alexander-93 / Wikimedia Commons (CC BY-SA 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/tesla.jpg" alt="Un Tesla Model 3" title="Imagen de archivo de un Tesla Model 3. (Alexander-93/Wikimedia Commons) Foto: Alexander-93 / Wikimedia Commons (CC BY-SA 4.0)"></div>
+          <p class="epigrafe">Imagen de archivo de un Tesla Model 3. (Alexander-93/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Electromovilidad</p>
-          <h3><a href="https://www.infobae.com/economia/2026/11/20/abrio-tesla-argentina-y-ya-se-pueden-comprar-sus-autos-online-como-acceder-y-cuanto-cuesta-cada-modelo/" rel="noopener noreferrer">La llegada de Tesla se encuadra en el cupo oficial de 50.000 híbridos y eléctricos sin arancel extrazona</a></h3>
-          <p class="by"><a href="https://www.infobae.com/economia/2026/11/20/abrio-tesla-argentina-y-ya-se-pueden-comprar-sus-autos-online-como-acceder-y-cuanto-cuesta-cada-modelo/" rel="noopener noreferrer">Fuente: Infobae</a> · 20 nov 2026</p>
+          <h3><a href="notas/tesla-venta-online.html">La llegada de Tesla se encuadra en el cupo oficial de 50.000 híbridos y eléctricos sin arancel extrazona</a></h3>
+          <p class="by"><a href="https://www.infobae.com/economia/2026/11/20/abrio-tesla-argentina-y-ya-se-pueden-comprar-sus-autos-online-como-acceder-y-cuanto-cuesta-cada-modelo/" rel="noopener noreferrer" target="_blank">Fuente: Infobae</a> · 20 nov 2026</p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Tecnología</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -1915,8 +2034,9 @@
           <p class="readtime">Sin nota asignada</p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Tecnología</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -1924,8 +2044,9 @@
           <p class="readtime">Sin nota asignada</p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Tecnología</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -1944,33 +2065,29 @@
           <span class="src">Espacio de video · próximamente</span>
         </div>
         <div class="video-grid">
-        <article class="video">
-          <a href="#para-ver">
-            <div class="ph has-photo"><img src="img/video-espacio.jpg" alt="Espacio de video, próximamente"><span class="play"></span><span class="dur">—</span><p class="photo-credit">Espacio de video – próximamente</p></div>
+        <article class="video is-placeholder">
+          <div class="ph has-photo"><img src="img/video-espacio.jpg" alt="Espacio de video, próximamente" title="Espacio de video, próximamente. (INFODATAGGM) Imagen propia de InfoDataGGM"><span class="play"></span><span class="dur">—</span></div>
             <p class="kicker">Para ver</p>
             <h3>Espacio de video – próximamente</h3>
-          </a>
+          
         </article>
-        <article class="video">
-          <a href="#para-ver">
-            <div class="ph has-photo"><img src="img/video-espacio.jpg" alt="Espacio de video, próximamente"><span class="play"></span><span class="dur">—</span><p class="photo-credit">Espacio de video – próximamente</p></div>
+        <article class="video is-placeholder">
+          <div class="ph has-photo"><img src="img/video-espacio.jpg" alt="Espacio de video, próximamente" title="Espacio de video, próximamente. (INFODATAGGM) Imagen propia de InfoDataGGM"><span class="play"></span><span class="dur">—</span></div>
             <p class="kicker">Para ver</p>
             <h3>Espacio de video – próximamente</h3>
-          </a>
+          
         </article>
-        <article class="video">
-          <a href="#para-ver">
-            <div class="ph has-photo"><img src="img/video-espacio.jpg" alt="Espacio de video, próximamente"><span class="play"></span><span class="dur">—</span><p class="photo-credit">Espacio de video – próximamente</p></div>
+        <article class="video is-placeholder">
+          <div class="ph has-photo"><img src="img/video-espacio.jpg" alt="Espacio de video, próximamente" title="Espacio de video, próximamente. (INFODATAGGM) Imagen propia de InfoDataGGM"><span class="play"></span><span class="dur">—</span></div>
             <p class="kicker">Para ver</p>
             <h3>Espacio de video – próximamente</h3>
-          </a>
+          
         </article>
-        <article class="video">
-          <a href="#para-ver">
-            <div class="ph has-photo"><img src="img/video-espacio.jpg" alt="Espacio de video, próximamente"><span class="play"></span><span class="dur">—</span><p class="photo-credit">Espacio de video – próximamente</p></div>
+        <article class="video is-placeholder">
+          <div class="ph has-photo"><img src="img/video-espacio.jpg" alt="Espacio de video, próximamente" title="Espacio de video, próximamente. (INFODATAGGM) Imagen propia de InfoDataGGM"><span class="play"></span><span class="dur">—</span></div>
             <p class="kicker">Para ver</p>
             <h3>Espacio de video – próximamente</h3>
-          </a>
+          
         </article>
         </div>
       </div>
@@ -2004,32 +2121,36 @@
       </div>
       <div class="section-grid">
         <article class="card card-main">
-        <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos"><p class="photo-credit">Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)</p></div>
+        <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos" title="El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA) Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)"></div>
+          <p class="epigrafe">El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA)</p>
         <div class="card-body">
           <p class="kicker">Mercados</p>
-          <h3><a href="https://noticiasargentinas.com/economia/el-riesgo-pais-de-la-argentina-cerro-en-1-070-puntos-basicos-_a6b00c1a3f48d6d3ab4813085" rel="noopener noreferrer">El riesgo país cerró el viernes en 1.070 puntos básicos</a></h3>
+          <h3><a href="notas/riesgo-pais-1070.html">El riesgo país cerró el viernes en 1.070 puntos básicos</a></h3>
           <p class="dek">La agencia NA informó que el indicador de J.P. Morgan subió 15% respecto de los 931 puntos de la rueda anterior y volvió a superar los 1.000 puntos. El mercado formal no opera el domingo; el dato corresponde al cierre del viernes 20 de noviembre.</p>
-          <p class="by"><a href="https://noticiasargentinas.com/economia/el-riesgo-pais-de-la-argentina-cerro-en-1-070-puntos-basicos-_a6b00c1a3f48d6d3ab4813085" rel="noopener noreferrer">Fuente: agencia NA</a> · 20 nov 2026</p>
+          <p class="by"><a href="https://noticiasargentinas.com/economia/el-riesgo-pais-de-la-argentina-cerro-en-1-070-puntos-basicos-_a6b00c1a3f48d6d3ab4813085" rel="noopener noreferrer" target="_blank">Fuente: agencia NA</a> · 20 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/chart-dolar.jpg" alt="Gráfico del dólar oficial y del dólar blue al 22 de noviembre de 2026"><p class="photo-credit">Gráfico: Equipo GGM Data, con cotizaciones de Clarín y El Cronista</p></div>
+        <div class="ph has-photo"><img src="img/chart-dolar.jpg" alt="Gráfico del dólar oficial y del dólar blue al 22 de noviembre de 2026" title="Dólar oficial y dólar blue al 22 de noviembre. (GRÁFICO GGM DATA/CLARÍN Y EL CRONISTA) Gráfico: Equipo GGM Data, con cotizaciones de Clarín y El Cronista"></div>
+          <p class="epigrafe">Dólar oficial y dólar blue al 22 de noviembre. (GRÁFICO GGM DATA/CLARÍN Y EL CRONISTA)</p>
         <div class="card-body">
           <p class="kicker">Dólar</p>
-          <h3><a href="https://www.clarin.com/economia/dolar-blue-hoy-cotiza-domingo-22-noviembre_0_ROQ6hA8wdH.html" rel="noopener noreferrer">Clarín y El Cronista publicaron el blue a $1.675 y el dólar Banco Nación a $1.600</a></h3>
-          <p class="by"><a href="https://www.clarin.com/economia/dolar-blue-hoy-cotiza-domingo-22-noviembre_0_ROQ6hA8wdH.html" rel="noopener noreferrer">Fuente: Clarín</a> y <a href="https://www.cronista.com/finanzas-mercados/dolar-blue-hoy-a-cuanto-cotiza-este-domingo-22-de-noviembre-con-el-mep-y-el-ccl/" rel="noopener noreferrer">El Cronista</a> · 22 nov 2026</p>
+          <h3><a href="notas/dolar-22-noviembre.html">Clarín y El Cronista publicaron el blue a $1.675 y el dólar Banco Nación a $1.600</a></h3>
+          <p class="by"><a href="https://www.clarin.com/economia/dolar-blue-hoy-cotiza-domingo-22-noviembre_0_ROQ6hA8wdH.html" rel="noopener noreferrer" target="_blank">Fuente: Clarín</a> y <a href="https://www.cronista.com/finanzas-mercados/dolar-blue-hoy-a-cuanto-cotiza-este-domingo-22-de-noviembre-con-el-mep-y-el-ccl/" rel="noopener noreferrer" target="_blank">El Cronista</a> · 22 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos"><p class="photo-credit">Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)</p></div>
+        <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos" title="El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA) Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)"></div>
+          <p class="epigrafe">El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA)</p>
         <div class="card-body">
           <p class="kicker">Financiamiento</p>
-          <h3><a href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer">El FT indicó que el Gobierno suspendió desde agosto nuevas emisiones soberanas en dólares bajo ley local</a></h3>
-          <p class="by"><a href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer">Fuente: Infobae, cita al Financial Times</a> · 22 nov 2026</p>
+          <h3><a href="notas/financial-times-riesgo-pais.html">El FT indicó que el Gobierno suspendió desde agosto nuevas emisiones soberanas en dólares bajo ley local</a></h3>
+          <p class="by"><a href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer" target="_blank">Fuente: Infobae, cita al Financial Times</a> · 22 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Mercados</p>
           <h3>Cotizaciones de MEP, CCL y reservas: sin cifra única verificada en esta edición</h3>
@@ -2037,8 +2158,9 @@
           <p class="readtime">Se dejó en blanco para no mezclar números inconsistentes entre fuentes</p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Mercados</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -2056,24 +2178,27 @@
       </div>
       <div class="section-grid">
         <article class="card card-main">
-        <div class="ph has-photo"><img src="img/recoleta.jpg" alt="Centro Cultural Recoleta, en Buenos Aires"><p class="photo-credit">Foto: Gobierno de la Ciudad Autónoma de Buenos Aires (CC BY 2.5 AR)</p></div>
+        <div class="ph has-photo"><img src="img/recoleta.jpg" alt="Centro Cultural Recoleta, en Buenos Aires" title="Centro Cultural Recoleta, en Buenos Aires. (GOBIERNO DE CABA) Foto: Gobierno de la Ciudad Autónoma de Buenos Aires (CC BY 2.5 AR)"></div>
+          <p class="epigrafe">Centro Cultural Recoleta, en Buenos Aires. (GOBIERNO DE CABA)</p>
         <div class="card-body">
           <p class="kicker">Cine</p>
-          <h3><a href="https://fidba.org/2026/" rel="noopener noreferrer">Cierra en Buenos Aires el Festival Internacional de Cine Documental</a></h3>
-          <p class="dek">El FIDBA se desarrolló del 17 al 22 de noviembre. La programación incluyó funciones en distintas salas de la ciudad; el Centro Cultural Recoleta anunció pases a las 18, con entrada gratuita para argentinos y residentes, sujeta a capacidad.</p>
-          <p class="by"><a href="https://fidba.org/2026/" rel="noopener noreferrer">Fuente: FIDBA</a> y <a href="https://linda.buenosaires.gob.ar/eventos/festival-internacional-de-cine-documental-de-buenos-aires-en-el-ccr" rel="noopener noreferrer">agenda de la Ciudad</a> · 17 al 22 nov 2026</p>
+          <h3><a href="notas/fidba-cierre.html">Cierra en Buenos Aires el Festival Internacional de Cine Documental</a></h3>
+          <p class="dek">El FIDBA se desarrolló del 17 al 22 de noviembre, según su programación y la agenda de la Ciudad. La programación incluyó funciones en distintas salas de la ciudad; el Centro Cultural Recoleta anunció pases a las 18, con entrada gratuita para argentinos y residentes, sujeta a capacidad.</p>
+          <p class="by"><a href="https://fidba.org/2026/" rel="noopener noreferrer" target="_blank">Fuente: FIDBA</a> y <a href="https://linda.buenosaires.gob.ar/eventos/festival-internacional-de-cine-documental-de-buenos-aires-en-el-ccr" rel="noopener noreferrer" target="_blank">agenda de la Ciudad</a> · 17 al 22 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/recoleta.jpg" alt="Centro Cultural Recoleta, en Buenos Aires"><p class="photo-credit">Foto: Gobierno de la Ciudad Autónoma de Buenos Aires (CC BY 2.5 AR)</p></div>
+        <div class="ph has-photo"><img src="img/recoleta.jpg" alt="Centro Cultural Recoleta, en Buenos Aires" title="Centro Cultural Recoleta, en Buenos Aires. (GOBIERNO DE CABA) Foto: Gobierno de la Ciudad Autónoma de Buenos Aires (CC BY 2.5 AR)"></div>
+          <p class="epigrafe">Centro Cultural Recoleta, en Buenos Aires. (GOBIERNO DE CABA)</p>
         <div class="card-body">
           <p class="kicker">Agenda</p>
-          <h3><a href="https://www.infobae.com/cultura/agenda-cultura/2026/11/20/guia-de-arte-y-cultura-semana-del-20-al-27-de-noviembre-2026/" rel="noopener noreferrer">La guía cultural de la semana recorre muestras, cine y teatro del 20 al 27 de noviembre</a></h3>
-          <p class="by"><a href="https://www.infobae.com/cultura/agenda-cultura/2026/11/20/guia-de-arte-y-cultura-semana-del-20-al-27-de-noviembre-2026/" rel="noopener noreferrer">Fuente: Infobae</a> · 20 nov 2026</p>
+          <h3><a href="notas/guia-cultural-semana.html">La guía cultural de la semana recorre muestras, cine y teatro del 20 al 27 de noviembre</a></h3>
+          <p class="by"><a href="https://www.infobae.com/cultura/agenda-cultura/2026/11/20/guia-de-arte-y-cultura-semana-del-20-al-27-de-noviembre-2026/" rel="noopener noreferrer" target="_blank">Fuente: Infobae</a> · 20 nov 2026</p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Artes</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -2081,8 +2206,9 @@
           <p class="readtime">Sin nota asignada</p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Artes</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -2090,8 +2216,9 @@
           <p class="readtime">Sin nota asignada</p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Artes</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -2109,29 +2236,32 @@
           <h2 id="h-prof">En profundidad</h2>
         </div>
         <article class="prof-main">
-          <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos"><p class="photo-credit">Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)</p></div>
+          <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos" title="El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA) Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)"></div>
+          <p class="epigrafe">El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA)</p>
           <div class="card-body">
             <p class="kicker">En profundidad</p>
-            <h3><a href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer">El desafío financiero que describió el Financial Times, leído con los datos oficiales disponibles</a></h3>
-            <p class="dek">El diario británico situó el riesgo país en 10,7 puntos el viernes y vinculó el encarecimiento del crédito con el escenario electoral de 2027. En paralelo, el INDEC midió una inflación de 2,2% en octubre y 33,1% interanual. Esta edición no afirma una recesión técnica porque esa caracterización, recogida por el FT entre analistas, no aparece como un dato oficial del INDEC en las fuentes consultadas hoy.</p>
-            <p class="by"><a href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer">Fuentes: Infobae / Financial Times</a> e <a href="https://www.indec.gob.ar/uploads/informesdeprensa/ipc_11_269335F5BA6B.pdf" rel="noopener noreferrer">INDEC</a></p>
+            <h3><a href="notas/financial-times-riesgo-pais.html">El desafío financiero que describió el Financial Times, leído con los datos oficiales disponibles</a></h3>
+            <p class="dek">El Financial Times, citado por Infobae, situó el riesgo país en 10,7 puntos el viernes y vinculó el encarecimiento del crédito con el escenario electoral de 2027. En paralelo, el INDEC midió una inflación de 2,2% en octubre y 33,1% interanual. Esta edición no afirma una recesión técnica porque esa caracterización, recogida por el FT entre analistas, no aparece como un dato oficial del INDEC en las fuentes consultadas hoy.</p>
+            <p class="by"><a href="https://www.infobae.com/economia/2026/11/22/el-financial-times-destaco-el-desafio-financiero-y-electoral-de-milei-por-la-suba-del-riesgo-pais-y-la-recesion-de-la-economia/" rel="noopener noreferrer" target="_blank">Fuentes: Infobae / Financial Times</a> e <a href="https://www.indec.gob.ar/uploads/informesdeprensa/ipc_11_269335F5BA6B.pdf" rel="noopener noreferrer" target="_blank">INDEC</a></p>
           </div>
         </article>
         <div class="prof-side">
           <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/chart-ipc.jpg" alt="Gráfico de la variación mensual del IPC nacional entre junio y octubre de 2026"><p class="photo-credit">Gráfico: Equipo GGM Data, con datos del INDEC</p></div>
+        <div class="ph has-photo"><img src="img/chart-ipc.jpg" alt="Gráfico de la variación mensual del IPC nacional entre junio y octubre de 2026" title="Evolución mensual del IPC. (GRÁFICO GGM DATA/INDEC) Gráfico: Equipo GGM Data, con datos del INDEC"></div>
+          <p class="epigrafe">Evolución mensual del IPC. (GRÁFICO GGM DATA/INDEC)</p>
         <div class="card-body">
           <p class="kicker">Datos</p>
-          <h3><a href="#dato-destacado">La serie mensual del IPC de 2026 se movió entre 1,7% y 3,4%</a></h3>
-          <p class="by"><a href="https://www.indec.gob.ar/uploads/informesdeprensa/ipc_11_269335F5BA6B.pdf" rel="noopener noreferrer">Fuente: INDEC</a></p>
+          <h3><a href="notas/ipc-octubre-2026.html">La serie mensual del IPC de 2026 se movió entre 1,7% y 3,4%</a></h3>
+          <p class="by"><a href="https://www.indec.gob.ar/uploads/informesdeprensa/ipc_11_269335F5BA6B.pdf" rel="noopener noreferrer" target="_blank">Fuente: INDEC</a></p>
         </div>
       </article>
           <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos"><p class="photo-credit">Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)</p></div>
+        <div class="ph has-photo"><img src="img/chart-riesgo.jpg" alt="Gráfico del riesgo país argentino, de 931 a 1.070 puntos básicos" title="El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA) Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan)"></div>
+          <p class="epigrafe">El riesgo país, de 931 a 1.070 puntos básicos. (GRÁFICO GGM DATA/NA)</p>
         <div class="card-body">
           <p class="kicker">Mercados</p>
-          <h3><a href="#mercados">De 931 a 1.070 puntos: el salto del riesgo país en una rueda</a></h3>
-          <p class="by"><a href="https://noticiasargentinas.com/economia/el-riesgo-pais-de-la-argentina-cerro-en-1-070-puntos-basicos-_a6b00c1a3f48d6d3ab4813085" rel="noopener noreferrer">Fuente: agencia NA</a></p>
+          <h3><a href="notas/riesgo-pais-1070.html">De 931 a 1.070 puntos: el salto del riesgo país en una rueda</a></h3>
+          <p class="by"><a href="https://noticiasargentinas.com/economia/el-riesgo-pais-de-la-argentina-cerro-en-1-070-puntos-basicos-_a6b00c1a3f48d6d3ab4813085" rel="noopener noreferrer" target="_blank">Fuente: agencia NA</a></p>
         </div>
       </article>
         </div>
@@ -2147,24 +2277,27 @@
       </div>
       <div class="section-grid">
         <article class="card card-main">
-        <div class="ph has-photo"><img src="img/aedes.jpg" alt="Mosquito Aedes aegypti, vector del dengue"><p class="photo-credit">Foto: James Gathany / CDC (dominio público)</p></div>
+        <div class="ph has-photo"><img src="img/aedes.jpg" alt="Mosquito Aedes aegypti, vector del dengue" title="Mosquito Aedes aegypti, vector del dengue. (JAMES GATHANY/CDC) Foto: James Gathany / CDC (dominio público)"></div>
+          <p class="epigrafe">Mosquito Aedes aegypti, vector del dengue. (JAMES GATHANY/CDC)</p>
         <div class="card-body">
           <p class="kicker">Prevención</p>
-          <h3><a href="https://www.argentina.gob.ar/como-prevenir-el-dengue" rel="noopener noreferrer">El Ministerio de Salud recuerda cómo prevenir el dengue al inicio de la temporada de calor</a></h3>
-          <p class="dek">Las recomendaciones oficiales incluyen eliminar o tapar recipientes que acumulen agua, limpiar bebederos y canaletas, y usar repelente según las indicaciones del envase. Es una guía permanente del Ministerio, no una alerta epidemiológica nueva de este domingo.</p>
-          <p class="by"><a href="https://www.argentina.gob.ar/como-prevenir-el-dengue" rel="noopener noreferrer">Fuente: Ministerio de Salud de la Nación</a></p>
+          <h3><a href="notas/prevencion-dengue.html">El Ministerio de Salud recuerda cómo prevenir el dengue al inicio de la temporada de calor</a></h3>
+          <p class="dek">Las recomendaciones del Ministerio de Salud de la Nación incluyen eliminar o tapar recipientes que acumulen agua, limpiar bebederos y canaletas, y usar repelente según las indicaciones del envase. Es una guía permanente del Ministerio, no una alerta epidemiológica nueva de este domingo.</p>
+          <p class="by"><a href="https://www.argentina.gob.ar/como-prevenir-el-dengue" rel="noopener noreferrer" target="_blank">Fuente: Ministerio de Salud de la Nación</a></p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/hidratacion.jpg" alt="Puesto de hidratación en Buenos Aires durante una ola de calor"><p class="photo-credit">Foto: Gobierno de la Ciudad Autónoma de Buenos Aires (CC BY 2.5 AR)</p></div>
+        <div class="ph has-photo"><img src="img/hidratacion.jpg" alt="Puesto de hidratación en Buenos Aires durante una ola de calor" title="Imagen de archivo de un puesto de hidratación en Buenos Aires. (GOBIERNO DE CABA) Foto: Gobierno de la Ciudad Autónoma de Buenos Aires (CC BY 2.5 AR)"></div>
+          <p class="epigrafe">Imagen de archivo de un puesto de hidratación en Buenos Aires. (GOBIERNO DE CABA)</p>
         <div class="card-body">
           <p class="kicker">Calor</p>
-          <h3><a href="https://www.argentina.gob.ar/salud/verano/olas-de-calor" rel="noopener noreferrer">Ante el calor, Salud recomienda hidratarse seguido y evitar el sol entre las 10 y las 16</a></h3>
-          <p class="by"><a href="https://www.argentina.gob.ar/salud/verano/olas-de-calor" rel="noopener noreferrer">Fuente: Ministerio de Salud de la Nación</a></p>
+          <h3><a href="notas/recomendaciones-calor.html">Ante el calor, Salud recomienda hidratarse seguido y evitar el sol entre las 10 y las 16</a></h3>
+          <p class="by"><a href="https://www.argentina.gob.ar/salud/verano/olas-de-calor" rel="noopener noreferrer" target="_blank">Fuente: Ministerio de Salud de la Nación</a></p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Vida sana</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -2172,8 +2305,9 @@
           <p class="readtime">Sin nota asignada</p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Vida sana</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -2181,8 +2315,9 @@
           <p class="readtime">Sin nota asignada</p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Vida sana</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -2200,32 +2335,36 @@
       </div>
       <div class="section-grid">
         <article class="card card-main">
-        <div class="ph has-photo"><img src="img/vacunacion.jpg" alt="Vacunación contra la COVID-19 en Córdoba"><p class="photo-credit">Foto: Laura Fiorucci / Wikimedia Commons (CC BY-SA 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/vacunacion.jpg" alt="Vacunación contra la COVID-19 en Córdoba" title="Imagen de archivo de una vacunación contra la COVID-19 en Córdoba. (Laura Fiorucci/Wikimedia Commons) Foto: Laura Fiorucci / Wikimedia Commons (CC BY-SA 4.0)"></div>
+          <p class="epigrafe">Imagen de archivo de una vacunación contra la COVID-19 en Córdoba. (Laura Fiorucci/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Salud</p>
-          <h3><a href="https://www.infobae.com/salud/ciencia/2026/11/22/detectan-una-nueva-variante-de-covid-19-en-argentina-cuales-son-los-sintomas-y-por-que-es-clave-la-vacunacion/" rel="noopener noreferrer">La UNLP detectó el linaje PJ.2.1 de COVID-19 en tres muestras de la provincia de Buenos Aires</a></h3>
+          <h3><a href="notas/unlp-linaje-covid.html">La UNLP detectó el linaje PJ.2.1 de COVID-19 en tres muestras de la provincia de Buenos Aires</a></h3>
           <p class="dek">El laboratorio de la Facultad de Ciencias Exactas secuenció muestras de dos bebés y de un adulto de 58 años internados. La OMS clasificó a PJ.2.1 como variante bajo vigilancia y evaluó como bajo el riesgo adicional para la salud pública, con baja confianza por falta de datos clínicos comparativos. Los científicos consultados por Infobae no describieron un cuadro de mayor gravedad.</p>
-          <p class="by"><a href="https://www.infobae.com/salud/ciencia/2026/11/22/detectan-una-nueva-variante-de-covid-19-en-argentina-cuales-son-los-sintomas-y-por-que-es-clave-la-vacunacion/" rel="noopener noreferrer">Fuente: Infobae, con datos de la UNLP y de la OMS</a> · 22 nov 2026</p>
+          <p class="by"><a href="https://www.infobae.com/salud/ciencia/2026/11/22/detectan-una-nueva-variante-de-covid-19-en-argentina-cuales-son-los-sintomas-y-por-que-es-clave-la-vacunacion/" rel="noopener noreferrer" target="_blank">Fuente: Infobae, con datos de la UNLP y de la OMS</a> · 22 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/senado.jpg" alt="Recinto del Senado de la Nación Argentina"><p class="photo-credit">Foto: Cacen Gymraeg / Wikimedia Commons (CC BY-SA 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/senado.jpg" alt="Recinto del Senado de la Nación Argentina" title="Imagen de archivo del recinto del Senado de la Nación. (Cacen Gymraeg/Wikimedia Commons) Foto: Cacen Gymraeg / Wikimedia Commons (CC BY-SA 4.0)"></div>
+          <p class="epigrafe">Imagen de archivo del recinto del Senado de la Nación. (Cacen Gymraeg/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Política sanitaria</p>
-          <h3><a href="https://www.eldiarioar.com/politica/senado-convirtio-ley-regimen-permanente-discapacidad-apoyo-bloques_1_13679027.html" rel="noopener noreferrer">La nueva ley de discapacidad mantiene pensiones equivalentes al 70% del haber mínimo</a></h3>
-          <p class="by"><a href="https://www.eldiarioar.com/politica/senado-convirtio-ley-regimen-permanente-discapacidad-apoyo-bloques_1_13679027.html" rel="noopener noreferrer">Fuente: elDiarioAR</a> · 19 nov 2026</p>
+          <h3><a href="notas/senado-ley-discapacidad.html">La nueva ley de discapacidad mantiene pensiones equivalentes al 70% del haber mínimo</a></h3>
+          <p class="by"><a href="https://www.eldiarioar.com/politica/senado-convirtio-ley-regimen-permanente-discapacidad-apoyo-bloques_1_13679027.html" rel="noopener noreferrer" target="_blank">Fuente: elDiarioAR</a> · 19 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/anelo.jpg" alt="Vista de Añelo, en la provincia del Neuquén"><p class="photo-credit">Foto: Horacio_Fernandez / Wikimedia Commons (CC BY 3.0)</p></div>
+        <div class="ph has-photo"><img src="img/anelo.jpg" alt="Vista de Añelo, en la provincia del Neuquén" title="Vista de Añelo, en Neuquén. (Horacio_Fernandez/Wikimedia Commons) Foto: Horacio_Fernandez / Wikimedia Commons (CC BY 3.0)"></div>
+          <p class="epigrafe">Vista de Añelo, en Neuquén. (Horacio_Fernandez/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Neuquén</p>
-          <h3><a href="https://diarioneuquino.com.ar/pluspetrol-aportara-us490-000-para-ampliar-la-atencion-de-salud-en-anelo-y-rincon-de-los-sauces/" rel="noopener noreferrer">Un nuevo centro de salud en La Meseta de Añelo y un espacio de salud mental en Rincón de los Sauces</a></h3>
-          <p class="by"><a href="https://diarioneuquino.com.ar/pluspetrol-aportara-us490-000-para-ampliar-la-atencion-de-salud-en-anelo-y-rincon-de-los-sauces/" rel="noopener noreferrer">Fuente: Diario Neuquino</a> · 19 nov 2026</p>
+          <h3><a href="notas/pluspetrol-salud-anelo.html">Un nuevo centro de salud en La Meseta de Añelo y un espacio de salud mental en Rincón de los Sauces</a></h3>
+          <p class="by"><a href="https://diarioneuquino.com.ar/pluspetrol-aportara-us490-000-para-ampliar-la-atencion-de-salud-en-anelo-y-rincon-de-los-sauces/" rel="noopener noreferrer" target="_blank">Fuente: Diario Neuquino</a> · 19 nov 2026</p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Salud</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -2233,8 +2372,9 @@
           <p class="readtime">Sin nota asignada</p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Salud</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -2252,40 +2392,45 @@
       </div>
       <div class="section-grid">
         <article class="card card-main">
-        <div class="ph has-photo"><img src="img/bombonera.jpg" alt="Estadio Alberto J. Armando, La Bombonera, en Buenos Aires"><p class="photo-credit">Foto: Matibro / Wikimedia Commons (CC BY-SA 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/bombonera.jpg" alt="Estadio Alberto J. Armando, La Bombonera, en Buenos Aires" title="Imagen de archivo de La Bombonera, en Buenos Aires. (Matibro/Wikimedia Commons) Foto: Matibro / Wikimedia Commons (CC BY-SA 4.0)"></div>
+          <p class="epigrafe">Imagen de archivo de La Bombonera, en Buenos Aires. (Matibro/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Fútbol</p>
-          <h3><a href="https://gol.conmebol.com/sudamericana/es/news/boca-juniors-le-gano-mineiro-y-se-consagro-campeon-de-la-conmebol-sudamericana" rel="noopener noreferrer">Boca derrotó 2-0 a Atlético Mineiro y se consagró campeón de la Sudamericana</a></h3>
-          <p class="dek">La final se jugó el sábado en Barranquilla. Santiago Ascacíbar y Miguel Merentiel marcaron los goles del equipo dirigido por Rodolfo Arruabarrena. Es el tercer título de Boca en el certamen, después de 2004 y 2005.</p>
-          <p class="by"><a href="https://gol.conmebol.com/sudamericana/es/news/boca-juniors-le-gano-mineiro-y-se-consagro-campeon-de-la-conmebol-sudamericana" rel="noopener noreferrer">Fuente: CONMEBOL</a> · 21 nov 2026</p>
+          <h3><a href="notas/boca-campeon-sudamericana.html">Boca derrotó 2-0 a Atlético Mineiro y se consagró campeón de la Sudamericana</a></h3>
+          <p class="dek">Según informó la CONMEBOL, la final se jugó el sábado en Barranquilla. Santiago Ascacíbar y Miguel Merentiel marcaron los goles del equipo dirigido por Rodolfo Arruabarrena. Es el tercer título de Boca en el certamen, después de 2004 y 2005.</p>
+          <p class="by"><a href="https://gol.conmebol.com/sudamericana/es/news/boca-juniors-le-gano-mineiro-y-se-consagro-campeon-de-la-conmebol-sudamericana" rel="noopener noreferrer" target="_blank">Fuente: CONMEBOL</a> · 21 nov 2026</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/monumental.jpg" alt="Vista aérea del Estadio Monumental de River Plate, en Buenos Aires"><p class="photo-credit">Foto: Py4nf / Wikimedia Commons (CC BY 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/monumental.jpg" alt="Vista aérea del Estadio Monumental de River Plate, en Buenos Aires" title="Imagen de archivo del Estadio Monumental, en Buenos Aires. (Py4nf/Wikimedia Commons) Foto: Py4nf / Wikimedia Commons (CC BY 4.0)"></div>
+          <p class="epigrafe">Imagen de archivo del Estadio Monumental, en Buenos Aires. (Py4nf/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Fútbol</p>
-          <h3><a href="https://www.afa.com.ar/es/posts/river-supero-3-1-a-lanus" rel="noopener noreferrer">River le ganó 3-1 a Lanús y avanzó a los cuartos de final del Torneo Clausura</a></h3>
-          <p class="by"><a href="https://www.afa.com.ar/es/posts/river-supero-3-1-a-lanus" rel="noopener noreferrer">Fuente: AFA</a> · 22 nov 2026. Goles detallados en <a href="https://www.infobae.com/deportes/2026/11/22/river-plate-se-enfrentara-a-lanus-por-los-octavos-de-final-del-torneo-clausura-hora-tv-y-formaciones/" rel="noopener noreferrer">Infobae</a> y <a href="https://www.lanacion.com.ar/deportes/canchallena/river-plate-vencio-por-3-1-a-lanus-por-el-torneo-clausura-2026-nid22112026/" rel="noopener noreferrer">La Nación</a></p>
+          <h3><a href="notas/river-lanus-clausura.html">River le ganó 3-1 a Lanús y avanzó a los cuartos de final del Torneo Clausura</a></h3>
+          <p class="by"><a href="https://www.afa.com.ar/es/posts/river-supero-3-1-a-lanus" rel="noopener noreferrer" target="_blank">Fuente: AFA</a> · 22 nov 2026. Goles detallados en <a href="https://www.infobae.com/deportes/2026/11/22/river-plate-se-enfrentara-a-lanus-por-los-octavos-de-final-del-torneo-clausura-hora-tv-y-formaciones/" rel="noopener noreferrer" target="_blank">Infobae</a> y <a href="https://www.lanacion.com.ar/deportes/canchallena/river-plate-vencio-por-3-1-a-lanus-por-el-torneo-clausura-2026-nid22112026/" rel="noopener noreferrer" target="_blank">La Nación</a></p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/colapinto.jpg" alt="Franco Colapinto al volante del Alpine en el Gran Premio de China 2026"><p class="photo-credit">Foto: Liauzh / Wikimedia Commons (CC BY 4.0)</p></div>
+        <div class="ph has-photo"><img src="img/colapinto.jpg" alt="Franco Colapinto al volante del Alpine en el Gran Premio de China 2026" title="Imagen de archivo de Franco Colapinto en el Gran Premio de China 2026. (Liauzh/Wikimedia Commons) Foto: Liauzh / Wikimedia Commons (CC BY 4.0)"></div>
+          <p class="epigrafe">Imagen de archivo de Franco Colapinto en el Gran Premio de China 2026. (Liauzh/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Automovilismo</p>
-          <h3><a href="https://tn.com.ar/deportes/formula-1/2026/11/21/franco-colapinto-corre-el-gp-de-las-vegas-con-la-mision-de-volver-a-sumar-puntos-en-la-f1-partira-noveno/" rel="noopener noreferrer">Colapinto fue sexto en Las Vegas; Gasly, quinto, y Verstappen ganó la carrera</a></h3>
-          <p class="by"><a href="https://tn.com.ar/deportes/formula-1/2026/11/21/franco-colapinto-corre-el-gp-de-las-vegas-con-la-mision-de-volver-a-sumar-puntos-en-la-f1-partira-noveno/" rel="noopener noreferrer">Fuente: TN</a> · 22 nov 2026, 03:09</p>
+          <h3><a href="notas/colapinto-las-vegas.html">Colapinto fue sexto en Las Vegas; Gasly, quinto, y Verstappen ganó la carrera</a></h3>
+          <p class="by"><a href="https://tn.com.ar/deportes/formula-1/2026/11/21/franco-colapinto-corre-el-gp-de-las-vegas-con-la-mision-de-volver-a-sumar-puntos-en-la-f1-partira-noveno/" rel="noopener noreferrer" target="_blank">Fuente: TN</a> · 22 nov 2026, 03:09</p>
         </div>
       </article>
         <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/tenis-bjk.jpg" alt="Serie de la Billie Jean King Cup de Argentina, en Córdoba, en 2021"><p class="photo-credit">Foto: jmmuguerza / Wikimedia Commons (CC BY-SA 3.0)</p></div>
+        <div class="ph has-photo"><img src="img/tenis-bjk.jpg" alt="Serie de la Billie Jean King Cup de Argentina, en Córdoba, en 2021" title="Imagen de archivo de la Billie Jean King Cup, en Córdoba, en 2021. (jmmuguerza/Wikimedia Commons) Foto: jmmuguerza / Wikimedia Commons (CC BY-SA 3.0)"></div>
+          <p class="epigrafe">Imagen de archivo de la Billie Jean King Cup, en Córdoba, en 2021. (jmmuguerza/Wikimedia Commons)</p>
         <div class="card-body">
           <p class="kicker">Tenis</p>
-          <h3><a href="https://www.infobae.com/deportes/2026/11/22/argentina-perdio-ante-japon-en-la-billie-jean-king-cup-y-no-pudo-ascender-a-los-qualifiers-jugara-la-zona-americas-i-en-2027/" rel="noopener noreferrer">Argentina cayó 4-0 ante Japón y jugará la Zona Américas I de la Billie Jean King Cup en 2027</a></h3>
-          <p class="by"><a href="https://www.infobae.com/deportes/2026/11/22/argentina-perdio-ante-japon-en-la-billie-jean-king-cup-y-no-pudo-ascender-a-los-qualifiers-jugara-la-zona-americas-i-en-2027/" rel="noopener noreferrer">Fuente: Infobae</a> · 22 nov 2026</p>
+          <h3><a href="notas/billie-jean-king-cup-japon.html">Argentina cayó 4-0 ante Japón y jugará la Zona Américas I de la Billie Jean King Cup en 2027</a></h3>
+          <p class="by"><a href="https://www.infobae.com/deportes/2026/11/22/argentina-perdio-ante-japon-en-la-billie-jean-king-cup-y-no-pudo-ascender-a-los-qualifiers-jugara-la-zona-americas-i-en-2027/" rel="noopener noreferrer" target="_blank">Fuente: Infobae</a> · 22 nov 2026</p>
         </div>
       </article>
-        <article class="card card-sm">
-        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba"><p class="photo-credit">Edición de prueba</p></div>
+        <article class="card card-sm is-placeholder">
+        <div class="ph has-photo"><img src="img/proximamente.jpg" alt="Espacio reservado de la edición de prueba" title="Espacio reservado de la edición de prueba. (INFODATAGGM) Imagen propia de InfoDataGGM"></div>
+          <p class="epigrafe">Espacio reservado de la edición de prueba. (INFODATAGGM)</p>
         <div class="card-body">
           <p class="kicker">Deportes</p>
           <h3>Más cobertura de esta sección, próximamente</h3>
@@ -2321,12 +2466,12 @@
         <div>
           <h3>Contacto</h3>
           <ul>
-            <li><a href="https://ggmdata.ar" rel="noopener">ggmdata.ar</a></li>
+            <li><a href="https://ggmdata.ar" rel="noopener" target="_blank">ggmdata.ar</a></li>
             <li>Córdoba, Argentina</li>
           </ul>
           <h3 style="margin-top:22px">Redes</h3>
           <ul>
-            <li>X: <a href="https://x.com/GGMDataAR" rel="noopener">@GGMDataAR</a></li>
+            <li>X: <a href="https://x.com/GGMDataAR" rel="noopener" target="_blank">@GGMDataAR</a></li>
           </ul>
         </div>
         <div>
@@ -2334,7 +2479,7 @@
           <ul>
             <li>Esta es una edición de prueba de InfoDataGGM, con notas reales y fuente citada. No es una edición oficial del medio.</li>
             <li style="margin-top:12px">Los espacios marcados como “Publicidad” son avisos de casa que promocionan ggmdata.ar, no pauta de terceros.</li>
-            <li style="margin-top:12px">Las fotos de esta edición de prueba son de organismos oficiales, Wikimedia Commons con licencia libre o gráficos propios, con su crédito a la vista. No se reproducen fotos de agencias ni de otros medios. Las cifras de la barra de indicadores tienen fecha y fuente en las notas de Economía y Mercados.</li>
+            <li style="margin-top:12px">Las fotos de esta edición de prueba son de organismos oficiales, Wikimedia Commons con licencia libre o gráficos propios, con su crédito en el epígrafe. No se reproducen fotos de agencias ni de otros medios. Las cifras de la barra de indicadores tienen fecha y fuente en las notas de Economía y Mercados.</li>
             <li style="margin-top:12px">La página está marcada para que los buscadores no la indexen mientras se definen criterios editoriales.</li>
           </ul>
         </div>
