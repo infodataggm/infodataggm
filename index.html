@@ -1,0 +1,2388 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InfoDataGGM · Prototipo de portada v4</title>
+  <meta name="description" content="Prototipo v4 de portada del medio digital InfoDataGGM. Los textos e imágenes son de ejemplo.">
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    :root {
+      --navy: #061827;
+      --navy-mid: #0b2b3d;
+      --navy-deep: #051421;
+      --mint: #00b89c;
+      --mint-d: #007e6b;
+      --mint-s: #05b29b;
+      --mint-2: #e6f7f3;
+      --mint-bright: #5fdfc7;
+      --gold: #00b89c;
+      --gold-d: #007e6b;
+      --ink: #112337;
+      --body: #173247;
+      --muted: #667788;
+      --line: #dfe6eb;
+      --line-strong: #d9e2dd;
+      --paper: #f7f9fb;
+      --card: #ffffff;
+      --ph: #d5e2ea;
+      --ph-2: #c5d0d8;
+      --ph-text: #6a7f8d;
+      --breaking: #061827;
+      --max: 1220px;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Arial, Helvetica, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--paper);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    a:hover { color: var(--navy-mid); }
+    ul { list-style: none; }
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin-inline: auto;
+    }
+
+    /* ——— Prototipo banner ——— */
+    .proto {
+      background: #e6f7f3;
+      color: #007e6b;
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 7px 16px;
+      font-weight: 600;
+      border-bottom: 1px solid #b8ddd6;
+    }
+
+    /* ——— Top ticker ——— */
+    .topbar {
+      background: var(--navy);
+      color: #eff8fc;
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+    .topbar .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 38px;
+    }
+    .topbar-date {
+      white-space: nowrap;
+      letter-spacing: .02em;
+      color: #b8d1da;
+    }
+    .ticker {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      min-width: 0;
+    }
+    .ticker::-webkit-scrollbar { display: none; }
+    .ticker-flag {
+      flex: none;
+      background: var(--gold);
+      color: var(--navy-deep);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      margin-right: 14px;
+      border-radius: 1px;
+      white-space: nowrap;
+    }
+    .tick {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      padding: 0 14px;
+      border-left: 1px solid rgba(255,255,255,.14);
+      white-space: nowrap;
+      color: #b8d1da;
+    }
+    .tick strong {
+      color: #fff;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ——— Masthead ——— */
+    .masthead {
+      background: var(--card);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 0 14px;
+      text-align: center;
+    }
+    .wordmark {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 900;
+      font-size: clamp(2.15rem, 5.4vw, 3.2rem);
+      line-height: 1;
+      color: var(--navy);
+      letter-spacing: -0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+    }
+    .wordmark .bar {
+      display: inline-block;
+      width: 5px;
+      height: 0.62em;
+      background: var(--mint);
+      border-radius: 1px;
+      margin: 0 0.16em 0 0.12em;
+      flex: none;
+    }
+    .wordmark .ggm { color: var(--navy); letter-spacing: -0.05em; }
+    .tagline {
+      margin-top: 8px;
+      font-size: 13px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #607383;
+      font-weight: 500;
+    }
+    .masthead-rule {
+      width: 72px;
+      height: 3px;
+      background: var(--gold);
+      margin: 12px auto 0;
+    }
+
+    /* ——— Nav ——— */
+    .nav {
+      background: rgba(247,249,251,.96);
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      border-bottom: 1px solid var(--line);
+      box-shadow: none;
+    }
+    .nav .wrap {
+      display: flex;
+      align-items: stretch;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav .wrap::-webkit-scrollbar { display: none; }
+    .nav a {
+      color: #173247;
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: .03em;
+      padding: 12px 11px;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+    }
+    .nav a:hover {
+      color: #008a78;
+      background: transparent;
+    }
+    .nav a.is-active {
+      color: #006e62;
+      border-bottom-color: var(--mint);
+    }
+
+    /* ——— Último momento ——— */
+    .breaking {
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+    }
+    .breaking .wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-height: 48px;
+      overflow: hidden;
+    }
+    .breaking-kicker {
+      flex: none;
+      background: var(--breaking);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: 1px;
+    }
+    .breaking-track {
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      min-width: 0;
+      flex: 1;
+    }
+    .breaking-track::-webkit-scrollbar { display: none; }
+    .breaking-item {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      padding: 8px 18px 8px 0;
+      margin-right: 18px;
+      border-right: 1px solid var(--line);
+      white-space: nowrap;
+      font-size: 14px;
+    }
+    .breaking-item:last-child { border-right: 0; }
+    .breaking-item time {
+      font-weight: 700;
+      color: var(--mint-d);
+      font-variant-numeric: tabular-nums;
+      font-size: 12.5px;
+    }
+    .breaking-item span { color: var(--ink); }
+
+    /* ——— Cards / photos ——— */
+    .ph {
+      background: linear-gradient(160deg, var(--ph) 0%, var(--ph-2) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ph-text);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      position: relative;
+    }
+    .ph::before {
+      content: "";
+      width: 36px;
+      height: 28px;
+      border: 2px solid var(--ph-text);
+      border-radius: 3px;
+      opacity: .45;
+      margin-right: 8px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -62%);
+    }
+    .ph::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border: 2px solid var(--ph-text);
+      border-radius: 50%;
+      opacity: .45;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -78%);
+    }
+    .ph span {
+      position: relative;
+      top: 18px;
+      opacity: .85;
+    }
+    .card h3 {
+      font-family: var(--serif);
+      font-weight: 650;
+      line-height: 1.22;
+      color: var(--ink);
+      letter-spacing: -0.015em;
+    }
+    .card:hover h3 { color: var(--navy-mid); }
+    .kicker {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold-d);
+      margin-bottom: 6px;
+    }
+    .dek {
+      color: var(--body);
+      font-size: 15px;
+      line-height: 1.45;
+      margin-top: 8px;
+    }
+    .by {
+      margin-top: 8px;
+      font-size: 12.5px;
+      color: var(--muted);
+    }
+
+    /* ——— Hero ——— */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.95fr) 250px;
+      gap: 24px;
+      padding: 20px 0 8px;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+    .lead .ph { aspect-ratio: 2 / 1; }
+    .lead .card-body { padding-top: 16px; }
+    .lead h3 {
+      font-size: clamp(1.85rem, 3.1vw, 2.55rem);
+      line-height: 1.12;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+    .lead .dek { font-size: 17px; margin-top: 12px; max-width: 46em; }
+    .secondary {
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--line);
+      padding-left: 28px;
+    }
+    .secondary .card {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding: 0 0 18px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+    .secondary .card:last-child {
+      border-bottom: 0;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .secondary { justify-content: space-between; }
+    .secondary .ph { aspect-ratio: 16 / 9; margin-bottom: 10px; }
+    .secondary h3 { font-size: 1.28rem; }
+
+    /* ——— Mid grid (más de portada) ——— */
+    .mid {
+      padding: 22px 0 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    .mid-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .mid-grid h3 { font-size: 1.12rem; }
+    .mid-grid .ph { margin-bottom: 10px; }
+
+    /* ——— Split: sections + most read ——— */
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 40px;
+      padding: 8px 0 10px;
+      align-items: start;
+    }
+    .most-read {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 20px 20px 12px;
+    }
+    .most-read ol { list-style: none; padding: 0; margin: 0; }
+    .most-read h2 {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      color: var(--navy);
+      padding-bottom: 10px;
+      border-bottom: 3px solid var(--navy);
+      margin-bottom: 8px;
+    }
+    .most-read .note {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 10px;
+    }
+    .most-read li a {
+      display: flex;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: flex-start;
+    }
+    .most-read li:last-child a { border-bottom: 0; }
+    .most-read .n {
+      font-family: var(--serif);
+      font-weight: 700;
+      font-size: 1.45rem;
+      line-height: 1;
+      color: var(--gold-d);
+      width: 1.2em;
+      flex: none;
+    }
+    .most-read .t {
+      font-family: var(--serif);
+      font-size: 1rem;
+      line-height: 1.3;
+      font-weight: 600;
+    }
+
+    /* ——— Section blocks ——— */
+    .section-block {
+      padding: 26px 0 10px;
+      border-top: 1px solid var(--line);
+    }
+    .split .section-block {
+      border-top: 1px solid var(--line);
+    }
+    .split .section-block:first-child { border-top: 0; padding-top: 22px; }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      border-bottom: 3px solid var(--navy);
+      padding-bottom: 8px;
+    }
+    .section-head h2 {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .section-head .more {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold-d);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .section-head .more:hover { color: var(--navy); }
+    .section-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 22px 24px;
+    }
+    .card-main {
+      grid-row: 1 / span 2;
+      padding-right: 8px;
+      border-right: 1px solid var(--line);
+      margin-right: 4px;
+    }
+    .card-main .ph { margin-bottom: 12px; aspect-ratio: 16 / 10; }
+    .card-main h3 { font-size: 1.55rem; }
+    .card-sm .ph { margin-bottom: 10px; aspect-ratio: 16 / 10; }
+    .card-sm h3 { font-size: 1.08rem; }
+
+    .rest {
+      padding-bottom: 20px;
+    }
+
+    /* ——— Footer ——— */
+    .footer {
+      background: var(--navy-deep);
+      color: #b8d1da;
+      margin-top: 20px;
+      padding: 48px 0 0;
+    }
+    .footer a { color: #eff8fc; }
+    .footer a:hover { color: var(--gold); }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1.1fr;
+      gap: 36px;
+      padding-bottom: 36px;
+    }
+    .footer-brand .wordmark,
+    .footer-brand .wordmark .ggm {
+      font-size: 1.8rem;
+      color: #fff;
+    }
+    .footer-brand .tagline {
+      color: #9abac6;
+      letter-spacing: .1em;
+      margin-top: 6px;
+    }
+    .footer-brand p.blurb {
+      margin-top: 14px;
+      font-size: 14px;
+      line-height: 1.55;
+      color: #9abac6;
+      max-width: 28em;
+    }
+    .footer h3 {
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+    .footer li { margin-bottom: 8px; font-size: 14px; }
+    .footer-legal {
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding: 18px 0 24px;
+      font-size: 12.5px;
+      color: #aab8c2;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px 24px;
+    }
+
+    /* ——— Responsive ——— */
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr 1fr; gap: 22px; }
+      .hero .opinion { grid-column: 1 / -1; border-left: 0; padding-left: 0; border-top: 1px solid var(--line); padding-top: 18px; }
+      .secondary {
+        border-left: 0;
+        padding-left: 0;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      .secondary .card {
+        border-bottom: 0;
+        margin: 0;
+        padding: 0;
+      }
+      .mid-grid { grid-template-columns: 1fr 1fr; }
+      .split { grid-template-columns: 1fr; gap: 8px; }
+      .most-read { position: static; }
+      .rail-sticky { position: static; }
+      .ad-leader { flex-wrap: wrap; }
+      .section-grid {
+        grid-template-columns: 1.3fr 1fr;
+        grid-template-rows: auto;
+      }
+      .card-main {
+        grid-row: auto;
+        grid-column: 1 / -1;
+        border-right: 0;
+        padding-right: 0;
+        margin-right: 0;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--line);
+        margin-bottom: 4px;
+      }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(var(--max), calc(100% - 24px)); }
+      .topbar .wrap {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 0 0;
+      }
+      .topbar-date { padding-bottom: 6px; font-size: 12px; }
+      .ticker {
+        border-top: 1px solid rgba(255,255,255,.1);
+        padding: 8px 0;
+      }
+      .masthead { padding: 16px 0 14px; }
+      .nav a { padding: 11px 11px; font-size: 13px; }
+      .breaking .wrap { min-height: 44px; }
+      .hero { padding-top: 20px; grid-template-columns: 1fr; }
+      .secondary { grid-template-columns: 1fr; }
+      .secondary .card {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 12px;
+        padding-bottom: 14px;
+        margin-bottom: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+      .secondary .card:last-child { border-bottom: 0; margin: 0; padding-bottom: 0; }
+      .secondary .ph { margin-bottom: 0; aspect-ratio: 4 / 3; }
+      .mid-grid { grid-template-columns: 1fr; gap: 20px; }
+      .section-grid { grid-template-columns: 1fr; }
+      .card-sm {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        gap: 12px;
+      }
+      .card-sm .ph { margin-bottom: 0; aspect-ratio: 4 / 3; }
+      .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+      .lead h3 { font-size: 1.7rem; }
+    }
+  
+    /* ——— v2 modules ——— */
+    .temas {
+      background: var(--card);
+      border-bottom: 1px solid var(--line);
+    }
+    .temas .wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 46px;
+      overflow: hidden;
+    }
+    .temas-label {
+      flex: none;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      padding-right: 12px;
+      border-right: 2px solid var(--gold);
+      white-space: nowrap;
+    }
+    .temas-track {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      min-width: 0;
+      padding: 8px 0;
+    }
+    .temas-track::-webkit-scrollbar { display: none; }
+    .tema {
+      flex: none;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      background: #e6f7f3;
+      border: 1px solid #b8ddd6;
+      padding: 4px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .tema:hover {
+      background: var(--navy);
+      color: #fff;
+      border-color: var(--navy);
+    }
+
+    .module-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+      border-bottom: 3px solid var(--navy);
+      padding-bottom: 8px;
+    }
+    .module-head h2 {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .module-head .src {
+      font-size: 11px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .module-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* Dato destacado */
+    .dato {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+    }
+    .dato-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .dato-chart {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 18px 18px 12px;
+    }
+    .dato-chart svg { width: 100%; height: auto; display: block; }
+    .dato-chart .caption {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 8px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .dato-copy .kicker { margin-bottom: 8px; }
+    .dato-copy h3 {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+    .dato-copy .dek { font-size: 16px; margin-bottom: 16px; }
+    .dato-related { border-top: 1px solid var(--line); padding-top: 12px; }
+    .dato-related li { padding: 8px 0; border-bottom: 1px solid var(--line); }
+    .dato-related li:last-child { border-bottom: 0; }
+    .dato-related a {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 1.05rem;
+      line-height: 1.3;
+    }
+
+    /* Explicadores */
+    .explicadores {
+      padding: 32px 0;
+      background: #eef8f5;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .explicadores .wrap { }
+    .expl-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .expl {
+      background: var(--card);
+      padding: 22px 22px 20px;
+      border-top: 3px solid var(--gold);
+    }
+    .expl-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      background: #e6f7f3;
+      padding: 3px 8px;
+      margin-bottom: 12px;
+    }
+    .expl h3 {
+      font-family: var(--serif);
+      font-size: 1.28rem;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      margin-bottom: 10px;
+    }
+    .expl:hover h3 { color: var(--navy-mid); }
+    .expl .dek { font-size: 14.5px; }
+
+    /* Tapa de la semana */
+    .tapa {
+      padding: 36px 0;
+      background: var(--navy-deep);
+      color: #eff8fc;
+    }
+    .tapa .module-head { border-bottom-color: var(--gold); }
+    .tapa .module-head h2 { color: #fff; }
+    .tapa .module-head .src { color: #9abac6; }
+    .tapa-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    .cover {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      background: linear-gradient(160deg, var(--ph) 0%, var(--ph-2) 100%);
+      border: 3px solid var(--gold);
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+    .cover-ph {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ph-text);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .cover-band {
+      position: relative;
+      background: linear-gradient(transparent, rgba(7,20,34,.92) 30%);
+      padding: 48px 18px 18px;
+      color: #fff;
+    }
+    .cover-band .kicker { color: var(--gold); }
+    .cover-band h3 {
+      font-family: var(--serif);
+      font-size: 1.55rem;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    .tapa-copy .dek { color: #b8d1da; font-size: 16.5px; margin: 12px 0 22px; max-width: 38em; }
+    .tapa-copy .by { color: #9abac6; }
+    .otras-tapas {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .otras-tapas .mini {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+    .otras-tapas .mini-cover {
+      aspect-ratio: 3 / 4;
+      background: linear-gradient(160deg, var(--ph) 0%, var(--ph-2) 100%);
+      border: 1px solid var(--gold);
+    }
+    .otras-tapas h4 {
+      font-family: var(--serif);
+      font-size: .95rem;
+      line-height: 1.3;
+      color: #fff;
+      font-weight: 600;
+    }
+    .tapa a:hover { color: var(--gold); }
+    .tapa a:hover h3, .tapa a:hover h4 { color: var(--gold); }
+
+    /* Para ver */
+    .paraver {
+      padding: 32px 0;
+      background: var(--navy);
+      color: #eff8fc;
+    }
+    .paraver .module-head { border-bottom-color: var(--gold); }
+    .paraver .module-head h2 { color: #fff; }
+    .paraver .module-head .src { color: #9abac6; }
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .video .ph {
+      aspect-ratio: 16 / 9;
+      margin-bottom: 10px;
+      background: #0b2b3d;
+      position: relative;
+    }
+    .video .ph::before,
+    .video .ph::after { display: none; }
+    .video .ph > span:not(.play):not(.dur) {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 10px;
+      top: auto;
+      text-align: center;
+      color: #9abac6;
+      font-size: 10px;
+      z-index: 1;
+    }
+    .video .play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -58%);
+      width: 52px;
+      height: 52px;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(7,20,34,.75);
+      box-shadow: inset 0 0 0 2px var(--gold);
+      z-index: 2;
+    }
+    .video .play::after {
+      content: "";
+      position: absolute;
+      left: 54%;
+      top: 50%;
+      transform: translate(-40%, -50%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 0 8px 14px;
+      border-color: transparent transparent transparent var(--gold);
+    }
+    .video .dur {
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+      top: auto;
+      background: rgba(7,20,34,.85);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 6px;
+      letter-spacing: .04em;
+      z-index: 2;
+    }
+    .video h3 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      line-height: 1.25;
+      color: #fff;
+    }
+    .video:hover h3 { color: var(--gold); }
+    .video .kicker { color: var(--gold); }
+
+    /* Newsletter */
+    .boletin {
+      padding: 42px 0;
+      background: var(--navy-deep);
+      color: #eff8fc;
+      border-top: 1px solid rgba(196,163,90,.35);
+    }
+    .boletin .inner {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .boletin h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .boletin .dek { color: #b8d1da; font-size: 16.5px; max-width: 36em; }
+    .boletin-form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .boletin-form input[type="email"] {
+      flex: 1 1 220px;
+      min-height: 46px;
+      border: 1px solid rgba(255,255,255,.2);
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      padding: 0 14px;
+      font-family: var(--sans);
+      font-size: 15px;
+    }
+    .boletin-form input::placeholder { color: #9abac6; }
+    .boletin-form button {
+      min-height: 46px;
+      padding: 0 18px;
+      background: var(--gold);
+      color: var(--navy-deep);
+      border: 0;
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      cursor: default;
+    }
+    .boletin .fine {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #aab8c2;
+    }
+
+    /* En profundidad */
+    .profundidad {
+      padding: 32px 0 16px;
+      border-top: 1px solid var(--line);
+    }
+    .prof-main .ph { aspect-ratio: 2 / 1; margin-bottom: 16px; }
+    .prof-main h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      max-width: 22em;
+    }
+    .prof-main:hover h3 { color: var(--navy-mid); }
+    .prof-main .dek { font-size: 17px; margin-top: 10px; max-width: 46em; }
+    .prof-meta {
+      margin-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .prof-more {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+    .prof-more .card {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+    .prof-more .ph { aspect-ratio: 16 / 10; }
+    .prof-more h3 { font-size: 1.2rem; }
+
+    .after-split { padding-top: 8px; }
+
+    @media (max-width: 980px) {
+      .dato-grid, .tapa-grid, .boletin .inner { grid-template-columns: 1fr; }
+      .tapa-grid { gap: 24px; }
+      .cover { max-width: 320px; }
+      .expl-grid { grid-template-columns: 1fr; }
+      .video-grid { grid-template-columns: 1fr 1fr; }
+      .prof-more { grid-template-columns: 1fr; }
+      .otras-tapas { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .video-grid { grid-template-columns: 1fr; }
+      .prof-more .card { grid-template-columns: 120px 1fr; }
+      .lead .ph { aspect-ratio: 16 / 9; }
+      .cover { max-width: 100%; }
+    }
+
+  
+    /* ——— v4: reading time, opinión, ads ——— */
+    .readtime {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    .hero .opinion {
+      border-left: 1px solid var(--line);
+      padding-left: 22px;
+    }
+    .opinion h2 {
+      font-family: var(--serif);
+      font-size: 1.35rem;
+      color: var(--navy);
+      padding-bottom: 8px;
+      border-bottom: 3px solid var(--navy);
+      margin-bottom: 4px;
+    }
+    .op-item {
+      padding: 12px 0 13px;
+      border-bottom: 1px solid var(--line);
+    }
+    .op-item:last-child { border-bottom: 0; }
+    .op-item h3 {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      line-height: 1.28;
+      font-weight: 650;
+      letter-spacing: -0.015em;
+    }
+    .op-item:hover h3 { color: var(--navy-mid); }
+    .op-item .by { margin-top: 6px; }
+
+    /* House ads */
+    .ad-label {
+      font-size: 9.5px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .ad-leader-wrap {
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+      padding: 8px 0 12px;
+    }
+    .ad-leader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px 28px;
+      width: min(970px, 100%);
+      margin: 0 auto;
+      min-height: 90px;
+      padding: 16px 22px;
+      background: var(--navy);
+      color: #eff8fc;
+      text-align: left;
+    }
+    .ad-leader:hover { color: #eff8fc; }
+    .ad-brand {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: 900;
+      font-size: 1.15rem;
+      letter-spacing: -0.04em;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+      flex: none;
+    }
+    .ad-brand .bar {
+      display: inline-block;
+      width: 4px;
+      height: 0.7em;
+      background: var(--mint);
+      border-radius: 1px;
+      margin: 0 0.35em;
+      flex: none;
+    }
+    .ad-copy {
+      flex: 1 1 200px;
+      font-size: 13.5px;
+      line-height: 1.4;
+      color: #b8d1da;
+      max-width: 34em;
+    }
+    .ad-cta {
+      flex: none;
+      background: var(--mint);
+      color: #051421;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      white-space: nowrap;
+    }
+    .ad-leader:hover .ad-cta { background: #5fdfc7; }
+
+    .rail-sticky {
+      position: sticky;
+      top: 56px;
+      margin-bottom: 20px;
+    }
+    .ad-box {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 8px 8px 10px;
+    }
+    .ad-box .ad-inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 250px;
+      padding: 22px 18px 18px;
+      background: var(--navy);
+      color: #eff8fc;
+    }
+    .ad-box .ad-brand { font-size: 1.2rem; }
+    .ad-box .ad-copy { color: #b8d1da; font-size: 13.5px; max-width: none; }
+    .ad-box .ad-cta { align-self: flex-start; }
+    .ad-box a:hover { color: #eff8fc; }
+    .ad-box a:hover .ad-cta { background: #5fdfc7; }
+
+    @media (max-width: 980px) {
+      .ad-leader { width: min(var(--max), calc(100% - 32px)); }
+    }
+    @media (max-width: 640px) {
+      .ad-leader {
+        flex-direction: column;
+        align-items: flex-start;
+        width: min(var(--max), calc(100% - 24px));
+        min-height: 0;
+      }
+      .hero .opinion { padding-top: 16px; }
+    }
+
+  
+    .ad-brand-block {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      align-content: flex-start;
+      gap: 0 0;
+      max-width: 100%;
+    }
+    .ad-brand-rest {
+      display: inline;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+    }
+    .ad-box .ad-brand-block { font-size: 1.12rem; line-height: 1.15; }
+  </style>
+</head>
+<body>
+  <div class="proto">Prototipo de portada v4 · no es una edición publicada · textos, fotos y cifras de ejemplo</div>
+
+  <div class="topbar">
+    <div class="wrap">
+      <div class="topbar-date">Domingo 22 de noviembre de 2026 · Córdoba, Argentina</div>
+      <div class="ticker" aria-label="Indicadores de ejemplo">
+        <span class="ticker-flag">Datos de ejemplo</span>
+        <span class="tick">Dólar oficial <strong>—,—</strong></span>
+        <span class="tick">Dólar blue <strong>—,—</strong></span>
+        <span class="tick">Riesgo país <strong>—</strong></span>
+        <span class="tick">Inflación <strong>—,— %</strong></span>
+      </div>
+    </div>
+  </div>
+
+  <header class="masthead" id="portada">
+    <div class="wrap">
+      <a class="wordmark" href="#portada">InfoData<span class="bar" aria-hidden="true"></span><span class="ggm">GGM</span></a>
+      <p class="tagline">Un medio de GGM Data · ggmdata.ar</p>
+      <div class="masthead-rule" aria-hidden="true"></div>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="Secciones">
+    <div class="wrap">
+      <a href="#ultimos-titulares" class="is-active" aria-current="page">Últimos titulares</a>
+<a href="#provincias">Provincias</a>
+<a href="#mundo">Mundo</a>
+<a href="#negocios">Negocios</a>
+<a href="#politica">Política</a>
+<a href="#economia">Economía</a>
+<a href="#tecnologia">Tecnología</a>
+<a href="#mercados">Mercados y finanzas</a>
+<a href="#artes">Artes</a>
+<a href="#vida-sana">Vida sana</a>
+<a href="#salud">Salud</a>
+<a href="#deportes">Deportes</a>
+    </div>
+  </nav>
+
+  
+  <aside class="ad-leader-wrap" aria-label="Publicidad">
+    <p class="ad-label">Publicidad</p>
+    <a class="ad-leader" href="https://ggmdata.ar" rel="noopener">
+      <span class="ad-brand">GGM<span class="bar" aria-hidden="true"></span>Data &amp; Análisis Integral</span>
+      <span class="ad-copy">Datos económicos, comerciales y financieros para empresas.</span>
+      <span class="ad-cta">Conocé ggmdata.ar</span>
+    </a>
+  </aside>
+
+  <section class="temas" id="temas" aria-label="Temas del día de ejemplo">
+    <div class="wrap">
+      <span class="temas-label">Temas del día</span>
+      <div class="temas-track">
+        <a class="tema" href="#provincias">Agenda de ejemplo: Provincias</a>
+<a class="tema" href="#mundo">Agenda de ejemplo: Mundo</a>
+<a class="tema" href="#negocios">Agenda de ejemplo: Negocios</a>
+<a class="tema" href="#economia">Agenda de ejemplo: Economía</a>
+<a class="tema" href="#mercados">Agenda de ejemplo: Mercados</a>
+<a class="tema" href="#politica">Agenda de ejemplo: Política</a>
+<a class="tema" href="#deportes">Agenda de ejemplo: Deportes</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="breaking" id="ultimos-titulares">
+    <div class="wrap">
+      <span class="breaking-kicker">Últimos titulares</span>
+      <div class="breaking-track">
+        <a class="breaking-item" href="#ultimos-titulares"><time datetime="2026-11-22T15:40:00-03:00">15:40</time> <span>Título de ejemplo del minuto a minuto (1)</span></a>
+        <a class="breaking-item" href="#ultimos-titulares"><time datetime="2026-11-22T15:12:00-03:00">15:12</time> <span>Título de ejemplo del minuto a minuto (2)</span></a>
+        <a class="breaking-item" href="#ultimos-titulares"><time datetime="2026-11-22T14:55:00-03:00">14:55</time> <span>Título de ejemplo del minuto a minuto (3)</span></a>
+        <a class="breaking-item" href="#ultimos-titulares"><time datetime="2026-11-22T14:21:00-03:00">14:21</time> <span>Título de ejemplo del minuto a minuto (4)</span></a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <div class="wrap">
+      <section class="hero" aria-label="Nota principal, secundarias y opinión">
+        <article class="card lead">
+          <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+          <div class="card-body">
+            <p class="kicker">Portada</p>
+            <h3>Título de ejemplo de la nota principal de portada</h3>
+            <p class="dek">Bajada de ejemplo. Este texto es un placeholder y no describe un hecho real. Completa la jerarquía visual de la nota de apertura.</p>
+            <p class="by">Autor de ejemplo</p>
+            <p class="readtime">5 min de lectura</p>
+          </div>
+        </article>
+        <div class="secondary">
+          <article class="card">
+            <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+            <div class="card-body">
+              <p class="kicker">Portada</p>
+              <h3>Título de ejemplo de nota secundaria en portada (1)</h3>
+              <p class="by">Autor de ejemplo</p>
+              <p class="readtime">4 min de lectura</p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+            <div class="card-body">
+              <p class="kicker">Portada</p>
+              <h3>Título de ejemplo de nota secundaria en portada (2)</h3>
+              <p class="by">Autor de ejemplo</p>
+              <p class="readtime">6 min de lectura</p>
+            </div>
+          </article>
+        </div>
+        <aside class="opinion" aria-labelledby="h-opinion">
+          <h2 id="h-opinion">Opinión</h2>
+          
+          <article class="op-item">
+            <a href="#politica">
+              <p class="kicker">Opinión</p>
+              <h3>Título de ejemplo de columna de opinión (1)</h3>
+              <p class="by">Autor de ejemplo</p>
+              <p class="readtime">4 min de lectura</p>
+            </a>
+          </article>
+
+          <article class="op-item">
+            <a href="#politica">
+              <p class="kicker">Opinión</p>
+              <h3>Título de ejemplo de columna de opinión (2)</h3>
+              <p class="by">Autor de ejemplo</p>
+              <p class="readtime">6 min de lectura</p>
+            </a>
+          </article>
+
+          <article class="op-item">
+            <a href="#politica">
+              <p class="kicker">Opinión</p>
+              <h3>Título de ejemplo de columna de opinión (3)</h3>
+              <p class="by">Autor de ejemplo</p>
+              <p class="readtime">3 min de lectura</p>
+            </a>
+          </article>
+
+          <article class="op-item">
+            <a href="#politica">
+              <p class="kicker">Opinión</p>
+              <h3>Título de ejemplo de columna de opinión (4)</h3>
+              <p class="by">Autor de ejemplo</p>
+              <p class="readtime">8 min de lectura</p>
+            </a>
+          </article>
+        </aside>
+      </section>
+
+      <section class="mid" aria-label="Más notas de portada">
+        <div class="mid-grid">
+          <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Portada</p>
+          <h3>Título de ejemplo de nota de portada (A)</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">3 min de lectura</p>
+        </div>
+      </article>
+          <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Portada</p>
+          <h3>Título de ejemplo de nota de portada (B)</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">5 min de lectura</p>
+        </div>
+      </article>
+          <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Portada</p>
+          <h3>Título de ejemplo de nota de portada (C)</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">4 min de lectura</p>
+        </div>
+      </article>
+          <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Portada</p>
+          <h3>Título de ejemplo de nota de portada (D)</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">8 min de lectura</p>
+        </div>
+      </article>
+        </div>
+      </section>
+
+      <section class="dato" id="dato-destacado" aria-labelledby="h-dato">
+        <div class="module-head">
+          <h2 id="h-dato">Dato destacado</h2>
+          <span class="src">Visualización de ejemplo</span>
+        </div>
+        <div class="dato-grid">
+          <div class="dato-chart">
+            <svg viewBox="0 0 440 240" role="img" aria-label="Gráfico de ejemplo, sin datos reales">
+  <rect width="440" height="240" fill="#ffffff"/>
+  <text x="8" y="16" font-size="10" fill="#667788" font-family="Source Sans 3, sans-serif">ESCALA DE EJEMPLO</text>
+  <line x1="48" y1="28" x2="48" y2="190" stroke="#dfe6eb" stroke-width="1"/>
+  <line x1="48" y1="190" x2="424" y2="190" stroke="#d9e2dd" stroke-width="1"/>
+  <line x1="48" y1="70" x2="424" y2="70" stroke="#e8f2f0" stroke-width="1"/>
+  <line x1="48" y1="110" x2="424" y2="110" stroke="#e8f2f0" stroke-width="1"/>
+  <line x1="48" y1="150" x2="424" y2="150" stroke="#e8f2f0" stroke-width="1"/>
+  <rect x="78" y="86" width="44" height="104" fill="#061827"/>
+  <rect x="148" y="118" width="44" height="72" fill="#00b89c"/>
+  <rect x="218" y="62" width="44" height="128" fill="#061827"/>
+  <rect x="288" y="134" width="44" height="56" fill="#00b89c"/>
+  <rect x="358" y="94" width="44" height="96" fill="#0b2b3d"/>
+  <text x="100" y="210" text-anchor="middle" font-size="11" fill="#667788" font-family="Source Sans 3, sans-serif">Ej. A</text>
+  <text x="170" y="210" text-anchor="middle" font-size="11" fill="#667788" font-family="Source Sans 3, sans-serif">Ej. B</text>
+  <text x="240" y="210" text-anchor="middle" font-size="11" fill="#667788" font-family="Source Sans 3, sans-serif">Ej. C</text>
+  <text x="310" y="210" text-anchor="middle" font-size="11" fill="#667788" font-family="Source Sans 3, sans-serif">Ej. D</text>
+  <text x="380" y="210" text-anchor="middle" font-size="11" fill="#667788" font-family="Source Sans 3, sans-serif">Ej. E</text>
+</svg>
+            <p class="caption">Gráfico de ejemplo · no representa datos reales · categorías ilustrativas</p>
+          </div>
+          <div class="dato-copy">
+            <p class="kicker">Datos</p>
+            <h3>Título de ejemplo del gráfico destacado de portada</h3>
+            <p class="dek">Bajada de ejemplo. Esta ficha ilustra cómo se vería un indicador o una comparación en la portada. Las barras y las etiquetas “Ej. A” a “Ej. E” no corresponden a un fenómeno real.</p>
+            <ul class="dato-related">
+              <li><a href="#economia">Primera nota de ejemplo vinculada a este dato</a></li>
+              <li><a href="#mercados">Segunda nota de ejemplo vinculada a este dato</a></li>
+            </ul>
+            <p class="module-note">Módulo de ejemplo para aprobación de diseño.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="split">
+        <div class="col-sections">
+          
+    <section class="section-block" id="provincias" aria-labelledby="h-provincias">
+      <div class="section-head">
+        <h2 id="h-provincias">Provincias</h2>
+        <a class="more" href="#provincias">Ver más</a>
+      </div>
+      <div class="section-grid">
+        <article class="card card-main">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Provincias</p>
+          <h3>Título de ejemplo de la sección Provincias</h3>
+          <p class="dek">Bajada de ejemplo. Este texto es un placeholder y no describe un hecho real.</p>
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">5 min de lectura</p>
+        </div>
+      </article>
+        <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Provincias</p>
+          <h3>Título de ejemplo en Provincias: Córdoba</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">4 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Provincias</p>
+          <h3>Segundo título de ejemplo en Provincias</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">6 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Provincias</p>
+          <h3>Tercer título de ejemplo en Provincias</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">3 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Provincias</p>
+          <h3>Cuarto título de ejemplo en Provincias</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">8 min de lectura</p>
+        </div>
+      </article>
+      </div>
+    </section>
+          
+    <section class="section-block" id="mundo" aria-labelledby="h-mundo">
+      <div class="section-head">
+        <h2 id="h-mundo">Mundo</h2>
+        <a class="more" href="#mundo">Ver más</a>
+      </div>
+      <div class="section-grid">
+        <article class="card card-main">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Mundo</p>
+          <h3>Título de ejemplo de la sección Mundo</h3>
+          <p class="dek">Bajada de ejemplo. Este texto es un placeholder y no describe un hecho real.</p>
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">4 min de lectura</p>
+        </div>
+      </article>
+        <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Mundo</p>
+          <h3>Segundo título de ejemplo en Mundo</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">4 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Mundo</p>
+          <h3>Tercer título de ejemplo en Mundo</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">6 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Mundo</p>
+          <h3>Cuarto título de ejemplo en Mundo</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">3 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Mundo</p>
+          <h3>Quinto título de ejemplo en Mundo</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">8 min de lectura</p>
+        </div>
+      </article>
+      </div>
+    </section>
+        </div>
+        <div class="rail">
+          
+          <aside class="ad-box rail-sticky" aria-label="Publicidad">
+            <p class="ad-label">Publicidad</p>
+            <a class="ad-inner" href="https://ggmdata.ar" rel="noopener">
+              <span class="ad-brand ad-brand-block">GGM<span class="bar" aria-hidden="true"></span><span class="ad-brand-rest">Data &amp; Análisis Integral</span></span>
+              <span class="ad-copy">Datos económicos, comerciales y financieros para empresas.</span>
+              <span class="ad-cta">Conocé ggmdata.ar</span>
+            </a>
+          </aside>
+          <aside class="most-read" aria-labelledby="h-leidos">
+            <h2 id="h-leidos">Lo más leído</h2>
+            <p class="note">Listado de ejemplo</p>
+            <ol>
+              <li><a href="#ultimos-titulares"><span class="n">1</span><span class="t">Primer título de ejemplo en lo más leído</span></a></li>
+<li><a href="#ultimos-titulares"><span class="n">2</span><span class="t">Segundo título de ejemplo en lo más leído</span></a></li>
+<li><a href="#ultimos-titulares"><span class="n">3</span><span class="t">Tercer título de ejemplo en lo más leído</span></a></li>
+<li><a href="#ultimos-titulares"><span class="n">4</span><span class="t">Cuarto título de ejemplo en lo más leído</span></a></li>
+<li><a href="#ultimos-titulares"><span class="n">5</span><span class="t">Quinto título de ejemplo en lo más leído</span></a></li>
+<li><a href="#ultimos-titulares"><span class="n">6</span><span class="t">Sexto título de ejemplo en lo más leído</span></a></li>
+<li><a href="#ultimos-titulares"><span class="n">7</span><span class="t">Séptimo título de ejemplo en lo más leído</span></a></li>
+<li><a href="#ultimos-titulares"><span class="n">8</span><span class="t">Octavo título de ejemplo en lo más leído</span></a></li>
+            </ol>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <section class="explicadores" id="explicadores" aria-labelledby="h-expl">
+      <div class="wrap">
+        <div class="module-head">
+          <h2 id="h-expl">Explicadores</h2>
+          <span class="src">Para entender el tema · textos de ejemplo</span>
+        </div>
+        <div class="expl-grid">
+          <article class="expl">
+            <a href="#economia">
+              <span class="expl-badge">Explicador</span>
+              <h3>Explicador de ejemplo: qué significa este indicador</h3>
+              <p class="dek">Texto de ejemplo. Un párrafo breve para mostrar cómo se presentaría una guía de lectura, sin describir un hecho real.</p>
+              <p class="readtime">5 min de lectura</p>
+            </a>
+          </article>
+          <article class="expl">
+            <a href="#mercados">
+              <span class="expl-badge">Explicador</span>
+              <h3>Explicador de ejemplo: cómo se lee esta serie</h3>
+              <p class="dek">Texto de ejemplo. Acá iría el contexto paso a paso de un tema de la agenda, siempre con fuentes cuando deje de ser un placeholder.</p>
+              <p class="readtime">6 min de lectura</p>
+            </a>
+          </article>
+          <article class="expl">
+            <a href="#negocios">
+              <span class="expl-badge">Explicador</span>
+              <h3>Explicador de ejemplo: qué cambió y qué no</h3>
+              <p class="dek">Texto de ejemplo. Sirve para ubicar al lector antes de las notas del día. Este bloque no afirma ninguna cifra real.</p>
+              <p class="readtime">4 min de lectura</p>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap after-split">
+      
+    <section class="section-block" id="negocios" aria-labelledby="h-negocios">
+      <div class="section-head">
+        <h2 id="h-negocios">Negocios</h2>
+        <a class="more" href="#negocios">Ver más</a>
+      </div>
+      <div class="section-grid">
+        <article class="card card-main">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Negocios</p>
+          <h3>Título de ejemplo de la sección Negocios</h3>
+          <p class="dek">Bajada de ejemplo. Este texto es un placeholder y no describe un hecho real.</p>
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">6 min de lectura</p>
+        </div>
+      </article>
+        <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Negocios</p>
+          <h3>Segundo título de ejemplo en Negocios</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">4 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Negocios</p>
+          <h3>Tercer título de ejemplo en Negocios</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">6 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Negocios</p>
+          <h3>Cuarto título de ejemplo en Negocios</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">3 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Negocios</p>
+          <h3>Quinto título de ejemplo en Negocios</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">8 min de lectura</p>
+        </div>
+      </article>
+      </div>
+    </section>
+      
+    <section class="section-block" id="politica" aria-labelledby="h-politica">
+      <div class="section-head">
+        <h2 id="h-politica">Política</h2>
+        <a class="more" href="#politica">Ver más</a>
+      </div>
+      <div class="section-grid">
+        <article class="card card-main">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Política</p>
+          <h3>Título de ejemplo de la sección Política</h3>
+          <p class="dek">Bajada de ejemplo. Este texto es un placeholder y no describe un hecho real.</p>
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">3 min de lectura</p>
+        </div>
+      </article>
+        <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Política</p>
+          <h3>Segundo título de ejemplo en Política</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">4 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Política</p>
+          <h3>Tercer título de ejemplo en Política</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">6 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Política</p>
+          <h3>Cuarto título de ejemplo en Política</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">3 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Política</p>
+          <h3>Quinto título de ejemplo en Política</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">8 min de lectura</p>
+        </div>
+      </article>
+      </div>
+    </section>
+    </div>
+
+    <section class="tapa" id="tapa" aria-labelledby="h-tapa">
+      <div class="wrap">
+        <div class="module-head">
+          <h2 id="h-tapa">Tapa de la semana</h2>
+          <span class="src">Tratamiento tipo revista · contenido de ejemplo</span>
+        </div>
+        <div class="tapa-grid">
+          <a class="cover" href="#tapa">
+            <div class="cover-ph">Foto de tapa de ejemplo</div>
+            <div class="cover-band">
+              <p class="kicker">Tapa de ejemplo</p>
+              <h3>Título de ejemplo de la tapa de la semana</h3>
+            </div>
+          </a>
+          <div class="tapa-copy">
+            <p class="dek">Bajada de ejemplo. Este módulo muestra cómo se destacaría un informe o un ensayo de la semana, con un tratamiento de tapa. El texto no describe un hecho real.</p>
+            <p class="by">Autor de ejemplo · Edición de ejemplo</p>
+            <p class="readtime" style="color:#9abac6">8 min de lectura</p>
+            <div class="otras-tapas" aria-label="Otras tapas de ejemplo">
+              
+          <a class="mini" href="#tapa">
+            <div class="mini-cover" aria-hidden="true"></div>
+            <h4>Título de ejemplo de otra tapa (1)</h4>
+          </a>
+
+          <a class="mini" href="#tapa">
+            <div class="mini-cover" aria-hidden="true"></div>
+            <h4>Título de ejemplo de otra tapa (2)</h4>
+          </a>
+
+          <a class="mini" href="#tapa">
+            <div class="mini-cover" aria-hidden="true"></div>
+            <h4>Título de ejemplo de otra tapa (3)</h4>
+          </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      
+    <section class="section-block" id="economia" aria-labelledby="h-economia">
+      <div class="section-head">
+        <h2 id="h-economia">Economía</h2>
+        <a class="more" href="#economia">Ver más</a>
+      </div>
+      <div class="section-grid">
+        <article class="card card-main">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Economía</p>
+          <h3>Título de ejemplo de la sección Economía</h3>
+          <p class="dek">Bajada de ejemplo. Este texto es un placeholder y no describe un hecho real.</p>
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">8 min de lectura</p>
+        </div>
+      </article>
+        <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Economía</p>
+          <h3>Segundo título de ejemplo en Economía</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">4 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Economía</p>
+          <h3>Tercer título de ejemplo en Economía</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">6 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Economía</p>
+          <h3>Cuarto título de ejemplo en Economía</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">3 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Economía</p>
+          <h3>Quinto título de ejemplo en Economía</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">8 min de lectura</p>
+        </div>
+      </article>
+      </div>
+    </section>
+      
+    <section class="section-block" id="tecnologia" aria-labelledby="h-tecnologia">
+      <div class="section-head">
+        <h2 id="h-tecnologia">Tecnología</h2>
+        <a class="more" href="#tecnologia">Ver más</a>
+      </div>
+      <div class="section-grid">
+        <article class="card card-main">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Tecnología</p>
+          <h3>Título de ejemplo de la sección Tecnología</h3>
+          <p class="dek">Bajada de ejemplo. Este texto es un placeholder y no describe un hecho real.</p>
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">5 min de lectura</p>
+        </div>
+      </article>
+        <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Tecnología</p>
+          <h3>Segundo título de ejemplo en Tecnología</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">4 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Tecnología</p>
+          <h3>Tercer título de ejemplo en Tecnología</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">6 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Tecnología</p>
+          <h3>Cuarto título de ejemplo en Tecnología</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">3 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Tecnología</p>
+          <h3>Quinto título de ejemplo en Tecnología</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">8 min de lectura</p>
+        </div>
+      </article>
+      </div>
+    </section>
+    </div>
+
+    <section class="paraver" id="para-ver" aria-labelledby="h-ver">
+      <div class="wrap">
+        <div class="module-head">
+          <h2 id="h-ver">Para ver</h2>
+          <span class="src">Videos de ejemplo · duración ilustrativa</span>
+        </div>
+        <div class="video-grid">
+          
+        <article class="video">
+          <a href="#para-ver">
+            <div class="ph" aria-hidden="true">
+              <span class="play"></span>
+              <span class="dur">0:00</span>
+              <span>Video de ejemplo</span>
+            </div>
+            <p class="kicker">Para ver</p>
+            <h3>Título de ejemplo de video en portada (1)</h3>
+          </a>
+        </article>
+
+        <article class="video">
+          <a href="#para-ver">
+            <div class="ph" aria-hidden="true">
+              <span class="play"></span>
+              <span class="dur">0:00</span>
+              <span>Video de ejemplo</span>
+            </div>
+            <p class="kicker">Para ver</p>
+            <h3>Título de ejemplo de video en portada (2)</h3>
+          </a>
+        </article>
+
+        <article class="video">
+          <a href="#para-ver">
+            <div class="ph" aria-hidden="true">
+              <span class="play"></span>
+              <span class="dur">0:00</span>
+              <span>Video de ejemplo</span>
+            </div>
+            <p class="kicker">Para ver</p>
+            <h3>Título de ejemplo de video en portada (3)</h3>
+          </a>
+        </article>
+
+        <article class="video">
+          <a href="#para-ver">
+            <div class="ph" aria-hidden="true">
+              <span class="play"></span>
+              <span class="dur">0:00</span>
+              <span>Video de ejemplo</span>
+            </div>
+            <p class="kicker">Para ver</p>
+            <h3>Título de ejemplo de video en portada (4)</h3>
+          </a>
+        </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="boletin" id="boletin" aria-labelledby="h-boletin">
+      <div class="wrap">
+        <div class="inner">
+          <div>
+            <p class="kicker" style="color:var(--mint)">Boletín de ejemplo</p>
+            <h2 id="h-boletin">La mañana de InfoDataGGM</h2>
+            <p class="dek">Un resumen de ejemplo de lo que importó, de lunes a viernes. Este bloque ilustra cómo se vería la invitación al boletín. No es un envío real.</p>
+          </div>
+          <form action="#boletin" method="get" onsubmit="return false;">
+            <div class="boletin-form">
+              <input type="email" name="ejemplo" placeholder="correo de ejemplo" aria-label="Correo de ejemplo, no se envía" autocomplete="off">
+              <button type="button">Quiero recibirlo (ejemplo)</button>
+            </div>
+            <p class="fine">Prototipo: este formulario no envía ni guarda datos.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      
+    <section class="section-block" id="mercados" aria-labelledby="h-mercados">
+      <div class="section-head">
+        <h2 id="h-mercados">Mercados y finanzas</h2>
+        <a class="more" href="#mercados">Ver más</a>
+      </div>
+      <div class="section-grid">
+        <article class="card card-main">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Mercados y finanzas</p>
+          <h3>Título de ejemplo de la sección Mercados y finanzas</h3>
+          <p class="dek">Bajada de ejemplo. Este texto es un placeholder y no describe un hecho real.</p>
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">4 min de lectura</p>
+        </div>
+      </article>
+        <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Mercados y finanzas</p>
+          <h3>Segundo título de ejemplo en Mercados y finanzas</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">4 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Mercados y finanzas</p>
+          <h3>Tercer título de ejemplo en Mercados y finanzas</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">6 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Mercados y finanzas</p>
+          <h3>Cuarto título de ejemplo en Mercados y finanzas</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">3 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Mercados y finanzas</p>
+          <h3>Quinto título de ejemplo en Mercados y finanzas</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">8 min de lectura</p>
+        </div>
+      </article>
+      </div>
+    </section>
+      
+    <section class="section-block" id="artes" aria-labelledby="h-artes">
+      <div class="section-head">
+        <h2 id="h-artes">Artes</h2>
+        <a class="more" href="#artes">Ver más</a>
+      </div>
+      <div class="section-grid">
+        <article class="card card-main">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Artes</p>
+          <h3>Título de ejemplo de la sección Artes</h3>
+          <p class="dek">Bajada de ejemplo. Este texto es un placeholder y no describe un hecho real.</p>
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">6 min de lectura</p>
+        </div>
+      </article>
+        <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Artes</p>
+          <h3>Segundo título de ejemplo en Artes</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">4 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Artes</p>
+          <h3>Tercer título de ejemplo en Artes</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">6 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Artes</p>
+          <h3>Cuarto título de ejemplo en Artes</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">3 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Artes</p>
+          <h3>Quinto título de ejemplo en Artes</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">8 min de lectura</p>
+        </div>
+      </article>
+      </div>
+    </section>
+    </div>
+
+    <div class="wrap">
+      <section class="profundidad" id="en-profundidad" aria-labelledby="h-prof">
+        <div class="module-head">
+          <h2 id="h-prof">En profundidad</h2>
+          <span class="src">Historias destacadas de ejemplo</span>
+        </div>
+        <article class="prof-main">
+          <a href="#en-profundidad">
+            <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+            <p class="kicker">Reportaje de ejemplo</p>
+            <h3>Título de ejemplo del reportaje en profundidad</h3>
+            <p class="dek">Bajada de ejemplo, un poco más larga, para mostrar el espacio de un relato o una investigación. Este texto es un placeholder y no describe un hecho real.</p>
+            <p class="prof-meta">8 min de lectura · Autor de ejemplo</p>
+          </a>
+        </article>
+        <div class="prof-more">
+          <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">En profundidad</p>
+          <h3>Título de ejemplo de historia destacada (1)</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">6 min de lectura</p>
+        </div>
+      </article>
+          <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">En profundidad</p>
+          <h3>Título de ejemplo de historia destacada (2)</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">5 min de lectura</p>
+        </div>
+      </article>
+        </div>
+      </section>
+    </div>
+
+    <div class="wrap rest">
+      
+    <section class="section-block" id="vida-sana" aria-labelledby="h-vida-sana">
+      <div class="section-head">
+        <h2 id="h-vida-sana">Vida sana</h2>
+        <a class="more" href="#vida-sana">Ver más</a>
+      </div>
+      <div class="section-grid">
+        <article class="card card-main">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Vida sana</p>
+          <h3>Título de ejemplo de la sección Vida sana</h3>
+          <p class="dek">Bajada de ejemplo. Este texto es un placeholder y no describe un hecho real.</p>
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">3 min de lectura</p>
+        </div>
+      </article>
+        <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Vida sana</p>
+          <h3>Segundo título de ejemplo en Vida sana</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">4 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Vida sana</p>
+          <h3>Tercer título de ejemplo en Vida sana</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">6 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Vida sana</p>
+          <h3>Cuarto título de ejemplo en Vida sana</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">3 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Vida sana</p>
+          <h3>Quinto título de ejemplo en Vida sana</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">8 min de lectura</p>
+        </div>
+      </article>
+      </div>
+    </section>
+      
+    <section class="section-block" id="salud" aria-labelledby="h-salud">
+      <div class="section-head">
+        <h2 id="h-salud">Salud</h2>
+        <a class="more" href="#salud">Ver más</a>
+      </div>
+      <div class="section-grid">
+        <article class="card card-main">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Salud</p>
+          <h3>Título de ejemplo de la sección Salud</h3>
+          <p class="dek">Bajada de ejemplo. Este texto es un placeholder y no describe un hecho real.</p>
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">8 min de lectura</p>
+        </div>
+      </article>
+        <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Salud</p>
+          <h3>Segundo título de ejemplo en Salud</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">4 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Salud</p>
+          <h3>Tercer título de ejemplo en Salud</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">6 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Salud</p>
+          <h3>Cuarto título de ejemplo en Salud</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">3 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Salud</p>
+          <h3>Quinto título de ejemplo en Salud</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">8 min de lectura</p>
+        </div>
+      </article>
+      </div>
+    </section>
+      
+    <section class="section-block" id="deportes" aria-labelledby="h-deportes">
+      <div class="section-head">
+        <h2 id="h-deportes">Deportes</h2>
+        <a class="more" href="#deportes">Ver más</a>
+      </div>
+      <div class="section-grid">
+        <article class="card card-main">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Deportes</p>
+          <h3>Título de ejemplo de la sección Deportes</h3>
+          <p class="dek">Bajada de ejemplo. Este texto es un placeholder y no describe un hecho real.</p>
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">5 min de lectura</p>
+        </div>
+      </article>
+        <article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Deportes</p>
+          <h3>Segundo título de ejemplo en Deportes</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">4 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Deportes</p>
+          <h3>Tercer título de ejemplo en Deportes</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">6 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Deportes</p>
+          <h3>Cuarto título de ejemplo en Deportes</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">3 min de lectura</p>
+        </div>
+      </article>
+<article class="card card-sm">
+        <div class="ph" aria-hidden="true"><span>Foto de ejemplo</span></div>
+        <div class="card-body">
+          <p class="kicker">Deportes</p>
+          <h3>Quinto título de ejemplo en Deportes</h3>
+          
+          <p class="by">Autor de ejemplo</p>
+          <p class="readtime">8 min de lectura</p>
+        </div>
+      </article>
+      </div>
+    </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="wordmark">InfoData<span class="bar" aria-hidden="true"></span><span class="ggm">GGM</span></div>
+          <p class="tagline">Un medio de GGM Data · ggmdata.ar</p>
+          <p class="blurb">Prototipo v4 de portada del medio digital InfoDataGGM, pensado como una sección de noticias dentro del grupo GGM Data. Esta página es un mockup local y no está publicada en ggmdata.ar.</p>
+        </div>
+        <div>
+          <h3>Secciones</h3>
+          <ul>
+            <li><a href="#ultimos-titulares">Últimos titulares</a></li>
+<li><a href="#provincias">Provincias</a></li>
+<li><a href="#mundo">Mundo</a></li>
+<li><a href="#negocios">Negocios</a></li>
+<li><a href="#politica">Política</a></li>
+<li><a href="#economia">Economía</a></li>
+<li><a href="#tecnologia">Tecnología</a></li>
+<li><a href="#mercados">Mercados y finanzas</a></li>
+<li><a href="#artes">Artes</a></li>
+<li><a href="#vida-sana">Vida sana</a></li>
+<li><a href="#salud">Salud</a></li>
+<li><a href="#deportes">Deportes</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contacto</h3>
+          <ul>
+            <li><a href="https://ggmdata.ar" rel="noopener">ggmdata.ar</a></li>
+            <li>Córdoba, Argentina</li>
+          </ul>
+          <h3 style="margin-top:22px">Redes</h3>
+          <ul>
+            <li>X: <a href="https://x.com/GGMDataAR" rel="noopener">@GGMDataAR</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Legal</h3>
+          <ul>
+            <li>Los titulares, bajadas, horarios, cifras, gráficos e imágenes de esta página son de ejemplo y no corresponden a noticias ni a datos reales.</li>
+            <li style="margin-top:12px">Los espacios marcados como “Publicidad” son avisos de casa que promocionan ggmdata.ar, no pauta de terceros.</li>
+            <li style="margin-top:12px">Este archivo es un prototipo interno para aprobación de diseño. No constituye una edición publicada del medio.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-legal">
+        <span>© 2026 InfoDataGGM · Un medio de GGM Data</span>
+        <span>Prototipo de portada v4 · datos de ejemplo</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
