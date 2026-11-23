@@ -153,3 +153,30 @@ palacio-municipal-cordoba.jpg (254 KB)
   Foto: Belgrano / Wikimedia Commons (dominio público)
   Origen: File:Palacio Municipal de Cordoba.JPG
   https://commons.wikimedia.org/wiki/File:Palacio_Municipal_de_Cordoba.JPG
+
+tormenta-cordoba.jpg (82 KB)
+  Foto: Nahuel Patiño / Wikimedia Commons (CC BY 2.0)
+  Origen: File:Tormenta sobre Córdoba (Argentina) 2009-12-01.jpg
+  https://commons.wikimedia.org/wiki/File:Tormenta_sobre_C%C3%B3rdoba_(Argentina)_2009-12-01.jpg
+
+kempes.jpg (97 KB)
+  Foto: Municipalidad de Córdoba / Wikimedia Commons (CC BY 2.5 AR)
+  Origen: File:Vista aérea del Estadio Mario Alberto Kempes, Córdoba.jpg
+  https://commons.wikimedia.org/wiki/File:Vista_a%C3%A9rea_del_Estadio_Mario_Alberto_Kempes,_C%C3%B3rdoba.jpg
+
+rutte-zelenski.jpg (96 KB)
+  Foto: Vinnytsia Oblast State Administration / Wikimedia Commons (CC BY 4.0)
+  Origen: File:Mark Rutte and Volodymyr Zelenskyy June 2025 (1750191387).jpg
+  https://commons.wikimedia.org/wiki/File:Mark_Rutte_and_Volodymyr_Zelenskyy_June_2025_(1750191387).jpg
+
+chart-comercio-oct.jpg
+  Gráfico: Equipo GGM Data, con datos del INDEC (Intercambio comercial argentino, octubre 2026)
+  Origen: Gráfico propio
+
+chart-confianza-nov.jpg
+  Gráfico: Equipo GGM Data, con datos del CIF, Universidad Torcuato Di Tella
+  Origen: Gráfico propio
+
+chart-dolar-23.jpg
+  Gráfico: Equipo GGM Data, con datos de Banco Nación, Ámbito y Becerra Bursátil
+  Origen: Gráfico propio
