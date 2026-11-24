@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://infodataggm.ar/</loc>
-    <lastmod>2026-11-23</lastmod>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -73,6 +73,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://infodataggm.ar/notas/congreso-ultima-semana-presupuesto-paso.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://infodataggm.ar/notas/consumo-masivo-octubre.html</loc>
     <lastmod>2026-11-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -81,6 +87,12 @@
   <url>
     <loc>https://infodataggm.ar/notas/coys-surrbac.html</loc>
     <lastmod>2026-11-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://infodataggm.ar/notas/dengue-casos-importados-cordoba.html</loc>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -211,6 +223,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://infodataggm.ar/notas/riesgo-pais-rebote-adrs-feriado-23-noviembre.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://infodataggm.ar/notas/river-lanus-clausura.html</loc>
     <lastmod>2026-11-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -225,6 +243,12 @@
   <url>
     <loc>https://infodataggm.ar/notas/senado-ley-discapacidad.html</loc>
     <lastmod>2026-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://infodataggm.ar/notas/superavit-comercial-octubre-2026.html</loc>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
