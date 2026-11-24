@@ -91,6 +91,7 @@
       overflow-x: auto;
       scrollbar-width: none;
       min-width: 0;
+      flex: 1;
     }
     .ticker::-webkit-scrollbar { display: none; }
     .ticker-flag {
@@ -120,6 +121,14 @@
       font-weight: 600;
       font-variant-numeric: tabular-nums;
     }
+    .topbar-social {
+      flex: none;
+      white-space: nowrap;
+      color: #eff8fc;
+      letter-spacing: .02em;
+      font-weight: 600;
+    }
+    .topbar-social:hover { color: #5fdfc7; }
 
     /* ——— Masthead ——— */
     .masthead {
@@ -574,13 +583,16 @@
     @media (max-width: 640px) {
       .wrap { width: min(var(--max), calc(100% - 24px)); }
       .topbar .wrap {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 0 16px;
         padding: 8px 0 0;
       }
       .topbar-date { padding-bottom: 6px; font-size: 12px; }
+      .topbar-social { align-self: start; padding-bottom: 6px; }
       .ticker {
+        grid-column: 1 / -1;
         border-top: 1px solid rgba(255,255,255,.1);
         padding: 8px 0;
       }
@@ -1381,6 +1393,7 @@
         <a class="tick" href="notas/riesgo-pais-1070.html">Riesgo país (20/11) <strong>1.070</strong></a>
         <a class="tick" href="notas/ipc-octubre-2026.html">Inflación oct. <strong>2,2%</strong></a>
       </div>
+      <a class="topbar-social" href="https://x.com/infodataggm" target="_blank" rel="noopener noreferrer">X @infodataggm</a>
     </div>
   </div>
 
@@ -2462,6 +2475,7 @@
           </ul>
           <h3 style="margin-top:22px">Redes</h3>
           <ul>
+            <li>X: <a href="https://x.com/infodataggm" target="_blank" rel="noopener noreferrer">@infodataggm</a></li>
             <li>X: <a href="https://x.com/GGMDataAR" rel="noopener" target="_blank">@GGMDataAR</a></li>
           </ul>
         </div>
