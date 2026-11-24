@@ -4,6 +4,9 @@ Las fotos periodísticas de agencias o medios no se utilizan. Las imágenes de W
 
 En la portada, el crédito visible va en el epígrafe bajo la foto, en estilo de agencia (por ejemplo, «(CASA ROSADA)» o «(Gabriel79/Wikimedia Commons)»). La licencia completa queda en este archivo y en el atributo title de cada imagen. Las miniaturas de «otras tapas» solo llevan el crédito en el tooltip, para no romper el recuadro.
 
+El catálogo con etiquetas de tema y el listado de notas que usa cada imagen está en img/biblioteca.md (copia de trabajo: /workspace/infodataggm/biblioteca-imagenes.md).
+
+
 milei-bullrich.jpg (220 KB)
   Foto: Casa Rosada (CC BY 2.5 AR)
   Origen: File:MileiBullrich.jpg
