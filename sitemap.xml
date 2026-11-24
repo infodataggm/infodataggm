@@ -25,6 +25,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://infodataggm.ar/notas/argentina-lng-fid-ypf-eni-xrg.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://infodataggm.ar/notas/billie-jean-king-cup-japon.html</loc>
     <lastmod>2026-11-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -51,6 +57,12 @@
   <url>
     <loc>https://infodataggm.ar/notas/cancilleria-amenazas-grossi.html</loc>
     <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://infodataggm.ar/notas/candida-auris-buenos-aires-noviembre-2026.html</loc>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -151,6 +163,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://infodataggm.ar/notas/instituto-river-cuartos-alta-cordoba.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://infodataggm.ar/notas/ipc-octubre-2026.html</loc>
     <lastmod>2026-11-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -175,6 +193,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://infodataggm.ar/notas/obesidad-oms-aplanar-curva-2030.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://infodataggm.ar/notas/ormuz-petroleros-minas-iran-24-noviembre.html</loc>
+    <lastmod>2026-11-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://infodataggm.ar/notas/otan-rutte-ucrania.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -189,6 +219,12 @@
   <url>
     <loc>https://infodataggm.ar/notas/prevencion-dengue.html</loc>
     <lastmod>2026-11-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://infodataggm.ar/notas/pulso-urbano-2026.html</loc>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -243,6 +279,12 @@
   <url>
     <loc>https://infodataggm.ar/notas/senado-ley-discapacidad.html</loc>
     <lastmod>2026-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://infodataggm.ar/notas/software-argentino-estancamiento-empleo-demanda-ia.html</loc>
+    <lastmod>2026-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

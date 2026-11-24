@@ -5,14 +5,14 @@ Las fotos viven en `repo/img/`. No hace falta crear una carpeta aparte ni volver
 ## Regla de uso (a partir del 24/11/2026)
 
 - **Toda nota lleva imagen.** No se publican notas con el recuadro gris de placeholder.
-- **Reutilizar** una imagen de esta biblioteca si el tema encaja (congreso, dólar, Córdoba, salud, exportaciones, mercados, bolsa, etc.), en lugar de descargar otra vez la misma foto.
+- **Reutilizar** una imagen de esta biblioteca si el tema encaja (congreso, dólar, Córdoba, salud, exportaciones, mercados, bolsa, Vaca Muerta, etc.), en lugar de descargar otra vez la misma foto.
 - **Solo se agregan** imágenes de uso legal: Creative Commons, dominio público, organismo oficial o gráfico propio de GGM Data, siempre con crédito en el epígrafe y registro en este índice y en `repo/img/CREDITOS.txt`.
 - No se usan fotos de agencias ni de otros medios.
 - En la portada, el crédito visible va en el epígrafe; la licencia completa queda acá, en `CREDITOS.txt` y en el atributo `title` de cada imagen.
 
 Índice canónico en el repo: `repo/img/biblioteca.md`. Copia de trabajo: `/workspace/infodataggm/biblioteca-imagenes.md`.
 
-Total: **42** imágenes catalogadas. Actualizado el 24 de noviembre de 2026.
+Total: **48** imágenes catalogadas. Actualizado el 24 de noviembre de 2026.
 
 | Archivo | Etiquetas | Autor | Licencia | Dónde se usa |
 |---|---|---|---|---|
@@ -25,7 +25,7 @@ Total: **42** imágenes catalogadas. Actualizado el 24 de noviembre de 2026.
 | `pacto-mayo.jpg` | política, gobernadores, provincias, pacto de mayo | Casa Rosada (CC BY 2.5 AR) | CC BY 2.5 AR | `notas/llaryora-pullaro-presupuesto.html` |
 | `llaryora.jpg` | política, córdoba, gobernadores, provincias | Gobierno argentino (CC BY 4.0) | CC BY 4.0 | _Sin uso en esta edición_ |
 | `pullaro.jpg` | política, santa fe, gobernadores, provincias | Gobierno de la Provincia de Santa Fe (CC BY-SA 2.5 AR) | CC BY-SA 2.5 AR | `portada (index.html)` |
-| `anelo.jpg` | neuquén, añelo, vaca muerta, energía, negocios | Horacio_Fernandez / Wikimedia Commons (CC BY 3.0) | CC BY 3.0 | `portada (index.html)`, `notas/halliburton-vaca-muerta.html`, `notas/pluspetrol-salud-anelo.html`, `notas/pymes-anelo-vaca-muerta.html` |
+| `anelo.jpg` | neuquén, añelo, vaca muerta, energía, negocios, lng | Horacio_Fernandez / Wikimedia Commons (CC BY 3.0) | CC BY 3.0 | `portada (index.html)`, `notas/argentina-lng-fid-ypf-eni-xrg.html`, `notas/halliburton-vaca-muerta.html`, `notas/pluspetrol-salud-anelo.html`, `notas/pymes-anelo-vaca-muerta.html` |
 | `quirno.jpg` | diplomacia, cancillería, malvinas, política | Cancillería Argentina (CC BY 4.0) | CC BY 4.0 | `notas/quirno-sea-lion-malvinas.html` |
 | `palacio-san-martin.jpg` | diplomacia, cancillería, malvinas, política | Cacen Gymraeg / Wikimedia Commons (CC BY-SA 4.0) | CC BY-SA 4.0 | `portada (index.html)`, `notas/rockhopper-contratistas-sea-lion.html` |
 | `malvinas-monumento.jpg` | malvinas, diplomacia, buenos aires, política | Eugenio Hansen, OFS / Wikimedia Commons (CC BY-SA 4.0) | CC BY-SA 4.0 | `portada (index.html)` |
@@ -38,7 +38,7 @@ Total: **42** imágenes catalogadas. Actualizado el 24 de noviembre de 2026.
 | `hidratacion.jpg` | vida sana, calor, salud, prevención | Gobierno de la Ciudad Autónoma de Buenos Aires (CC BY 2.5 AR) | CC BY 2.5 AR | `portada (index.html)`, `notas/recomendaciones-calor.html` |
 | `recoleta.jpg` | artes, cultura, buenos aires | Gobierno de la Ciudad Autónoma de Buenos Aires (CC BY 2.5 AR) | CC BY 2.5 AR | `portada (index.html)`, `notas/fidba-cierre.html`, `notas/guia-cultural-semana.html` |
 | `supermercado.jpg` | economía, consumo, comercio, precios | MewMeowth / Wikimedia Commons (CC0) | CC0 | `portada (index.html)`, `notas/came-ventas-minoristas.html` |
-| `tenis-bjk.jpg` | deportes, tenis, billie jean king cup | jmmuguerza / Wikimedia Commons (CC BY-SA 3.0) | CC BY-SA 3.0 | `portada (index.html)`, `notas/billie-jean-king-cup-japon.html` |
+| `tenis-bjk.jpg` | deportes, tenis, billie jean king cup | jmmuguerza / Wikimedia Commons (CC BY-SA 3.0) | CC BY-SA 3.0 | `notas/billie-jean-king-cup-japon.html` |
 | `congreso.jpg` | congreso, política, presupuesto, buenos aires | Ezarate / Wikimedia Commons (CC BY-SA 4.0) | CC BY-SA 4.0 | `portada (index.html)`, `notas/congreso-semana-presupuesto-paso.html` |
 | `chart-ipc.jpg` | economía, inflación, ipc, precios, gráfico, indec | Gráfico: Equipo GGM Data, con datos del INDEC | Gráfico propio (InfoDataGGM / GGM Data) | `portada (index.html)`, `notas/ipc-octubre-2026.html`, `notas/que-muestran-datos-ipc.html` |
 | `chart-riesgo.jpg` | mercados, riesgo país, deuda, bolsa, gráfico | Gráfico: Equipo GGM Data, con datos de la agencia NA (EMBI J.P. Morgan) | Gráfico propio (InfoDataGGM / GGM Data) | `portada (index.html)`, `notas/financial-times-riesgo-pais.html`, `notas/mercados-semana-wall-street-riesgo.html`, `notas/riesgo-pais-1070.html`, `notas/riesgo-pais-rebote-adrs-feriado-23-noviembre.html` |
@@ -47,7 +47,7 @@ Total: **42** imágenes catalogadas. Actualizado el 24 de noviembre de 2026.
 | `proximamente.jpg` | placeholder, sitio | InfoDataGGM | Imagen propia (InfoDataGGM) | `portada (index.html)`, `notas/mep-ccl-reservas.html` |
 | `video-espacio.jpg` | placeholder, video, sitio | InfoDataGGM | Imagen propia (InfoDataGGM) | `portada (index.html)` |
 | `palacio-municipal-cordoba.jpg` | córdoba, política, municipalidad, coys | Belgrano / Wikimedia Commons (dominio público) | Dominio público | `notas/coys-surrbac.html` |
-| `tormenta-cordoba.jpg` | córdoba, clima, tormentas, clima | Nahuel Patiño / Wikimedia Commons (CC BY 2.0) | CC BY 2.0 | `portada (index.html)`, `notas/tormentas-como-prepararse.html`, `notas/tormentas-cordoba-alerta.html` |
+| `tormenta-cordoba.jpg` | córdoba, clima, tormentas | Nahuel Patiño / Wikimedia Commons (CC BY 2.0) | CC BY 2.0 | `portada (index.html)`, `notas/tormentas-como-prepararse.html`, `notas/tormentas-cordoba-alerta.html` |
 | `kempes.jpg` | deportes, fútbol, córdoba, instituto | Municipalidad de Córdoba / Wikimedia Commons (CC BY 2.5 AR) | CC BY 2.5 AR | `portada (index.html)`, `notas/instituto-huracan-river.html` |
 | `rutte-zelenski.jpg` | mundo, otan, ucrania, internacional | Vinnytsia Oblast State Administration / Wikimedia Commons (CC BY 4.0) | CC BY 4.0 | `portada (index.html)`, `notas/otan-rutte-ucrania.html` |
 | `chart-comercio-oct.jpg` | economía, exportaciones, importaciones, comercio, gráfico, indec | Gráfico: Equipo GGM Data, con datos del INDEC (Intercambio comercial argentino, octubre 2026) | Gráfico propio (InfoDataGGM / GGM Data) | `portada (index.html)`, `notas/exportaciones-record-octubre.html`, `notas/superavit-comercial-octubre-2026.html` |
@@ -58,6 +58,12 @@ Total: **42** imágenes catalogadas. Actualizado el 24 de noviembre de 2026.
 | `acueducto-canos-coronda.jpg` | acueducto, agua, córdoba, santa fe, infraestructura, obras | Prensa Gobierno de Santa Fe, 27/06/2026 | Comunicado oficial (Prensa Gobierno de Santa Fe) | `portada (index.html)`, `notas/acueducto-parana.html` |
 | `chart-acueducto-parana.jpg` | acueducto, agua, córdoba, santa fe, gráfico, infraestructura | Gráfico: Equipo GGM Data, con anuncios oficiales de las provincias de Santa Fe y Córdoba (Unidad Ejecutora Biprovincial) | Gráfico propio (InfoDataGGM / GGM Data) | `notas/acueducto-parana.html` |
 | `congreso-ultima-semana.jpg` | congreso, política, presupuesto, paso, buenos aires | Felipe Restrepo Acosta / Wikimedia Commons (CC BY-SA 4.0) | CC BY-SA 4.0 | `portada (index.html)`, `notas/congreso-ultima-semana-presupuesto-paso.html` |
+| `obesidad-oms-aplanar-curva-2030.jpg` | vida sana, obesidad, alimentación, salud, oms, santa fe, feria | Berna Gaitán Otarán / Wikimedia Commons (CC BY-SA 4.0), 12/06/2021 | CC BY-SA 4.0 | `portada (index.html)`, `notas/obesidad-oms-aplanar-curva-2030.html` |
+| `instituto-river-cuartos-alta-cordoba.jpg` | deportes, fútbol, instituto, córdoba, alta córdoba, estadio | Javier Zengaro / Wikimedia Commons (CC BY-SA 4.0), 23/03/2007 | CC BY-SA 4.0 | `portada (index.html)`, `notas/instituto-river-cuartos-alta-cordoba.html` |
+| `pulso-urbano-2026.jpg` | artes, danza, córdoba, teatro comedia, cultura, pulso urbano | Santi Cba / Wikimedia Commons (CC0), julio de 2023 | CC0 | `portada (index.html)`, `notas/pulso-urbano-2026.html` |
+| `candida-auris-buenos-aires-noviembre-2026.jpg` | salud, epidemiología, candida auris, hospitales, laboratorio | Shawn Lockhart / CDC (dominio público) | Dominio público | `portada (index.html)`, `notas/candida-auris-buenos-aires-noviembre-2026.html` |
+| `ormuz-petroleros-minas-iran-24-noviembre.jpg` | mundo, ormuz, irán, petróleo, omán, internacional | PLBechly / Wikimedia Commons (CC BY-SA 4.0), 07/01/2017 | CC BY-SA 4.0 | `portada (index.html)`, `notas/ormuz-petroleros-minas-iran-24-noviembre.html` |
+| `la-maquinita-coworking-palermo.jpg` | tecnología, software, empleo, coworking, buenos aires, palermo | Ffmendez / Wikimedia Commons (CC BY-SA 4.0) | CC BY-SA 4.0 | `portada (index.html)`, `notas/software-argentino-estancamiento-empleo-demanda-ia.html` |
 
 ## Detalle por archivo
 
@@ -159,13 +165,14 @@ Total: **42** imágenes catalogadas. Actualizado el 24 de noviembre de 2026.
 
 ### `anelo.jpg`
 
-- **Etiquetas:** neuquén, añelo, vaca muerta, energía, negocios
+- **Etiquetas:** neuquén, añelo, vaca muerta, energía, negocios, lng
 - **Autor:** Horacio_Fernandez / Wikimedia Commons (CC BY 3.0)
 - **Licencia:** CC BY 3.0
 - **Origen:** File:Añelo, Neuquen, Argentina. - panoramio.jpg
 - **Fuente:** https://commons.wikimedia.org/wiki/File:A%C3%B1elo,_Neuquen,_Argentina._-_panoramio.jpg
 - **Uso:**
   - `portada (index.html)`
+  - `notas/argentina-lng-fid-ypf-eni-xrg.html` — YPF, Eni y XRG firmarán el lunes 30 de noviembre la decisión final de inversión de Argentina LNG, por USD 50.750 millones
   - `notas/halliburton-vaca-muerta.html` — Halliburton había pedido recortes de hasta 23% en contratos de Vaca Muerta; las pymes reclaman negociar
   - `notas/pluspetrol-salud-anelo.html` — Pluspetrol destinará hasta USD 490.000 a obras de salud en Añelo y Rincón de los Sauces
   - `notas/pymes-anelo-vaca-muerta.html` — Pymes de Añelo advierten rebajas de contratos y demoras de pago en Vaca Muerta
@@ -310,7 +317,6 @@ Total: **42** imágenes catalogadas. Actualizado el 24 de noviembre de 2026.
 - **Origen:** File:2021 Billie Jean King Cup Playoffs – Argentina vs Kazakhstan (22).jpg
 - **Fuente:** https://commons.wikimedia.org/wiki/File:2021_Billie_Jean_King_Cup_Playoffs_%E2%80%93_Argentina_vs_Kazakhstan_(22).jpg
 - **Uso:**
-  - `portada (index.html)`
   - `notas/billie-jean-king-cup-japon.html` — Argentina cayó 4-0 ante Japón y jugará la Zona Américas I de la Billie Jean King Cup en 2027
 
 ### `congreso.jpg`
@@ -398,7 +404,7 @@ Total: **42** imágenes catalogadas. Actualizado el 24 de noviembre de 2026.
 
 ### `tormenta-cordoba.jpg`
 
-- **Etiquetas:** córdoba, clima, tormentas, clima
+- **Etiquetas:** córdoba, clima, tormentas
 - **Autor:** Nahuel Patiño / Wikimedia Commons (CC BY 2.0)
 - **Licencia:** CC BY 2.0
 - **Origen:** File:Tormenta sobre Córdoba (Argentina) 2009-12-01.jpg
@@ -508,4 +514,70 @@ Total: **42** imágenes catalogadas. Actualizado el 24 de noviembre de 2026.
 - **Uso:**
   - `portada (index.html)`
   - `notas/congreso-ultima-semana-presupuesto-paso.html` — El Congreso cierra las ordinarias con el Presupuesto 2027 y la suspensión de las PASO todavía sin sesión convocada
+
+### `obesidad-oms-aplanar-curva-2030.jpg`
+
+- **Etiquetas:** vida sana, obesidad, alimentación, salud, oms, santa fe, feria
+- **Autor:** Berna Gaitán Otarán / Wikimedia Commons (CC BY-SA 4.0), 12/06/2021
+- **Licencia:** CC BY-SA 4.0
+- **Origen:** File:Puesto de verduras agroecológicas en ciudad de Santa Fe.jpg
+- **Fuente:** https://commons.wikimedia.org/wiki/File:Puesto_de_verduras_agroecol%C3%B3gicas_en_ciudad_de_Santa_Fe.jpg
+- **Uso:**
+  - `portada (index.html)`
+  - `notas/obesidad-oms-aplanar-curva-2030.html` — Obesidad: la OMS lanzó un llamado mundial para bajarla un 5% hacia 2030 y la Argentina revisó su plan con la OPS
+
+### `instituto-river-cuartos-alta-cordoba.jpg`
+
+- **Etiquetas:** deportes, fútbol, instituto, córdoba, alta córdoba, estadio
+- **Autor:** Javier Zengaro / Wikimedia Commons (CC BY-SA 4.0), 23/03/2007
+- **Licencia:** CC BY-SA 4.0
+- **Origen:** File:Estadio alta cordoba cropped.jpg
+- **Fuente:** https://commons.wikimedia.org/wiki/File:Estadio_alta_cordoba_cropped.jpg
+- **Uso:**
+  - `portada (index.html)`
+  - `notas/instituto-river-cuartos-alta-cordoba.html` — Instituto confirmó que recibirá a River en Alta Córdoba el sábado a las 22, sin público visitante
+
+### `pulso-urbano-2026.jpg`
+
+- **Etiquetas:** artes, danza, córdoba, teatro comedia, cultura, pulso urbano
+- **Autor:** Santi Cba / Wikimedia Commons (CC0), julio de 2023
+- **Licencia:** CC0
+- **Origen:** File:Fachada del Teatro Comedia.jpg
+- **Fuente:** https://commons.wikimedia.org/wiki/File:Fachada_del_Teatro_Comedia.jpg
+- **Uso:**
+  - `portada (index.html)`
+  - `notas/pulso-urbano-2026.html` — Pulso Urbano lleva la danza contemporánea a los barrios de Córdoba, del 27 al 29 de noviembre
+
+### `candida-auris-buenos-aires-noviembre-2026.jpg`
+
+- **Etiquetas:** salud, epidemiología, candida auris, hospitales, laboratorio
+- **Autor:** Shawn Lockhart / CDC (dominio público)
+- **Licencia:** Dominio público
+- **Origen:** File:Candida-auris 2016-250px.jpg
+- **Fuente:** https://commons.wikimedia.org/wiki/File:Candida-auris_2016-250px.jpg
+- **Uso:**
+  - `portada (index.html)`
+  - `notas/candida-auris-buenos-aires-noviembre-2026.html` — Salud informó dos detecciones de Candida auris en un establecimiento bonaerense, las primeras en el país desde 2022
+
+### `ormuz-petroleros-minas-iran-24-noviembre.jpg`
+
+- **Etiquetas:** mundo, ormuz, irán, petróleo, omán, internacional
+- **Autor:** PLBechly / Wikimedia Commons (CC BY-SA 4.0), 07/01/2017
+- **Licencia:** CC BY-SA 4.0
+- **Origen:** File:Khasab.jpg
+- **Fuente:** https://commons.wikimedia.org/wiki/File:Khasab.jpg
+- **Uso:**
+  - `portada (index.html)`
+  - `notas/ormuz-petroleros-minas-iran-24-noviembre.html` — Irán afirma que tres petroleros escoltados por EE.UU. chocaron con minas en Ormuz, un relato que las agencias no pudieron verificar
+
+### `la-maquinita-coworking-palermo.jpg`
+
+- **Etiquetas:** tecnología, software, empleo, coworking, buenos aires, palermo
+- **Autor:** Ffmendez / Wikimedia Commons (CC BY-SA 4.0)
+- **Licencia:** CC BY-SA 4.0
+- **Origen:** File:La Maquinita Co. Buenos Aires.jpg
+- **Fuente:** https://commons.wikimedia.org/wiki/File:La_Maquinita_Co._Buenos_Aires.jpg
+- **Uso:**
+  - `portada (index.html)`
+  - `notas/software-argentino-estancamiento-empleo-demanda-ia.html` — El software argentino frenó la creación de empleo: perdió 549 puestos en el primer semestre y la demanda pasó a ser el principal problema
 
